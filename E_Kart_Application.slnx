@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="EKartMVC/EKartMVC.csproj" />
+  <Project Path="Ekart_Test_Project/Ekart_Test_Project.csproj" />
+  <Project Path="E_Kart_Application/E_Kart_Application.csproj" />
+</Solution>

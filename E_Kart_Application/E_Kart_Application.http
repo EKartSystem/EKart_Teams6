@@ -1,0 +1,6 @@
+@E_Kart_Application_HostAddress = http://localhost:5229
+
+GET {{E_Kart_Application_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
