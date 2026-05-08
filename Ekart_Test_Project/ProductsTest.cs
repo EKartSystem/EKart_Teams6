@@ -1,6 +1,6 @@
 namespace Ekart_Test_Project
 {
-    public class UnitTest1
+    public class ProductsTest
     {
         [Fact]
         public void Test1()
