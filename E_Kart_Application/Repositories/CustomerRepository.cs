@@ -56,9 +56,16 @@ namespace E_Kart_Application.Repositories
             return customer;
         }
 
-        public async Task<Customer?> LoginAsync(string ContactName,string password,string role)
+        public async Task<Customer?> LoginAsync(string contactName,string password,string role)
         {
-            return await _context.Customers.FirstOrDefaultAsync(x =>x.ContactName == ContactName && x.PasswordHash == password &&x.Role == role);
+            var customer = await _context.Customers.FirstOrDefaultAsync(x =>x.ContactName == contactName && x.Role == role);
+            if (customer == null)
+                return null;
+
+            bool isValid = BCrypt.Net.BCrypt.Verify(password,customer.PasswordHash);
+            if (!isValid)
+                return null;
+            return customer;
         }
 
         public async Task<bool> UpdateCustomerAsync(string id,Customer customer)

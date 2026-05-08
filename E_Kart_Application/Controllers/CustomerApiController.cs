@@ -1,4 +1,5 @@
 ﻿using E_Kart_Application.DTOs.Customersdto;
+using E_Kart_Application.Exceptions;
 using E_Kart_Application.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -85,9 +86,11 @@ namespace E_Kart_Application.Controllers
         public async Task<IActionResult> Login(CustomerLogin dto)
         {
             var data = await _service.LoginAsync(dto);
+            if (data == null)
+                throw new BadRequestException("Invalid Credentials");
             var token = _tokenService.CreateToken(data);
             _logger.LogInformation("Customer logged in");
-            return Ok(token);
+            return Ok(new {token});
         }
 
         [HttpPut("{id}")]
