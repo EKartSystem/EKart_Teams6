@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Security.Cryptography;
+using System.Text;
+using AutoMapper;
 using E_Kart_Application.DTOs;
 using E_Kart_Application.DTOs.Customersdto;
 using E_Kart_Application.Exceptions;
@@ -60,16 +62,13 @@ namespace E_Kart_Application.Services
         public async Task<CustomerDto> RegisterCustomerAsync(RegisterCustomerDto dto)
         {
             var customer = _mapper.Map<Customer>(dto);
+            customer.CustomerId =GenerateCustomerId(dto.CompanyName);
+            using SHA256 sha256 = SHA256.Create();
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(dto.Password));
 
-            customer.CustomerId = GenerateCustomerId(dto.CompanyName);
-
-            customer.PasswordHash =
-                BCrypt.Net.BCrypt.HashPassword(dto.Password);
-
-            customer.Role = "Customer";
-
-            var data = await _repository.RegisterCustomerAsync(customer);
-
+            customer.PasswordHash =BitConverter.ToString(bytes).Replace("-", "");
+            customer.Role = dto.Role;
+            var data =await _repository.RegisterCustomerAsync(customer);
             return _mapper.Map<CustomerDto>(data);
         }
 

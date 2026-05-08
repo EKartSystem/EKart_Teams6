@@ -1,4 +1,6 @@
-﻿using E_Kart_Application.DBContext;
+﻿using System.Security.Cryptography;
+using System.Text;
+using E_Kart_Application.DBContext;
 using E_Kart_Application.DTOs.Customersdto;
 using E_Kart_Application.Exceptions;
 using E_Kart_Application.Models;
@@ -58,20 +60,18 @@ namespace E_Kart_Application.Repositories
 
         public async Task<Customer?> LoginAsync(string contactName,string password,string role)
         {
-            var customer = await _context.Customers.FirstOrDefaultAsync(x =>x.ContactName == contactName && x.Role == role);
-            if (customer == null)
-                return null;
-
-            bool isValid = BCrypt.Net.BCrypt.Verify(password,customer.PasswordHash);
-            if (!isValid)
-                return null;
-            return customer;
+            string hashedPassword;
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes =sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                hashedPassword =BitConverter.ToString(bytes).Replace("-", "");
+            }
+            return await _context.Customers.FirstOrDefaultAsync(x =>x.ContactName == contactName &&x.PasswordHash == hashedPassword &&x.Role == role);
         }
 
         public async Task<bool> UpdateCustomerAsync(string id,Customer customer)
         {
             var data = await _context.Customers.FirstOrDefaultAsync(x => x.CustomerId == id);
-
             if (data == null)
             {
                 return false;
