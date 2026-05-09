@@ -8,6 +8,7 @@ namespace E_Kart_Application.Services
         Task<ProductDetailsDto?> GetProductByIdAsync(int productId);
         Task<IEnumerable<ProductListingDto>> GetProductsByCategoryAsync(int categoryId);
         Task<IEnumerable<ProductListingDto>> GetProductsBySupplierAsync(int supplierId);
+        Task<IEnumerable<ExpensiveProductDto>> GetExpensiveProductsAsync();
         Task<IEnumerable<ProductListingDto>> SearchProductsAsync(string name);
         Task<IEnumerable<ProductListingDto>> GetInStockProductsAsync();
         Task<ProductDetailsDto> AddProductAsync(CreateProductDto createDto);

@@ -1,6 +1,8 @@
 ﻿using E_Kart_Application.DTOs.ProductsDTO;
+using E_Kart_Application.Filters;
 using E_Kart_Application.Models;
 using E_Kart_Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +20,8 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet]
-
+        //[Authorize(Roles ="Admin,Customer")]
+        [ServiceFilter(typeof(LogActionFilter))]
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetALlProducts()
         {
             var x = await _service.GetAllProductsAsync();
@@ -26,6 +29,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<ProductDetailsDto>> GetProductById(int id)
         {
             var x = await _service.GetProductByIdAsync(id);
@@ -33,6 +37,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("in-stock")]
+        [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetInStock()
         {
             var products = await _service.GetInStockProductsAsync();
@@ -40,6 +45,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("category/{categoryId}")]
+        [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetProductByCategory(int categoryId)
         {
             var x = await _service.GetProductsByCategoryAsync(categoryId);
@@ -47,7 +53,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("supplier/{supplierId}")]
-
+        [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetProductBySuppliers(int supplierId)
         {
             var x = await _service.GetProductsBySupplierAsync(supplierId);
@@ -55,6 +61,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProductDetailsDto>> Create(CreateProductDto createDto)
         {
             var result = await _service.AddProductAsync(createDto);
@@ -64,6 +71,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, UpdateProductDto updateDto)
         {
             await _service.UpdateProductAsync(id, updateDto);
@@ -71,6 +79,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPatch("{id}/price")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdatePrice(int id, [FromBody] decimal newPrice)
         {
             await _service.UpdatePriceAsync(id, newPrice);
@@ -78,6 +87,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPatch("{id}/stock")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateStock(int id, [FromBody] short units)
         {
             await _service.UpdateStockAsync(id, units);
@@ -85,10 +95,19 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("search")]
+        [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> SearchProductsByName([FromQuery] string name)
         {
             var results = await _service.SearchProductsAsync(name);
             return Ok(results);
+        }
+
+        [HttpGet("expensiveProducts")]
+        [ServiceFilter(typeof(LogActionFilter))]
+        public async Task<ActionResult<IEnumerable<ExpensiveProductDto>>> TenExpensiveProduct()
+        {
+            var x = await _service.GetExpensiveProductsAsync();
+            return Ok(x);
         }
 
     }

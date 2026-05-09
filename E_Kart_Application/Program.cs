@@ -2,6 +2,7 @@
 using System.Text;
 using E_Kart_Application.DBContext;
 using E_Kart_Application.Exceptions;
+using E_Kart_Application.Filters;
 using E_Kart_Application.Mappings;
 using E_Kart_Application.Repositories;
 using E_Kart_Application.Services;
@@ -29,15 +30,18 @@ namespace E_Kart_Application
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<ILocationService, LocationService>();
             builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+            builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<ICustomerService, CustomerService>();
             builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddValidatorsFromAssemblyContaining<AddProductValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<UpdateProductValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<LoginValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<RegisterValidator>();
             builder.Services.AddFluentValidationAutoValidation();
+
+            builder.Services.AddScoped<LogActionFilter>();
             builder.Services.AddControllers();
-            builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-            builder.Services.AddScoped<ICustomerService, CustomerService>();
+           
 
             builder.Services.AddScoped<TokenService>();
 

@@ -1,4 +1,5 @@
 ﻿using E_Kart_Application.DBContext;
+using E_Kart_Application.DTOs.ProductsDTO;
 using E_Kart_Application.Exceptions;
 using E_Kart_Application.Models;
 using Microsoft.CodeAnalysis;
@@ -44,13 +45,16 @@ namespace E_Kart_Application.Repositories
             return await _context.Products.Where(x => x.UnitsInStock > 0).Include(x=>x.Category).ToListAsync();
         }
 
+        public async Task<IEnumerable<ExpensiveProductDto>> GetExpensiveProductsAsync()
+        {
+            return await _context.Database.SqlQuery<ExpensiveProductDto>($"EXEC [Ten Most Expensive Products]").ToListAsync();
+        }
+
         public async Task<Product?> GetProductByIdAsync(int productId)
         {
-            return await _context.Products
-               .Include(x => x.Category)
-               .Include(x => x.Supplier)
-               .FirstOrDefaultAsync(x => x.ProductId == productId);
-                }
+            return await _context.Products.Include(x => x.Category).Include(x => x.Supplier)
+                .FirstOrDefaultAsync(x => x.ProductId == productId);
+        }
 
         public async Task<IEnumerable<Product>> SearchProductsByNameAsync(string name)
         {

@@ -20,6 +20,8 @@ namespace E_Kart_Application.Services
         {
             var x = _mapper.Map<Territory>(territoryDto);
             var t = await _repository.CreateTerritoryAsync(x);
+            if (t == null)
+                throw new BadRequestException("Unable to add Territory");
             return _mapper.Map<TerritoryDto>(t);
         }
 

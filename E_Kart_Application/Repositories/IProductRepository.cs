@@ -1,4 +1,5 @@
-﻿using E_Kart_Application.Models;
+﻿using E_Kart_Application.DTOs.ProductsDTO;
+using E_Kart_Application.Models;
 
 namespace E_Kart_Application.Repositories
 {
@@ -10,6 +11,8 @@ namespace E_Kart_Application.Repositories
         Task<IEnumerable<Product>> GetAllProductsBySupplierAsync(int supplierId);
         Task<IEnumerable<Product>> SearchProductsByNameAsync(string name);
         Task<IEnumerable<Product>> GetAllProductsInStock();
+
+        Task<IEnumerable<ExpensiveProductDto>> GetExpensiveProductsAsync();
         Task<Product> AddProductAsync(Product product);
         Task UpdateAsync(Product product);
         Task UpdateProductPriceAsync(int id, decimal newPrice);

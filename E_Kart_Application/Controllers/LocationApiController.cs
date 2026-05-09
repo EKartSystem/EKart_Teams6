@@ -18,6 +18,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("regions")]
+        [Authorize(Roles ="Admin,Customer")]
         public async Task<ActionResult<List<RegionDto>>> GetRegions()
         {
             var regions = await _service.GetAllRegionsAsync();
@@ -25,6 +26,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("regions/{id}")]
+        [Authorize(Roles ="Admin,Customer")]
         public async Task<ActionResult<RegionDto>> GetRegion(int id)
         {
             var region = await _service.GetRegionByIdAsync(id);
@@ -32,6 +34,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("territories")]
+        [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<List<TerritoryDto>>> GetTerritories()
         {
             var territories = await _service.GetAllTerritoriesAsync();
@@ -39,6 +42,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("regions/{regionId}/territories")]
+        [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<List<TerritoryDto>>> GetTerritoriesByRegion(int regionId)
         {
             var territories = await _service.GetTerritoriesByRegionIdAsync(regionId);
@@ -46,6 +50,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("territories/{id}")]
+        [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<TerritoryDto>> GetTerritory(string id)
         {
             var territory = await _service.GetTerritoryByIdAsync(id);
@@ -53,6 +58,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPost("territories")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<TerritoryDto>> CreateTerritory([FromBody] TerritoryDto territoryDto)
         {
             var created = await _service.CreateTerritoryAsync(territoryDto);
@@ -60,6 +66,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPut("territories/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateTerritory(string id, [FromBody] TerritoryDto territoryDto)
         {
             if (id != territoryDto.TerritoryId)
