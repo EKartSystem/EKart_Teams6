@@ -78,7 +78,8 @@ namespace E_Kart_Application.Services
                 throw new NotFoundException($"No Territory with Id : {Id}");
             var updated = _mapper.Map(territoryDto, x);
             await _repository.UpdateTerritoryAsync(updated);
-            
         }
+
+
     }
 }

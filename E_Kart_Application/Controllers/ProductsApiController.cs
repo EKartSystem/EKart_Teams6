@@ -1,9 +1,8 @@
-﻿using E_Kart_Application.DTOs.ProductsDTO;
+﻿using E_Kart_Application.Common;
+using E_Kart_Application.DTOs.ProductsDTO;
 using E_Kart_Application.Filters;
-using E_Kart_Application.Models;
 using E_Kart_Application.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Kart_Application.Controllers
@@ -25,7 +24,12 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetALlProducts()
         {
             var x = await _service.GetAllProductsAsync();
-            return Ok(x);
+            return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
+            {
+                Success=true,
+                Message="All Products Fetched",
+                Data=x
+            });
         }
 
         [HttpGet("{id}")]
@@ -33,15 +37,25 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<ProductDetailsDto>> GetProductById(int id)
         {
             var x = await _service.GetProductByIdAsync(id);
-            return Ok(x);
+            return Ok(new ApiResponse<ProductDetailsDto>
+            {
+                Success = true,
+                Message = "Product Fetched",
+                Data = x
+            });
         }
 
         [HttpGet("in-stock")]
         [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetInStock()
         {
-            var products = await _service.GetInStockProductsAsync();
-            return Ok(products);
+            var x = await _service.GetInStockProductsAsync();
+            return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
+            {
+                Success = true,
+                Message = "All Products in Stock are Fetched",
+                Data = x
+            });
         }
 
         [HttpGet("category/{categoryId}")]
@@ -49,7 +63,12 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetProductByCategory(int categoryId)
         {
             var x = await _service.GetProductsByCategoryAsync(categoryId);
-            return Ok(x);
+            return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
+            {
+                Success = true,
+                Message = "All Products Fetched By CategoryId",
+                Data = x
+            });
         }
 
         [HttpGet("supplier/{supplierId}")]
@@ -57,7 +76,12 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetProductBySuppliers(int supplierId)
         {
             var x = await _service.GetProductsBySupplierAsync(supplierId);
-            return Ok(x);
+            return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
+            {
+                Success = true,
+                Message = "All Products Fetched by SupplierId",
+                Data = x
+            });
         }
 
         [HttpPost]
@@ -65,7 +89,13 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<ProductDetailsDto>> Create(CreateProductDto createDto)
         {
             var result = await _service.AddProductAsync(createDto);
-            return CreatedAtAction(nameof(GetProductById), new { id = result.ProductId }, result);
+            return CreatedAtAction(nameof(GetProductById), new { id = result.ProductId },
+                new ApiResponse<ProductDetailsDto>
+                 {
+                     Success = true,
+                     Message = "Product Created Successfully",
+                     Data = result
+                 });
             //basically createdAtAction => nameof is used to view this item in future the new{id} is provided
             //and the result is the json format.
         }
@@ -99,7 +129,12 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> SearchProductsByName([FromQuery] string name)
         {
             var results = await _service.SearchProductsAsync(name);
-            return Ok(results);
+            return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
+            {
+                Success = true,
+                Message = $"All Products Fetched with Name {name}",
+                Data = results
+            });
         }
 
         [HttpGet("expensiveProducts")]
@@ -107,8 +142,12 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<IEnumerable<ExpensiveProductDto>>> TenExpensiveProduct()
         {
             var x = await _service.GetExpensiveProductsAsync();
-            return Ok(x);
+            return Ok(new ApiResponse<IEnumerable<ExpensiveProductDto>>
+            {
+                Success = true,
+                Message = "TOP 10 Expensive Products",
+                Data = x
+            });
         }
-
     }
 }

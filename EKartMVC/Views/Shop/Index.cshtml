@@ -1,0 +1,37 @@
+﻿@model IEnumerable<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>
+@{
+	ViewData["Title"] = "Products";
+}
+
+<div class="container mt-4">
+	<h3>Product Catalog</h3>
+    
+	<ul class="list-group list-group-numbered shadow-sm">
+		@foreach (var item in Model)
+		{
+			<li class="list-group-item d-flex justify-content-between align-items-start">
+				<div class="ms-2 me-auto">
+					<div class="fw-bold">
+						<a asp-action="Details" asp-route-id="@item.ProductId" class="text-decoration-none text-dark">
+							@item.ProductName
+						</a>
+					</div>
+					<small class="text-muted">Category: @item.CategoryName</small>
+				</div>
+
+				@* <span class="badge rounded-pill @(item.IsInStock ? "bg-success" : "bg-danger")">
+                    @(item.IsInStock ? "In Stock" : "Out of Stock")
+                </span> *@
+				@if (!item.IsInStock)
+				{
+					<span class="badge rounded-pill bg-danger">
+						Out of Stock
+					</span>
+				}
+				<div class="ms-3 font-weight-bold text-primary">
+					@item.UnitPrice?.ToString("C")
+				</div>
+			</li>
+		}
+	</ul>
+</div>

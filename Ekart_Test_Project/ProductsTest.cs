@@ -13,7 +13,7 @@ namespace Ekart_Test_Project
 {
     public class ProductsTest
     {
-        [Fact] //positive
+        [Fact] 
         public async Task GetTenMostExpensiveProductsTest()
         {
             var mockRepo = new Mock<IProductRepository>();
@@ -32,7 +32,7 @@ namespace Ekart_Test_Project
             Assert.Equal("Product A", result.First().TenMostExpensiveProducts);
             mockRepo.Verify(x => x.GetExpensiveProductsAsync(), Times.Once);
         }
-        [Fact] //negative
+        [Fact] 
         public async Task GetTenMostExpensiveProductsTest1()
         {
             var mockRepo = new Mock<IProductRepository>();
@@ -43,7 +43,7 @@ namespace Ekart_Test_Project
             mockRepo.Verify(x => x.GetExpensiveProductsAsync(), Times.Once);
         }
 
-        [Fact] //positive
+        [Fact] 
         public async Task GetProductByIdTest()
         {
             var mockRepo = new Mock<IProductRepository>();
@@ -68,7 +68,7 @@ namespace Ekart_Test_Project
             Assert.Equal(1234, prod.ProductId);
         }
 
-        [Fact] //negativev
+        [Fact] 
         public async Task GetProductByIdTest1()
         {
             var mockRepo = new Mock<IProductRepository>();
@@ -130,7 +130,12 @@ namespace Ekart_Test_Project
         {
             var mockRepo = new Mock<IProductRepository>();
             var mockMapper = new Mock<IMapper>();
-
+            var prod = new Product
+            {
+                ProductId = 1,
+                UnitPrice=500
+            };
+            mockRepo.Setup(x => x.GetProductByIdAsync(1)).ReturnsAsync(prod);
             mockRepo.Setup(x => x.UpdateProductPriceAsync(1, 550)).Returns(Task.CompletedTask);
             var service = new ProductService(mockRepo.Object, mockMapper.Object);
             await service.UpdatePriceAsync(1, 550);
@@ -142,7 +147,14 @@ namespace Ekart_Test_Project
             var mockRepo = new Mock<IProductRepository>();
             var mockMapper = new Mock<IMapper>();
             var service = new ProductService(mockRepo.Object, mockMapper.Object);
-            await Assert.ThrowsAsync<BadRequestException>(() => service.UpdatePriceAsync(1, 0));
+            var prod = new Product
+            {
+                ProductId = 1,
+                UnitPrice = 500
+            };
+            mockRepo.Setup(x => x.GetProductByIdAsync(1)).ReturnsAsync(prod);
+            var ex = await Assert.ThrowsAsync<BadRequestException>(() => service.UpdatePriceAsync(1, 0));
+            Assert.Equal("Price should be greater than 0", ex.Message);
         }
 
         [Fact]

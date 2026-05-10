@@ -16,9 +16,7 @@ namespace E_Kart_Application.Controllers
 
         private readonly TokenService _tokenService;
 
-        public CustomerApiController(
-            ICustomerService service,
-            ILogger<CustomerApiController> logger,
+        public CustomerApiController(ICustomerService service,ILogger<CustomerApiController> logger,
             TokenService tokenService)
         {
             _service = service;

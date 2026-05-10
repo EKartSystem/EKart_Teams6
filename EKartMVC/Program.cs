@@ -1,3 +1,5 @@
+using EKartMVC.Services;
+
 namespace EKartMVC
 {
     public class Program
@@ -5,7 +7,9 @@ namespace EKartMVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var apiBaseUrl = "https://localhost:7000/";
 
+            builder.Services.AddHttpClient<ProductApiService>(c => c.BaseAddress = new Uri(apiBaseUrl));
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 

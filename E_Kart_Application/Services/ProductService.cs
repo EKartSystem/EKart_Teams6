@@ -92,6 +92,9 @@ namespace E_Kart_Application.Services
 
         public async Task UpdatePriceAsync(int id, decimal newPrice)
         {
+            var prod = await _repo.GetProductByIdAsync(id);
+            if (prod == null)
+                throw new NotFoundException($"No product with Id : {id}");
             if (newPrice <= 0)
                 throw new BadRequestException("Price should be greater than 0");
             await _repo.UpdateProductPriceAsync(id, newPrice);
@@ -108,6 +111,9 @@ namespace E_Kart_Application.Services
 
         public async Task UpdateStockAsync(int id, short units)
         {
+            var prod = await _repo.GetProductByIdAsync(id);
+            if (prod == null)
+                throw new NotFoundException($"No product with Id : {id}");
             if (units < 0)
                 throw new BadRequestException("units should not be less than zero");
             await _repo.UpdateProductStockAsync(id, units);
