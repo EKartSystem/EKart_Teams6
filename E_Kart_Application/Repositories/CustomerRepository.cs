@@ -102,16 +102,16 @@ namespace E_Kart_Application.Repositories
             return true;
         }
 
-        public async Task<bool> UpdateContactAsync(string id, string ContactName)
+        public async Task<bool> UpdateContactAsync(string id, string contactName)
         {
-            if (string.IsNullOrWhiteSpace(ContactName))
+            if (string.IsNullOrWhiteSpace(contactName))
                 return false;
             var data = await _context.Customers.FirstOrDefaultAsync(x => x.CustomerId == id);
             if (data == null)
             {
                 return false;
             }
-            data.ContactName = ContactName;
+            data.ContactName = contactName;
             await _context.SaveChangesAsync();
             return true;
         }

@@ -26,12 +26,12 @@ namespace E_Kart_Application.Services
             string id,
             UpdateCustomerDto dto);
 
-        Task<bool> UpdateAddressAsync(
+        Task <bool> UpdateAddressAsync(
             string id,
-            UpdateAddressDto dto);
+             string address);
 
         Task<bool> UpdateContactAsync(
             string id,
-            UpdateContactDto dto);
+            string contactName);
     }
 }

@@ -27,12 +27,7 @@ namespace E_Kart_Application.Mappings
             CreateMap<Customer, UpdateCustomerDto>()
                 .ReverseMap();
 
-            CreateMap<Customer, UpdateAddressDto>()
-                .ReverseMap();
-
-            CreateMap<Customer, UpdateContactDto>()
-                .ReverseMap();
-
+          
             CreateMap<Order, OrderDto>();
         }
     }

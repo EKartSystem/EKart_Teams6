@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography;
 using System.Text;
 using AutoMapper;
 using E_Kart_Application.DTOs;
@@ -24,36 +25,65 @@ namespace E_Kart_Application.Services
         public async Task<IEnumerable<CustomerDto>> GetCustomersAsync()
         {
             var data = await _repository.GetCustomersAsync();
+            if (data == null)
+            {
+                throw new NotFoundException("No customers found."); 
+            }
             return _mapper.Map<IEnumerable<CustomerDto>>(data);
         }
 
         public async Task<CustomerDto?> GetCustomerByIdAsync(string id)
         {
             var data = await _repository.GetCustomerByIdAsync(id);
+            if (data == null)
+            {
+                throw new NotFoundException($"Customer with id {id} not found.");
+            }
             return _mapper.Map<CustomerDto>(data);
         }
 
         public async Task<IEnumerable<OrderDto>> GetCustomerOrdersAsync(string id)
         {
+
             var data = await _repository.GetCustomerOrdersAsync(id);
+            if (data == null)
+            {
+                throw new NotFoundException($"Customer with id {id} not found.");
+            }
             return _mapper.Map<IEnumerable<OrderDto>>(data);
         }
 
         public async Task<IEnumerable<CustomerDto>> SearchCustomersAsync(string name)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new BadRequestException("Name cannot be empty.");
+            }
             var data = await _repository.SearchCustomersAsync(name);
+            if (data == null)
+            {
+                throw new NotFoundException($"No customers found with name containing '{name}'.");  
+            }
             return _mapper.Map<IEnumerable<CustomerDto>>(data);
         }
 
         public async Task<IEnumerable<CustomerDto>> GetCustomersByCountryAsync(string country)
         {
             var data = await _repository.GetCustomersByCountryAsync(country);
+            if (data == null)
+            {
+                throw new NotFoundException($"No customers found in country '{country}'."); 
+            }
             return _mapper.Map<IEnumerable<CustomerDto>>(data);
         }
 
         public async Task<IEnumerable<CustomerDto>> GetTopCustomersAsync()
         {
             var data = await _repository.GetTopCustomersAsync();
+            if (data == null)
+            {
+                throw new NotFoundException("No customers found."); 
+            }
             return _mapper.Map<IEnumerable<CustomerDto>>(data);
         }
 
@@ -73,30 +103,45 @@ namespace E_Kart_Application.Services
         public async Task<CustomerDto?> LoginAsync(CustomerLogin dto)
         {
             var data = await _repository.LoginAsync(dto.ContactName, dto.Password, dto.Role);
+            if (data == null)
+            {
+                throw new UnauthorizedAccessException("Invalid credentials.");    
+            }
             return _mapper.Map<CustomerDto>(data);
         }
 
-        public async Task<bool> UpdateCustomerAsync(string id, UpdateCustomerDto dto)
+        public async Task <bool>UpdateCustomerAsync(string id, UpdateCustomerDto dto)
         {
-            var customer = new Customer
+            var data = await _repository.GetCustomerByIdAsync(id);
+            if (data == null)
             {
-                ContactName = dto.ContactName,
-                Phone = dto.Phone,
-                Address = dto.Address
-            };
-            return await _repository.UpdateCustomerAsync(id, customer);
-        }
+                throw new NotFoundException($"No Customer found with id {id}");
 
-        public async Task<bool> UpdateAddressAsync(string id, UpdateAddressDto dto)
-        {
-            return await _repository.UpdateAddressAsync(id, dto.Address);
+            }
+            _mapper.Map(dto, data);
+           return  await _repository.UpdateCustomerAsync(id,data);
 
         }
 
-        public async Task<bool> UpdateContactAsync(string id, UpdateContactDto dto)
+        public async Task <bool> UpdateAddressAsync(string id, string address)
         {
-            return await _repository.UpdateContactAsync(id, dto.ContactName);
+            var data= await _repository.GetCustomerByIdAsync(id);
+            if (data == null)
+            {
+                throw new NotFoundException($"Customer with id {id} not found.");
+            }
+          return  await _repository.UpdateAddressAsync(id, address);      
 
+        }
+
+        public async Task <bool> UpdateContactAsync(string id, string contactName)
+        {
+           var data= await _repository.GetCustomerByIdAsync(id);
+            if (data == null)
+            {
+                throw new NotFoundException($"Customer with id {id} not found.");
+            }
+            return await _repository.UpdateContactAsync(id, contactName);   
         }
         public string GenerateCustomerId(string companyName)
         {
