@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace E_Kart_Application.DBContext;
 
-public partial class EkartContext : DbContext
+public partial class EKARTContext : DbContext
 {
-    public EkartContext()
+    public EKARTContext()
     {
     }
 
-    public EkartContext(DbContextOptions<EkartContext> options)
+    public EKARTContext(DbContextOptions<EKARTContext> options)
         : base(options)
     {
     }
@@ -70,9 +70,9 @@ public partial class EkartContext : DbContext
 
     public virtual DbSet<Territory> Territories { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=LAPTOP-E7HN04IG\\SQLEXPRESS;Database=EKART;Trusted_Connection=True;TrustServerCertificate=True;");
+//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+//        => optionsBuilder.UseSqlServer("Server=SHIVANSH\\SQLEXPRESS;Database=EKART;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -150,6 +150,10 @@ public partial class EkartContext : DbContext
             entity.Property(e => e.Phone).HasMaxLength(24);
             entity.Property(e => e.PostalCode).HasMaxLength(10);
             entity.Property(e => e.Region).HasMaxLength(15);
+            entity.Property(e => e.Role)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasDefaultValue("Customer");
 
             entity.HasMany(d => d.CustomerTypes).WithMany(p => p.Customers)
                 .UsingEntity<Dictionary<string, object>>(
