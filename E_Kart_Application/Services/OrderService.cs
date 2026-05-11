@@ -12,9 +12,9 @@ namespace E_Kart_Application.Services
     {
         private readonly IOrderRepository _repository;
         private readonly IMapper _mapper;
-        private readonly EkartContext _context;
+        private readonly EKARTContext _context;
 
-        public OrderService(IOrderRepository repository, IMapper mapper, EkartContext context)
+        public OrderService(IOrderRepository repository, IMapper mapper, EKARTContext context)
         {
             _repository = repository;
             _mapper = mapper;
