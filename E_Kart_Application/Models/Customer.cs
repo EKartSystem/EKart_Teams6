@@ -27,6 +27,8 @@ public partial class Customer
 
     public string? Fax { get; set; }
 
+    public string Role { get; set; } = null!;
+
     public string? PasswordHash { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
