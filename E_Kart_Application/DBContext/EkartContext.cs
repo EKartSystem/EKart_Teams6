@@ -70,6 +70,11 @@ public partial class EKARTContext : DbContext
 
     public virtual DbSet<Territory> Territories { get; set; }
 
+<<<<<<< HEAD
+=======
+    
+
+>>>>>>> origin/feature/employee-categories-module
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AlphabeticalListOfProduct>(entity =>
@@ -151,30 +156,7 @@ public partial class EKARTContext : DbContext
                 .IsUnicode(false)
                 .HasDefaultValue("Customer");
 
-            entity.HasMany(d => d.CustomerTypes).WithMany(p => p.Customers)
-                .UsingEntity<Dictionary<string, object>>(
-                    "CustomerCustomerDemo",
-                    r => r.HasOne<CustomerDemographic>().WithMany()
-                        .HasForeignKey("CustomerTypeId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_CustomerCustomerDemo"),
-                    l => l.HasOne<Customer>().WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_CustomerCustomerDemo_Customers"),
-                    j =>
-                    {
-                        j.HasKey("CustomerId", "CustomerTypeId").IsClustered(false);
-                        j.ToTable("CustomerCustomerDemo");
-                        j.IndexerProperty<string>("CustomerId")
-                            .HasMaxLength(5)
-                            .IsFixedLength()
-                            .HasColumnName("CustomerID");
-                        j.IndexerProperty<string>("CustomerTypeId")
-                            .HasMaxLength(10)
-                            .IsFixedLength()
-                            .HasColumnName("CustomerTypeID");
-                    });
+           
         });
 
         modelBuilder.Entity<CustomerAndSuppliersByCity>(entity =>
@@ -324,9 +306,7 @@ public partial class EKARTContext : DbContext
             entity.Property(e => e.ShipRegion).HasMaxLength(15);
             entity.Property(e => e.ShippedDate).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.CustomerId)
-                .HasConstraintName("FK_Orders_Customers");
+           
 
             entity.HasOne(d => d.Employee).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.EmployeeId)

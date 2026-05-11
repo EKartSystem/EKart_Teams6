@@ -7,9 +7,12 @@ namespace E_Kart_Application.Exceptions
     {
         private readonly RequestDelegate _next;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/feature/orders
+=======
+>>>>>>> origin/feature/employee-categories-module
         private readonly ILogger<GlobalExceptionMiddleware> _logger;
 
         public GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExceptionMiddleware> logger)
@@ -24,6 +27,7 @@ namespace E_Kart_Application.Exceptions
             {
                 await _next(context);
             }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
             catch (NotFoundException ex)
@@ -43,10 +47,13 @@ namespace E_Kart_Application.Exceptions
 
 =======
 >>>>>>> origin/feature/orders
+=======
+>>>>>>> origin/feature/employee-categories-module
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                 await HandleExceptionAsync(context,HttpStatusCode.InternalServerError,"Internal Server Error");
             }
@@ -64,6 +71,8 @@ namespace E_Kart_Application.Exceptions
             var json = JsonSerializer.Serialize(response);
             await context.Response.WriteAsync(json);
 =======
+=======
+>>>>>>> origin/feature/employee-categories-module
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 context.Response.ContentType = "application/json";
 
@@ -78,7 +87,10 @@ namespace E_Kart_Application.Exceptions
 
                 await context.Response.WriteAsync(json);
             }
+<<<<<<< HEAD
 >>>>>>> origin/feature/orders
+=======
+>>>>>>> origin/feature/employee-categories-module
         }
     }
 }

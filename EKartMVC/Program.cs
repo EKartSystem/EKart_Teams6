@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 using EKartMVC.Services;
 =======
 using E_Kart_MVC.Services;
 >>>>>>> origin/feature/orders
+=======
+using EKartMVC.Services;
+>>>>>>> origin/feature/employee-categories-module
 
 namespace EKartMVC
 {
@@ -11,9 +15,17 @@ namespace EKartMVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+<<<<<<< HEAD
             var apiBaseUrl = "https://localhost:7000/";
 
             builder.Services.AddHttpClient<ProductApiService>(c => c.BaseAddress = new Uri(apiBaseUrl));
+=======
+            builder.Services.AddHttpClient<IAdminService,AdminServices>(client =>
+     {
+         client.BaseAddress =
+            new Uri("https://localhost:7000/");
+     });
+>>>>>>> origin/feature/employee-categories-module
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -42,7 +54,7 @@ namespace EKartMVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Admin}/{action=GetEmployeeall}/{id?}");
 
             app.Run();
         }

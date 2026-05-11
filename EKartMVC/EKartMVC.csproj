@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <ProjectReference Include="..\E_Kart_Application\E_Kart_Application.csproj" />
+=======
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.23" />
+>>>>>>> origin/feature/employee-categories-module
   </ItemGroup>
 
 </Project>

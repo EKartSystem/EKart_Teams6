@@ -5,6 +5,7 @@
         public BadRequestException(string message) : base(message)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             
 =======
 
@@ -12,3 +13,9 @@
         }
     }
 }
+=======
+
+        }
+    }
+}
+>>>>>>> origin/feature/employee-categories-module
