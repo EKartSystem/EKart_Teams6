@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+	  <OutputType>Library</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -23,15 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\E_Kart_Application\E_Kart_Application.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\E_Kart_Application\E_Kart_Application.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\E_Kart_Application\E_Kart_Application.csproj" />
-  </ItemGroup>
-
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>

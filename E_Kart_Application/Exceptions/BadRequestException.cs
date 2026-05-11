@@ -1,4 +1,5 @@
-﻿namespace E_Kart_Application.Exceptions
+
+namespace E_Kart_Application.Exceptions
 {
     public class BadRequestException : Exception
     {
