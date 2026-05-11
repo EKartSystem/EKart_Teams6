@@ -1,3 +1,5 @@
+using E_Kart_MVC.Services;
+
 namespace EKartMVC
 {
     public class Program
@@ -8,6 +10,12 @@ namespace EKartMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            var apiBaseUrl = builder.Configuration["ApiSettings:BaseUrl"];
+            builder.Services.AddHttpClient<OrderApiService>(c =>
+            {
+                c.BaseAddress = new Uri(apiBaseUrl);
+            });
 
             var app = builder.Build();
 

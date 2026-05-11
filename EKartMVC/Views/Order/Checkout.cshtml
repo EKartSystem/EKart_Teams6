@@ -1,0 +1,66 @@
+﻿@model E_Kart_Application.DTOs.Orders.CreateOrderDto
+
+<h2>Checkout</h2>
+
+<form asp-action="Checkout" method="post">
+
+    <div>
+        <label>Customer Id</label>
+        <input asp-for="CustomerId" />
+    </div>
+
+    <div>
+        <label>Employee Id</label>
+        <input asp-for="EmployeeId" />
+    </div>
+
+    <div>
+        <label>Required Date</label>
+        <input asp-for="RequiredDate" type="date" />
+    </div>
+
+    <div>
+        <label>Ship Via</label>
+        <input asp-for="ShipVia" />
+    </div>
+
+    <div>
+        <label>Freight</label>
+        <input asp-for="Freight" />
+    </div>
+
+    <div>
+        <label>Ship Name</label>
+        <input asp-for="ShipName" />
+    </div>
+
+    <div>
+        <label>Ship Address</label>
+        <input asp-for="ShipAddress" />
+    </div>
+
+    <div>
+        <label>Ship City</label>
+        <input asp-for="ShipCity" />
+    </div>
+
+    <div>
+        <label>Ship Region</label>
+        <input asp-for="ShipRegion" />
+    </div>
+
+    <div>
+        <label>Ship Postal Code</label>
+        <input asp-for="ShipPostalCode" />
+    </div>
+
+    <div>
+        <label>Ship Country</label>
+        <input asp-for="ShipCountry" />
+    </div>
+
+    <button type="submit">
+        Place Order
+    </button>
+
+</form>
