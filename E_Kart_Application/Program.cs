@@ -1,18 +1,18 @@
-
 using System.Text;
 using E_Kart_Application.DBContext;
 using E_Kart_Application.Exceptions;
-using E_Kart_Application.Filters;
 using E_Kart_Application.Mappings;
 using E_Kart_Application.Repositories;
 using E_Kart_Application.Services;
-using E_Kart_Application.Validators;
+using E_Kart_Application.Validators.Orders;
+using E_Kart_Application.Validators.OrderDetails;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using E_Kart_Application.Validators;
+using E_Kart_Application.Filters;
 
 namespace E_Kart_Application
 {
@@ -21,32 +21,40 @@ namespace E_Kart_Application
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
+            // 1. Database Configuration
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<EKARTContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            builder.Services.AddScoped<IProductRepository,ProductRepository>();
+            // 2. Repository & Service Registrations (Combined)
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<ILocationService, LocationService>();
             builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+            builder.Services.AddScoped<ILocationService, LocationService>();
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
             builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+            // New Order Services from the Merge
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
+            builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+            builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
+
+            // 3. Tools & Mapping
             builder.Services.AddAutoMapper(typeof(MappingProfile));
+            builder.Services.AddScoped<LogActionFilter>();
+            builder.Services.AddScoped<TokenService>();
+            builder.Services.AddControllers();
+
+            // 4. Validation (Combined)
             builder.Services.AddValidatorsFromAssemblyContaining<AddProductValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<UpdateProductValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<LoginValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<RegisterValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateOrderDtoValidator>();
             builder.Services.AddFluentValidationAutoValidation();
 
-            builder.Services.AddScoped<LogActionFilter>();
-            builder.Services.AddControllers();
-           
-
-            builder.Services.AddScoped<TokenService>();
-
+            // 5. JWT Authentication
             var jwtKey = builder.Configuration["Jwt:Key"];
-
             if (string.IsNullOrEmpty(jwtKey))
             {
                 throw new Exception("JWT Key not found in appsettings.json");
@@ -66,7 +74,6 @@ namespace E_Kart_Application
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-
                     ValidIssuer = builder.Configuration["Jwt:Issuer"],
                     ValidAudience = builder.Configuration["Jwt:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(key)
@@ -77,6 +84,8 @@ namespace E_Kart_Application
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            // 6. Middleware Pipeline (Correct Order)
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -84,7 +93,10 @@ namespace E_Kart_Application
             }
 
             app.UseHttpsRedirection();
+
+            // Middleware must be in this order: Exceptions -> Auth -> Auth -> Controllers
             app.UseMiddleware<GlobalExceptionMiddleware>();
+
             app.UseAuthentication();
             app.UseAuthorization();
 

@@ -29,7 +29,11 @@ public partial class Customer
 
     public string? PasswordHash { get; set; }
 
+<<<<<<< HEAD
     public string Role { get; set; } = null!;
+=======
+    public string Role { get; set; } = "Customer";
+>>>>>>> origin/feature/orders
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 

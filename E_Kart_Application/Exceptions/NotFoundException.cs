@@ -4,7 +4,11 @@
     {
         public NotFoundException(string message) : base(message)
         {
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> origin/feature/orders
         }
     }
 }
