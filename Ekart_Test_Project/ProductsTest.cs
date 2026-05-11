@@ -1,12 +1,9 @@
 using AutoMapper;
-using E_Kart_Application.Controllers;
 using E_Kart_Application.DTOs.ProductsDTO;
 using E_Kart_Application.Exceptions;
 using E_Kart_Application.Models;
 using E_Kart_Application.Repositories;
 using E_Kart_Application.Services;
-using Humanizer;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
 
 namespace Ekart_Test_Project
@@ -37,7 +34,6 @@ namespace Ekart_Test_Project
         {
             var mockRepo = new Mock<IProductRepository>();
             var mockMapper = new Mock<IMapper>();
-            mockRepo.Setup(x => x.GetExpensiveProductsAsync()).ReturnsAsync(null as List<ExpensiveProductDto>);
             var mockService = new ProductService(mockRepo.Object, mockMapper.Object);
             Assert.ThrowsAsync<NotFoundException>(() => mockService.GetExpensiveProductsAsync());
             mockRepo.Verify(x => x.GetExpensiveProductsAsync(), Times.Once);
@@ -60,7 +56,6 @@ namespace Ekart_Test_Project
             };
             mockRepo.Setup(x => x.GetProductByIdAsync(1)).ReturnsAsync(p);
             mockMapper.Setup(x =>x.Map<ProductDetailsDto>(p)).Returns(dto);
-
             var mockService = new ProductService(mockRepo.Object, mockMapper.Object);
             var prod = await mockService.GetProductByIdAsync(1);
 
@@ -73,13 +68,8 @@ namespace Ekart_Test_Project
         {
             var mockRepo = new Mock<IProductRepository>();
             var mockMapper = new Mock<IMapper>();
-
-            mockRepo.Setup(x => x.GetProductByIdAsync(1)).ReturnsAsync(null as Product);
-
             var service =new ProductService(mockRepo.Object,mockMapper.Object);
-
-            await Assert.ThrowsAsync<NotFoundException>(() =>
-                service.GetProductByIdAsync(1));
+            await Assert.ThrowsAsync<NotFoundException>(() =>service.GetProductByIdAsync(1));
         }
 
         [Fact]
@@ -120,7 +110,7 @@ namespace Ekart_Test_Project
         {
             var mockRepo = new Mock<IProductRepository>();
             var mockMapper = new Mock<IMapper>();
-            mockRepo.Setup(x => x.SearchProductsByNameAsync("")).ReturnsAsync(null as IEnumerable<Product>);
+            //mockRepo.Setup(x => x.SearchProductsByNameAsync("")).ReturnsAsync(null as IEnumerable<Product>);
             var service = new ProductService(mockRepo.Object, mockMapper.Object);
             await Assert.ThrowsAsync<BadRequestException>(() => service.SearchProductsAsync(""));
         }

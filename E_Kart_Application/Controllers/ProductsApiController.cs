@@ -33,7 +33,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,Customer")]
+        //[Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<ProductDetailsDto>> GetProductById(int id)
         {
             var x = await _service.GetProductByIdAsync(id);

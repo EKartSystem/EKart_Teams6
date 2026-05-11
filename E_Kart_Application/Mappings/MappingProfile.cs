@@ -30,9 +30,7 @@ namespace E_Kart_Application.Mappings
 
             CreateMap<Customer, CustomerDto>().ForMember(dest => dest.TotalOrders,opt => opt.MapFrom(src => src.Orders.Count)).ReverseMap();
 
-            CreateMap<Customer, RegisterCustomerDto>()
-            .ForMember(dest => dest.Password,opt => opt.Ignore())
-
+            CreateMap<Customer, RegisterCustomerDto>().ForMember(dest => dest.Password,opt => opt.Ignore())
             .ForMember(dest => dest.Role,opt => opt.Ignore()).ReverseMap();
 
             CreateMap<Customer, UpdateCustomerDto>().ReverseMap();

@@ -1,0 +1,100 @@
+﻿@model E_Kart_Application.DTOs.ProductsDTO.ProductDetailsDto
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="container mt-4">
+
+    <h3>Product Details</h3>
+
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <h4 class="fw-bold mb-1">
+                        @Model.ProductName
+                    </h4>
+                    <p class="text-muted mb-2">
+                        Category: @Model.CategoryName
+                    </p>
+                </div>
+
+                <div class="text-primary fw-bold fs-5">
+                    @Model.UnitPrice?.ToString("C")
+                </div>
+            </div>
+
+            <hr />
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <strong>Category Description:</strong>
+                    <p class="text-muted">
+                        @Model.CategoryDescription
+                    </p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Supplier:</strong>
+                    <p class="text-muted">
+                        @Model.SupplierCompanyName
+                    </p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Supplier Country:</strong>
+                    <p class="text-muted">
+                        @Model.SupplierCountry
+                    </p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Quantity Per Unit:</strong>
+                    <p class="text-muted">
+                        @Model.QuantityPerUnit
+                    </p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Units In Stock:</strong>
+                    <p>@Model.UnitsInStock</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Units On Order:</strong>
+                    <p>@Model.UnitsOnOrder</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <strong>Reorder Level:</strong>
+                    <p>@Model.ReorderLevel</p>
+                </div>
+            <hr />
+            <div class="d-flex gap-2">
+                @if (Model.IsInStock)
+                {
+                    <span class="badge bg-success rounded-pill p-2">
+                        In Stock
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-danger rounded-pill p-2">
+                        Out of Stock
+                    </span>
+                }
+                @if (Model.Discontinued)
+                {
+                    <span class="badge bg-secondary rounded-pill p-2">
+                        Discontinued
+                    </span>
+                }
+            </div>
+            <a asp-action="Index" class="btn btn-outline-secondary mt-4">
+                Back to Products
+            </a>
+
+        </div>
+    </div>
+</div>

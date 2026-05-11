@@ -25,6 +25,22 @@ namespace EKartMVC.Services
             }
             return new List<ProductListingDto>();
         }
+
+        public async Task<ProductDetailsDto> GetProductData(int id, string? token=null)
+        {
+            if(!String.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+            var response = await _httpClient.GetAsync($"api/ProductsApi/{id}");
+            if(response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<ApiResponse<ProductDetailsDto>>();
+                return result.Data ?? new ProductDetailsDto();
+            }
+            return new ProductDetailsDto();
+        }
+        
     }
 }
 

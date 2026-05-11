@@ -17,5 +17,12 @@ namespace EKartMVC.Controllers
             var prod = await _service.GetDataAsync();
             return View(model:prod);
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            //var token = HttpContext.Session.GetString("JWToken");
+            var prod = await _service.GetProductData(id);
+            return View(model: prod);
+        }
     }
 }
