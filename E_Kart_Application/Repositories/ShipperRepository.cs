@@ -129,17 +129,17 @@ namespace E_Kart_Application.Repositories
         // PATCH /api/shippers/{id}/status
         // Soft enable/disable. Does NOT delete the record.
         // WHY: old Orders reference ShipperID — deleting breaks those records (FK violation)
-        public async Task<bool> UpdateStatusAsync(int id, bool isActive)
-        {
-            var shipper = await _context.Shippers.FindAsync(id);
-            if (shipper == null) return false;
+        //public async Task<bool> UpdateStatusAsync(int id, bool isActive)
+        //{
+        //    var shipper = await _context.Shippers.FindAsync(id);
+        //    if (shipper == null) return false;
 
-            // NOTE: IsActive is a custom field your team needs to add to the Shipper model
-            // and run a migration for. The base Northwind table does not have it.
-            shipper.IsActive = isActive;
-            var rows = await _context.SaveChangesAsync();
-            return rows > 0;
-        }
+        //    // NOTE: IsActive is a custom field your team needs to add to the Shipper model
+        //    // and run a migration for. The base Northwind table does not have it.
+        //    //shipper.IsActive = isActive;
+        //    var rows = await _context.SaveChangesAsync();
+        //    return rows > 0;
+        //}
 
         // Helper — used to quickly check if a shipper exists before doing operations
         public async Task<bool> ExistsAsync(int id)

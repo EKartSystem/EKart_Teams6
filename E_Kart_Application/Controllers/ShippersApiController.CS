@@ -1,5 +1,6 @@
 ﻿using E_Kart_Application.DTOs;
 using E_Kart_Application.Exceptions;
+using E_Kart_Application.Models;
 using E_Kart_Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ namespace E_Kart_Application.Controllers
         {
             var shipper = await _service.GetByIdAsync(id);
             if (shipper == null)
-                throw new NotFoundException("Shipper", id);
+                throw new NotFoundException("No Shipper Found");
             return Ok(shipper);
         }
 
@@ -39,7 +40,7 @@ namespace E_Kart_Application.Controllers
         {
             var shipper = await _service.GetByIdAsync(id);
             if (shipper == null)
-                throw new NotFoundException("Shipper", id);
+                throw new NotFoundException("No Shipper Found");
             var orders = await _service.GetOrdersByShipperAsync(id);
             return Ok(orders);
         }
@@ -79,7 +80,7 @@ namespace E_Kart_Application.Controllers
                 throw new BadRequestException("Invalid shipper data provided.");
             var updated = await _service.UpdateAsync(id, dto);
             if (!updated)
-                throw new NotFoundException("Shipper", id);
+                throw new NotFoundException("No Shipper Found");
             return NoContent();
         }
 
@@ -91,7 +92,7 @@ namespace E_Kart_Application.Controllers
                 throw new BadRequestException("Invalid name provided.");
             var updated = await _service.UpdateNameAsync(id, dto);
             if (!updated)
-                throw new NotFoundException("Shipper", id);
+                throw new NotFoundException("No Shipper Found");
             return NoContent();
         }
 
@@ -103,20 +104,20 @@ namespace E_Kart_Application.Controllers
                 throw new BadRequestException("Invalid phone provided.");
             var updated = await _service.UpdatePhoneAsync(id, dto);
             if (!updated)
-                throw new NotFoundException("Shipper", id);
+                throw new NotFoundException("No Shipper Found");
             return NoContent();
         }
 
-        [HttpPatch("{id:int}/status")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateStatus(int id, [FromBody] PatchShipperStatusDto dto)
-        {
-            if (!ModelState.IsValid)
-                throw new BadRequestException("Invalid status provided.");
-            var updated = await _service.UpdateStatusAsync(id, dto);
-            if (!updated)
-                throw new NotFoundException("Shipper", id);
-            return NoContent();
-        }
+        //[HttpPatch("{id:int}/status")]
+        //[Authorize(Roles = "Admin")]
+        //public async Task<IActionResult> UpdateStatus(int id, [FromBody] PatchShipperStatusDto dto)
+        //{
+        //    if (!ModelState.IsValid)
+        //        throw new BadRequestException("Invalid status provided.");
+        //    var updated = await _service.UpdateStatusAsync(id, dto);
+        //    if (!updated)
+        //        throw new NotFoundException("No Shipper Found");
+        //    return NoContent();
+        //}
     }
 }

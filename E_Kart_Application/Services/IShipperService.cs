@@ -29,6 +29,6 @@ namespace E_Kart_Application.Services
 
         Task<bool> UpdatePhoneAsync(int id, PatchShipperPhoneDto dto);
 
-        Task<bool> UpdateStatusAsync(int id, PatchShipperStatusDto dto);
+        //Task<bool> UpdateStatusAsync(int id, PatchShipperStatusDto dto);
     }
 }

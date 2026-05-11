@@ -19,16 +19,6 @@ namespace E_Kart_Application.DTOs
         public string? Phone { get; set; }
     }
 
-    // Used for PATCH /api/shippers/{id}/status
-    // Soft-enable or disable a shipper (safer than deleting — old orders still reference it)
-    public class PatchShipperStatusDto
-    {
-        [Required]
-        public bool IsActive { get; set; }
-    }
-
-    // Used for GET /api/shippers/with-order-count response
-    // This is a special read-only DTO — shipper + how many orders they handled
     public class ShipperWithOrderCountDto
     {
         public int ShipperId { get; set; }

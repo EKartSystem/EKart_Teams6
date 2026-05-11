@@ -1,7 +1,5 @@
 ﻿using E_Kart_Application.DTOs.OrderDetails;
 using E_Kart_Application.Services;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Kart_Application.Controllers

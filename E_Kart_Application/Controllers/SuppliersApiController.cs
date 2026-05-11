@@ -29,7 +29,7 @@ public class SuppliersApiController : ControllerBase
     {
         var supplier = await _service.GetByIdAsync(id);
         if (supplier == null)
-            throw new NotFoundException("Supplier", id);
+            throw new NotFoundException("Supplier not found");
         return Ok(supplier);
     }
 
@@ -38,7 +38,7 @@ public class SuppliersApiController : ControllerBase
     {
         var supplier = await _service.GetByIdAsync(id);
         if (supplier == null)
-            throw new NotFoundException("Supplier", id);
+            throw new NotFoundException("Supplier Not fOund");
         var products = await _service.GetProductsBySupplierAsync(id);
         return Ok(products);
     }
@@ -87,7 +87,7 @@ public class SuppliersApiController : ControllerBase
             throw new BadRequestException("Invalid supplier data provided.");
         var updated = await _service.UpdateAsync(id, dto);
         if (!updated)
-            throw new NotFoundException("Supplier", id);
+            throw new NotFoundException("Supplier cant be updated");
         return NoContent();
     }
 
@@ -99,8 +99,8 @@ public class SuppliersApiController : ControllerBase
             throw new BadRequestException("Invalid contact data provided.");
         var updated = await _service.UpdateContactAsync(id, dto);
         if (!updated)
-            throw new NotFoundException("Supplier", id);
-        return NoContent();
+            throw new NotFoundException("Supplier Contact cant be updated");
+            return NoContent();
     }
 
     [HttpPatch("{id:int}/address")]
@@ -111,7 +111,7 @@ public class SuppliersApiController : ControllerBase
             throw new BadRequestException("Invalid address data provided.");
         var updated = await _service.UpdateAddressAsync(id, dto);
         if (!updated)
-            throw new NotFoundException("Supplier", id);
+            throw new NotFoundException("Supplier Address Cant be updated");
         return NoContent();
     }
 }

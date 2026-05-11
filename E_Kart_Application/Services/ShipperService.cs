@@ -5,12 +5,6 @@ using E_Kart_Application.Repositories;
 
 namespace E_Kart_Application.Services
 {
-    // The Service layer contains business logic.
-    // It uses AutoMapper to convert between Models and DTOs.
-    // It uses IShipperRepository to talk to the database.
-    //
-    // The Controller trusts this class to do the right thing
-    // and just returns whatever the service gives back.
     public class ShipperService : IShipperService
     {
         private readonly IShipperRepository _repository;
@@ -90,9 +84,9 @@ namespace E_Kart_Application.Services
         }
 
         // PATCH — update active status only
-        public async Task<bool> UpdateStatusAsync(int id, PatchShipperStatusDto dto)
-        {
-            return await _repository.UpdateStatusAsync(id, dto.IsActive);
-        }
+        //public async Task<bool> UpdateStatusAsync(int id, PatchShipperStatusDto dto)
+        //{
+        //    return await _repository.UpdateStatusAsync(id, dto.IsActive);
+        //}
     }
 }

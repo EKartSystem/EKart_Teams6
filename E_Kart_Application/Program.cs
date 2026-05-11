@@ -50,7 +50,10 @@ namespace E_Kart_Application
             builder.Services.AddScoped<ISupplierService, SupplierService>();
 
             // 3. Infrastructure (AutoMapper, Filters, Auth Helpers)
-            builder.Services.AddAutoMapper(typeof(MappingProfile));
+            //builder.Services.AddAutoMapper(typeof(MappingProfile));
+            //builder.Services.AddAutoMapper(typeof(ShipperMappingProfile));
+            //builder.Services.AddAutoMapper(typeof(SupplierMappingProfile));
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddScoped<LogActionFilter>();
             builder.Services.AddScoped<TokenService>();
 
@@ -58,7 +61,11 @@ namespace E_Kart_Application
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
                 {
-                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                    // This stops the infinite loop (Shipper -> Order -> Shipper)
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+
+                    // This makes the output cleaner by hiding null values
+                    options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
                 });
 
             // 5. Validation Configuration

@@ -38,7 +38,7 @@ namespace E_Kart_Application.Repositories
         Task<bool> UpdatePhoneAsync(int id, string? newPhone);
 
         // PATCH — activate or deactivate a shipper (soft delete/enable)
-        Task<bool> UpdateStatusAsync(int id, bool isActive);
+        //Task<bool> UpdateStatusAsync(int id, bool isActive);
 
         // Helper used by other methods to check if a shipper exists
         Task<bool> ExistsAsync(int id);

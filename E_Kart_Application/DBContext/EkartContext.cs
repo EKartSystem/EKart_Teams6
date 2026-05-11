@@ -518,6 +518,11 @@ public partial class EKARTContext : DbContext
             entity.Property(e => e.ShipperId).HasColumnName("ShipperID");
             entity.Property(e => e.CompanyName).HasMaxLength(40);
             entity.Property(e => e.Phone).HasMaxLength(24);
+
+            entity.HasMany(d => d.Orders)
+                  .WithOne(p => p.ShipViaNavigation)
+                  .HasForeignKey(d => d.ShipVia)
+                  .HasConstraintName("FK_Orders_Shippers");
         });
 
         modelBuilder.Entity<SummaryOfSalesByQuarter>(entity =>
@@ -582,6 +587,5 @@ public partial class EKARTContext : DbContext
 
         OnModelCreatingPartial(modelBuilder);
     }
-
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
