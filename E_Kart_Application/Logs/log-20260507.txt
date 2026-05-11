@@ -1,0 +1,387 @@
+2026-05-07 11:29:55.764 +05:30 [INF] Now listening on: https://localhost:7008
+2026-05-07 11:29:55.815 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-07 11:29:55.946 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-07 11:29:55.948 +05:30 [INF] Hosting environment: Development
+2026-05-07 11:29:55.949 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-07 11:29:56.261 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7008/swagger/index.html - null null
+2026-05-07 11:29:56.549 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7008/_vs/browserLink - null null
+2026-05-07 11:29:56.550 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7008/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-07 11:29:56.558 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7008/swagger/index.html - 200 null text/html;charset=utf-8 311.3691ms
+2026-05-07 11:29:56.587 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7008/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 38.1176ms
+2026-05-07 11:29:56.617 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7008/_vs/browserLink - 200 null text/javascript; charset=UTF-8 68.1403ms
+2026-05-07 11:29:56.654 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7008/swagger/v1/swagger.json - null null
+2026-05-07 11:29:56.675 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7008/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.7695ms
+2026-05-07 18:41:51.365 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-07 18:41:51.572 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-07 18:41:51.576 +05:30 [INF] Hosting environment: Development
+2026-05-07 18:41:51.577 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-07 18:41:52.641 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger - null null
+2026-05-07 18:41:53.211 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger - 301 null null 599.4413ms
+2026-05-07 18:41:53.233 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/index.html - null null
+2026-05-07 18:41:53.489 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/index.html - 200 null text/html;charset=utf-8 257.0498ms
+2026-05-07 18:41:53.507 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/swagger-ui.css - null null
+2026-05-07 18:41:53.510 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/swagger-ui-bundle.js - null null
+2026-05-07 18:41:53.517 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/swagger-ui-standalone-preset.js - null null
+2026-05-07 18:41:53.520 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_vs/browserLink - null null
+2026-05-07 18:41:53.526 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-07 18:41:53.554 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 28.2339ms
+2026-05-07 18:41:53.600 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-05-07 18:41:53.600 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-05-07 18:41:53.611 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/swagger-ui.css - 200 152034 text/css 103.6983ms
+2026-05-07 18:41:53.611 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 94.4022ms
+2026-05-07 18:41:53.638 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-05-07 18:41:53.642 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 131.5474ms
+2026-05-07 18:41:53.698 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_vs/browserLink - 200 null text/javascript; charset=UTF-8 178.6638ms
+2026-05-07 18:41:53.880 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - null null
+2026-05-07 18:41:53.916 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 35.9576ms
+2026-05-07 18:41:53.931 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/favicon-32x32.png - null null
+2026-05-07 18:41:53.937 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-05-07 18:41:53.940 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/favicon-32x32.png - 200 628 image/png 9.1462ms
+2026-05-07 18:42:10.739 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/employees/managers - null null
+2026-05-07 18:42:10.770 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 18:42:10.783 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-07 18:42:10.848 +05:30 [INF] Route matched with {action = "GetManagers", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetManagers() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-07 18:42:10.875 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application) in 12.231ms
+2026-05-07 18:42:10.884 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-07 18:42:10.893 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'E_Kart_Application.Services.IEmployeeService' while attempting to activate 'E_Kart_Application.Controllers.EmployeesController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-07 18:42:11.037 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/employees/managers - 500 null text/plain; charset=utf-8 298.136ms
+2026-05-07 18:42:26.748 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/employees - null null
+2026-05-07 18:42:26.757 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-07 18:42:26.774 +05:30 [INF] Route matched with {action = "GetEmployees", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployees() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-07 18:42:26.783 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application) in 1.6027ms
+2026-05-07 18:42:26.788 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-07 18:42:26.792 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'E_Kart_Application.Services.IEmployeeService' while attempting to activate 'E_Kart_Application.Controllers.EmployeesController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method17(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-07 18:42:26.806 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/employees - 500 null text/plain; charset=utf-8 58.1202ms
+2026-05-07 18:43:41.627 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-07 18:43:41.956 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-07 18:43:41.960 +05:30 [INF] Hosting environment: Development
+2026-05-07 18:43:41.964 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-07 18:43:42.436 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/index.html - null null
+2026-05-07 18:43:42.950 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/index.html - 200 null text/html;charset=utf-8 540.9436ms
+2026-05-07 18:43:42.981 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-07 18:43:42.989 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_vs/browserLink - null null
+2026-05-07 18:43:42.997 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 18.9928ms
+2026-05-07 18:43:43.085 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_vs/browserLink - 200 null text/javascript; charset=UTF-8 95.4814ms
+2026-05-07 18:43:43.244 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - null null
+2026-05-07 18:43:43.279 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 35.4572ms
+2026-05-07 18:43:51.176 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/employees - null null
+2026-05-07 18:43:51.208 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 18:43:51.223 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-07 18:43:51.307 +05:30 [INF] Route matched with {action = "GetEmployees", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployees() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-07 18:43:55.123 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application) in 3800.9734ms
+2026-05-07 18:43:55.131 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-07 18:43:55.141 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: Format of the initialization string does not conform to specification starting at index 0.
+   at System.Data.Common.DbConnectionOptions.GetKeyValuePair(String connectionString, Int32 currentPosition, StringBuilder buffer, Boolean useOdbcRules, String& keyname, String& keyvalue)
+   at System.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at System.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms, Boolean useOdbcRules)
+   at System.Data.Common.DbConnectionStringBuilder.set_ConnectionString(String value)
+   at Microsoft.Data.SqlClient.SqlConnectionStringBuilder..ctor(String connectionString)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.<>c.<get_IsMultipleActiveResultSetsEnabled>b__7_0(String cs)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.get_IsMultipleActiveResultSetsEnabled()
+   at Microsoft.EntityFrameworkCore.SqlServer.Query.Internal.SqlServerCompiledQueryCacheKeyGenerator.GenerateCacheKey(Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.IncludableQueryable`2.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at E_Kart_Application.Repositories.EmployeeRepository.GetEmployeesAsync() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Repositories\EmployeeRepository.cs:line 18
+   at E_Kart_Application.Services.EmployeeService.GetEmployeesAsync() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Services\EmployeeService.cs:line 24
+   at E_Kart_Application.Controllers.EmployeesController.GetEmployees() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Controllers\EmployeesController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-07 18:43:55.318 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/employees - 500 null text/plain; charset=utf-8 4142.9144ms
+2026-05-07 18:44:12.448 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/employees/managers - null null
+2026-05-07 18:44:12.459 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-07 18:44:12.475 +05:30 [INF] Route matched with {action = "GetManagers", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetManagers() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-07 18:44:12.765 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application) in 280.5656ms
+2026-05-07 18:44:12.771 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-07 18:44:12.778 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: Format of the initialization string does not conform to specification starting at index 0.
+   at System.Data.Common.DbConnectionOptions.GetKeyValuePair(String connectionString, Int32 currentPosition, StringBuilder buffer, Boolean useOdbcRules, String& keyname, String& keyvalue)
+   at System.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at System.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms, Boolean useOdbcRules)
+   at System.Data.Common.DbConnectionStringBuilder.set_ConnectionString(String value)
+   at Microsoft.Data.SqlClient.SqlConnectionStringBuilder..ctor(String connectionString)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.<>c.<get_IsMultipleActiveResultSetsEnabled>b__7_0(String cs)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.get_IsMultipleActiveResultSetsEnabled()
+   at Microsoft.EntityFrameworkCore.SqlServer.Query.Internal.SqlServerCompiledQueryCacheKeyGenerator.GenerateCacheKey(Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at E_Kart_Application.Repositories.EmployeeRepository.GetManagersAsync() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Repositories\EmployeeRepository.cs:line 32
+   at E_Kart_Application.Services.EmployeeService.GetManagersAsync() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Services\EmployeeService.cs:line 38
+   at E_Kart_Application.Controllers.EmployeesController.GetManagers() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Controllers\EmployeesController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-07 18:44:12.818 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/employees/managers - 500 null text/plain; charset=utf-8 370.2369ms
+2026-05-07 18:46:13.666 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-07 18:46:13.978 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/index.html - null null
+2026-05-07 18:46:14.108 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-07 18:46:14.118 +05:30 [INF] Hosting environment: Development
+2026-05-07 18:46:14.120 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-07 18:46:14.642 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/index.html - 200 null text/html;charset=utf-8 696.7812ms
+2026-05-07 18:46:14.678 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_vs/browserLink - null null
+2026-05-07 18:46:14.678 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-07 18:46:14.697 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 18.3107ms
+2026-05-07 18:46:15.273 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_vs/browserLink - 200 null text/javascript; charset=UTF-8 597.4118ms
+2026-05-07 18:46:15.314 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - null null
+2026-05-07 18:46:15.348 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.1496ms
+2026-05-07 18:46:25.550 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/categories/with-product-count - null null
+2026-05-07 18:46:25.580 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 18:46:25.593 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategoriesWithProductCount (E_Kart_Application)'
+2026-05-07 18:46:25.662 +05:30 [INF] Route matched with {action = "GetCategoriesWithProductCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoriesWithProductCount() on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-07 18:46:29.197 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetCategoriesWithProductCount (E_Kart_Application) in 3514.7183ms
+2026-05-07 18:46:29.207 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategoriesWithProductCount (E_Kart_Application)'
+2026-05-07 18:46:29.217 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: Format of the initialization string does not conform to specification starting at index 0.
+   at System.Data.Common.DbConnectionOptions.GetKeyValuePair(String connectionString, Int32 currentPosition, StringBuilder buffer, Boolean useOdbcRules, String& keyname, String& keyvalue)
+   at System.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at System.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms, Boolean useOdbcRules)
+   at System.Data.Common.DbConnectionStringBuilder.set_ConnectionString(String value)
+   at Microsoft.Data.SqlClient.SqlConnectionStringBuilder..ctor(String connectionString)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.<>c.<get_IsMultipleActiveResultSetsEnabled>b__7_0(String cs)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.get_IsMultipleActiveResultSetsEnabled()
+   at Microsoft.EntityFrameworkCore.SqlServer.Query.Internal.SqlServerCompiledQueryCacheKeyGenerator.GenerateCacheKey(Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.IncludableQueryable`2.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at E_Kart_Application.Repositories.CategoryRepository.GetCategoriesWithProductCountAsync() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Repositories\CategoryRepository.cs:line 46
+   at E_Kart_Application.Services.CategoryService.GetCategoriesWithProductCountAsync() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Services\CategoryService.cs:line 54
+   at E_Kart_Application.Controllers.CategoriesController.GetCategoriesWithProductCount() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Controllers\CategoriesController.cs:line 70
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-07 18:46:29.386 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/categories/with-product-count - 500 null text/plain; charset=utf-8 3836.1162ms
+2026-05-07 18:47:21.017 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-07 18:47:21.378 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/index.html - null null
+2026-05-07 18:47:21.728 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-07 18:47:21.731 +05:30 [INF] Hosting environment: Development
+2026-05-07 18:47:21.732 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-07 18:47:21.965 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/index.html - 200 null text/html;charset=utf-8 607.7969ms
+2026-05-07 18:47:21.969 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_vs/browserLink - null null
+2026-05-07 18:47:21.986 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-07 18:47:22.000 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 14.5619ms
+2026-05-07 18:47:22.078 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_vs/browserLink - 200 null text/javascript; charset=UTF-8 110.4122ms
+2026-05-07 18:47:22.128 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - null null
+2026-05-07 18:47:22.159 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 30.7249ms
+2026-05-07 18:47:26.997 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/categories - null null
+2026-05-07 18:47:27.030 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 18:47:27.040 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-07 18:47:27.107 +05:30 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategories() on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-07 18:47:30.625 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application) in 3500.5583ms
+2026-05-07 18:47:30.634 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-07 18:47:30.645 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: Format of the initialization string does not conform to specification starting at index 0.
+   at System.Data.Common.DbConnectionOptions.GetKeyValuePair(String connectionString, Int32 currentPosition, StringBuilder buffer, Boolean useOdbcRules, String& keyname, String& keyvalue)
+   at System.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at System.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms, Boolean useOdbcRules)
+   at System.Data.Common.DbConnectionStringBuilder.set_ConnectionString(String value)
+   at Microsoft.Data.SqlClient.SqlConnectionStringBuilder..ctor(String connectionString)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.<>c.<get_IsMultipleActiveResultSetsEnabled>b__7_0(String cs)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.get_IsMultipleActiveResultSetsEnabled()
+   at Microsoft.EntityFrameworkCore.SqlServer.Query.Internal.SqlServerCompiledQueryCacheKeyGenerator.GenerateCacheKey(Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.System.Collections.Generic.IAsyncEnumerable<TEntity>.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at E_Kart_Application.Repositories.CategoryRepository.GetCategoriesAsync() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Repositories\CategoryRepository.cs:line 18
+   at E_Kart_Application.Services.CategoryService.GetCategoriesAsync() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Services\CategoryService.cs:line 20
+   at E_Kart_Application.Controllers.CategoriesController.GetCategories() in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Controllers\CategoriesController.cs:line 23
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-07 18:47:30.799 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/categories - 500 null text/plain; charset=utf-8 3802.6527ms
+2026-05-07 18:49:35.535 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-07 18:49:36.073 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-07 18:49:36.076 +05:30 [INF] Hosting environment: Development
+2026-05-07 18:49:36.078 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-07 18:49:36.375 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/index.html - null null
+2026-05-07 18:49:37.430 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-07 18:49:37.432 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/index.html - 200 null text/html;charset=utf-8 1089.3582ms
+2026-05-07 18:49:37.452 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 23.0011ms
+2026-05-07 18:49:37.459 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/_vs/browserLink - null null
+2026-05-07 18:49:37.556 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/_vs/browserLink - 200 null text/javascript; charset=UTF-8 97.4822ms
+2026-05-07 18:49:37.603 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - null null
+2026-05-07 18:49:37.627 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.9188ms
+2026-05-07 18:49:43.325 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/categories - null null
+2026-05-07 18:49:43.353 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 18:49:43.365 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-07 18:49:43.440 +05:30 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategories() on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-07 18:49:49.180 +05:30 [INF] Executed DbCommand (250ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+2026-05-07 18:49:49.477 +05:30 [INF] Categories fetched
+2026-05-07 18:49:49.506 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.CategoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-07 18:49:49.533 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application) in 6079.0503ms
+2026-05-07 18:49:49.541 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-07 18:49:49.568 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/categories - 200 null application/json; charset=utf-8 6243.0519ms
+2026-05-07 18:49:59.024 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/employees/reports/3 - null null
+2026-05-07 18:49:59.039 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application)'
+2026-05-07 18:49:59.067 +05:30 [INF] Route matched with {action = "GetEmployeesUnderManager", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesUnderManager(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-07 18:49:59.517 +05:30 [INF] Executed DbCommand (170ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+WHERE [e].[ReportsTo] = @__id_0
+2026-05-07 18:49:59.533 +05:30 [INF] Employees under manager fetched
+2026-05-07 18:49:59.538 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-07 18:49:59.546 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application) in 468.2496ms
+2026-05-07 18:49:59.552 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application)'
+2026-05-07 18:49:59.557 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/employees/reports/3 - 200 null application/json; charset=utf-8 533.3187ms
+2026-05-07 18:50:05.823 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/employees/managers - null null
+2026-05-07 18:50:05.829 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-07 18:50:05.838 +05:30 [INF] Route matched with {action = "GetManagers", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetManagers() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-07 18:50:06.292 +05:30 [INF] Executed DbCommand (79ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy], [e1].[EmployeeID], [e1].[Address], [e1].[BirthDate], [e1].[City], [e1].[Country], [e1].[Extension], [e1].[FirstName], [e1].[HireDate], [e1].[HomePhone], [e1].[LastName], [e1].[Notes], [e1].[Photo], [e1].[PhotoPath], [e1].[PostalCode], [e1].[Region], [e1].[ReportsTo], [e1].[Title], [e1].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+LEFT JOIN [Employees] AS [e1] ON [e].[EmployeeID] = [e1].[ReportsTo]
+WHERE EXISTS (
+    SELECT 1
+    FROM [Employees] AS [e0]
+    WHERE [e].[EmployeeID] = [e0].[ReportsTo])
+ORDER BY [e].[EmployeeID]
+2026-05-07 18:50:06.492 +05:30 [INF] Managers fetched
+2026-05-07 18:50:06.498 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-07 18:50:06.512 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application) in 667.513ms
+2026-05-07 18:50:06.520 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-07 18:50:06.525 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/employees/managers - 200 null application/json; charset=utf-8 701.7023ms
+2026-05-07 18:50:14.049 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/employees/reports/2 - null null
+2026-05-07 18:50:14.059 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application)'
+2026-05-07 18:50:14.064 +05:30 [INF] Route matched with {action = "GetEmployeesUnderManager", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesUnderManager(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-07 18:50:14.094 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+WHERE [e].[ReportsTo] = @__id_0
+2026-05-07 18:50:14.107 +05:30 [INF] Employees under manager fetched
+2026-05-07 18:50:14.109 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-07 18:50:14.122 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application) in 48.2225ms
+2026-05-07 18:50:14.129 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application)'
+2026-05-07 18:50:14.136 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/employees/reports/2 - 200 null application/json; charset=utf-8 88.1417ms
+2026-05-07 18:50:25.035 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/employees - null null
+2026-05-07 18:50:25.063 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-07 18:50:25.077 +05:30 [INF] Route matched with {action = "GetEmployees", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployees() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-07 18:50:25.135 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy], [e0].[EmployeeID], [e0].[Address], [e0].[BirthDate], [e0].[City], [e0].[Country], [e0].[Extension], [e0].[FirstName], [e0].[HireDate], [e0].[HomePhone], [e0].[LastName], [e0].[Notes], [e0].[Photo], [e0].[PhotoPath], [e0].[PostalCode], [e0].[Region], [e0].[ReportsTo], [e0].[Title], [e0].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+LEFT JOIN [Employees] AS [e0] ON [e].[EmployeeID] = [e0].[ReportsTo]
+ORDER BY [e].[EmployeeID]
+2026-05-07 18:50:25.176 +05:30 [INF] Employees fetched
+2026-05-07 18:50:25.179 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-07 18:50:25.187 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application) in 103.5ms
+2026-05-07 18:50:25.193 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-07 18:50:25.198 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/employees - 200 null application/json; charset=utf-8 162.8331ms
+2026-05-07 18:50:42.247 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5229/api/employees/2 - null null
+2026-05-07 18:50:42.264 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeById (E_Kart_Application)'
+2026-05-07 18:50:42.277 +05:30 [INF] Route matched with {action = "GetEmployeeById", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeeById(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-07 18:50:42.357 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [e0].[EmployeeID], [e0].[Address], [e0].[BirthDate], [e0].[City], [e0].[Country], [e0].[Extension], [e0].[FirstName], [e0].[HireDate], [e0].[HomePhone], [e0].[LastName], [e0].[Notes], [e0].[Photo], [e0].[PhotoPath], [e0].[PostalCode], [e0].[Region], [e0].[ReportsTo], [e0].[Title], [e0].[TitleOfCourtesy]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__id_0
+) AS [t]
+LEFT JOIN [Employees] AS [e0] ON [t].[EmployeeID] = [e0].[ReportsTo]
+ORDER BY [t].[EmployeeID]
+2026-05-07 18:50:42.383 +05:30 [INF] Employee fetched
+2026-05-07 18:50:42.389 +05:30 [INF] Executing OkObjectResult, writing value of type 'E_Kart_Application.DTOs.EmployeeDto.EmployeeDto'.
+2026-05-07 18:50:42.396 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeeById (E_Kart_Application) in 109.7669ms
+2026-05-07 18:50:42.402 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeById (E_Kart_Application)'
+2026-05-07 18:50:42.411 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5229/api/employees/2 - 200 null application/json; charset=utf-8 163.8129ms

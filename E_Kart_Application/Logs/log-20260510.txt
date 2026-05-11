@@ -1,0 +1,382 @@
+2026-05-10 14:08:00.283 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-10 14:08:00.339 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-10 14:08:00.445 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 14:08:00.446 +05:30 [INF] Hosting environment: Development
+2026-05-10 14:08:00.448 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-10 14:08:02.905 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-10 14:08:03.357 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/ - null null
+2026-05-10 14:08:03.528 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/ - 404 null null 169.3306ms
+2026-05-10 14:08:03.601 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7000/, Response status code: 404
+2026-05-10 14:08:03.704 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 830.5906ms
+2026-05-10 14:08:03.728 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-10 14:08:03.755 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-10 14:08:03.759 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 31.0646ms
+2026-05-10 14:08:03.899 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 144.8997ms
+2026-05-10 14:08:04.045 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-10 14:08:04.090 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 45.5822ms
+2026-05-10 14:08:13.844 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/2/territories - null null
+2026-05-10 14:08:13.861 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:08:13.950 +05:30 [INF] Route matched with {action = "GetEmployeeTerritories", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeeTerritories(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:08:20.430 +05:30 [INF] Executed DbCommand (341ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:08:20.825 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.LocationDTO.TerritoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-10 14:08:20.851 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application) in 6890.6741ms
+2026-05-10 14:08:20.854 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:08:20.871 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/2/territories - 200 null application/json; charset=utf-8 7028.0087ms
+2026-05-10 14:15:34.350 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-10 14:15:34.481 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-10 14:15:35.293 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 14:15:35.302 +05:30 [INF] Hosting environment: Development
+2026-05-10 14:15:35.304 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-10 14:15:36.045 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-10 14:15:36.688 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-10 14:15:36.695 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-10 14:15:36.709 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 684.8308ms
+2026-05-10 14:15:36.730 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 37.0849ms
+2026-05-10 14:15:36.839 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 151.3465ms
+2026-05-10 14:15:36.875 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-10 14:15:36.914 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 39.7918ms
+2026-05-10 14:15:53.280 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees - null null
+2026-05-10 14:15:53.316 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-10 14:15:53.423 +05:30 [INF] Route matched with {action = "GetEmployees", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployees() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:15:59.199 +05:30 [INF] Executed DbCommand (220ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy], [e0].[EmployeeID], [e0].[Address], [e0].[BirthDate], [e0].[City], [e0].[Country], [e0].[Extension], [e0].[FirstName], [e0].[HireDate], [e0].[HomePhone], [e0].[LastName], [e0].[Notes], [e0].[Photo], [e0].[PhotoPath], [e0].[PostalCode], [e0].[Region], [e0].[ReportsTo], [e0].[Title], [e0].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+LEFT JOIN [Employees] AS [e0] ON [e].[EmployeeID] = [e0].[ReportsTo]
+ORDER BY [e].[EmployeeID]
+2026-05-10 14:15:59.619 +05:30 [INF] Employees fetched
+2026-05-10 14:15:59.652 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-10 14:15:59.680 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application) in 6244.1906ms
+2026-05-10 14:15:59.686 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-10 14:15:59.709 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees - 200 null application/json; charset=utf-8 6428.2801ms
+2026-05-10 14:16:00.074 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/employees/9/territories/1 - null 0
+2026-05-10 14:16:00.083 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application)'
+2026-05-10 14:16:00.108 +05:30 [INF] Route matched with {action = "AddTerritoryToEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddTerritoryToEmployee(Int32, System.String) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:16:00.548 +05:30 [INF] Executed DbCommand (127ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__employeeId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:16:00.680 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__territoryId_0='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[TerritoryID], [t].[RegionID], [t].[TerritoryDescription]
+FROM [Territories] AS [t]
+WHERE [t].[TerritoryID] = @__territoryId_0
+2026-05-10 14:16:00.689 +05:30 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2026-05-10 14:16:00.696 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application) in 582.2019ms
+2026-05-10 14:16:00.702 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application)'
+2026-05-10 14:16:00.708 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/employees/9/territories/1 - 404 null text/plain; charset=utf-8 633.972ms
+2026-05-10 14:16:18.922 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/11/territories - null null
+2026-05-10 14:16:18.937 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:16:18.951 +05:30 [INF] Route matched with {action = "GetEmployeeTerritories", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeeTerritories(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:16:19.241 +05:30 [INF] Executed DbCommand (105ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:16:19.257 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.LocationDTO.TerritoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-10 14:16:19.266 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application) in 306.8757ms
+2026-05-10 14:16:19.270 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:16:19.275 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/11/territories - 200 null application/json; charset=utf-8 355.0416ms
+2026-05-10 14:16:23.621 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/9/territories - null null
+2026-05-10 14:16:23.631 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:16:23.634 +05:30 [INF] Route matched with {action = "GetEmployeeTerritories", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeeTerritories(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:16:23.719 +05:30 [INF] Executed DbCommand (65ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:16:23.741 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.LocationDTO.TerritoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-10 14:16:23.747 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application) in 106.2287ms
+2026-05-10 14:16:23.750 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:16:23.753 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/9/territories - 200 null application/json; charset=utf-8 133.1188ms
+2026-05-10 14:16:41.106 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/employees/9/territories/48084 - null 0
+2026-05-10 14:16:41.112 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application)'
+2026-05-10 14:16:41.116 +05:30 [INF] Route matched with {action = "AddTerritoryToEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddTerritoryToEmployee(Int32, System.String) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:16:41.151 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__employeeId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:16:41.178 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__territoryId_0='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[TerritoryID], [t].[RegionID], [t].[TerritoryDescription]
+FROM [Territories] AS [t]
+WHERE [t].[TerritoryID] = @__territoryId_0
+2026-05-10 14:16:41.290 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-10 14:16:41.295 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application) in 172.8152ms
+2026-05-10 14:16:41.299 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application)'
+2026-05-10 14:16:41.304 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/employees/9/territories/48084 - 200 null text/plain; charset=utf-8 198.0362ms
+2026-05-10 14:16:56.638 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/employees/9/territories/5555 - null 0
+2026-05-10 14:16:56.653 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application)'
+2026-05-10 14:16:56.657 +05:30 [INF] Route matched with {action = "AddTerritoryToEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddTerritoryToEmployee(Int32, System.String) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:16:56.693 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__employeeId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:16:56.715 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__territoryId_0='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[TerritoryID], [t].[RegionID], [t].[TerritoryDescription]
+FROM [Territories] AS [t]
+WHERE [t].[TerritoryID] = @__territoryId_0
+2026-05-10 14:16:56.722 +05:30 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2026-05-10 14:16:56.726 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application) in 62.7184ms
+2026-05-10 14:16:56.730 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application)'
+2026-05-10 14:16:56.733 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/employees/9/territories/5555 - 404 null text/plain; charset=utf-8 95.9097ms
+2026-05-10 14:17:02.480 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/9/territories - null null
+2026-05-10 14:17:02.486 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:17:02.488 +05:30 [INF] Route matched with {action = "GetEmployeeTerritories", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeeTerritories(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:17:02.512 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:17:02.522 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.LocationDTO.TerritoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-10 14:17:02.525 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application) in 35.6663ms
+2026-05-10 14:17:02.528 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:17:02.529 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/9/territories - 200 null application/json; charset=utf-8 50.1867ms
+2026-05-10 14:17:19.457 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/3/territories - null null
+2026-05-10 14:17:19.462 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:17:19.467 +05:30 [INF] Route matched with {action = "GetEmployeeTerritories", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeeTerritories(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:17:19.501 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:17:19.511 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.LocationDTO.TerritoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-10 14:17:19.515 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application) in 43.902ms
+2026-05-10 14:17:19.520 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:17:19.523 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/3/territories - 200 null application/json; charset=utf-8 65.6691ms
+2026-05-10 14:17:29.747 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/employees/9/territories/30346 - null 0
+2026-05-10 14:17:29.756 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application)'
+2026-05-10 14:17:29.761 +05:30 [INF] Route matched with {action = "AddTerritoryToEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddTerritoryToEmployee(Int32, System.String) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:17:29.801 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__employeeId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__employeeId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:17:29.822 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__territoryId_0='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[TerritoryID], [t].[RegionID], [t].[TerritoryDescription]
+FROM [Territories] AS [t]
+WHERE [t].[TerritoryID] = @__territoryId_0
+2026-05-10 14:17:30.228 +05:30 [INF] Executed DbCommand (157ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [EmployeeTerritories] ([EmployeeID], [TerritoryID])
+VALUES (@p0, @p1);
+2026-05-10 14:17:30.257 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-10 14:17:30.265 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application) in 494.4669ms
+2026-05-10 14:17:30.272 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.AddTerritoryToEmployee (E_Kart_Application)'
+2026-05-10 14:17:30.279 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/employees/9/territories/30346 - 200 null text/plain; charset=utf-8 533.1416ms
+2026-05-10 14:17:36.803 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/9/territories - null null
+2026-05-10 14:17:36.814 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:17:36.818 +05:30 [INF] Route matched with {action = "GetEmployeeTerritories", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeeTerritories(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 14:17:36.854 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [t0].[EmployeeID], [t0].[TerritoryID], [t0].[TerritoryID0], [t0].[RegionID], [t0].[TerritoryDescription]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EmployeeID], [e0].[TerritoryID], [t1].[TerritoryID] AS [TerritoryID0], [t1].[RegionID], [t1].[TerritoryDescription]
+    FROM [EmployeeTerritories] AS [e0]
+    INNER JOIN [Territories] AS [t1] ON [e0].[TerritoryID] = [t1].[TerritoryID]
+) AS [t0] ON [t].[EmployeeID] = [t0].[EmployeeID]
+ORDER BY [t].[EmployeeID], [t0].[EmployeeID], [t0].[TerritoryID]
+2026-05-10 14:17:36.875 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.LocationDTO.TerritoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-10 14:17:36.882 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application) in 52.5866ms
+2026-05-10 14:17:36.888 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeeTerritories (E_Kart_Application)'
+2026-05-10 14:17:36.894 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/9/territories - 200 null application/json; charset=utf-8 91.0082ms
+2026-05-10 15:03:14.832 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-10 15:03:14.967 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-10 15:03:15.842 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 15:03:15.846 +05:30 [INF] Hosting environment: Development
+2026-05-10 15:03:15.847 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-10 15:03:16.642 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-10 15:03:17.243 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 632.9915ms
+2026-05-10 15:03:17.266 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-10 15:03:17.266 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-10 15:03:17.287 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 21.1347ms
+2026-05-10 15:03:17.388 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 122.4964ms
+2026-05-10 15:03:17.462 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-10 15:03:17.511 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 49.8097ms
+2026-05-10 16:28:44.829 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories - null null
+2026-05-10 16:28:45.059 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-10 16:28:45.241 +05:30 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategories() on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-10 16:28:49.552 +05:30 [INF] Executed DbCommand (185ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+2026-05-10 16:28:49.691 +05:30 [INF] Categories fetched
+2026-05-10 16:28:49.715 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.CategoryDto.CategoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-10 16:28:49.774 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application) in 4524.7046ms
+2026-05-10 16:28:49.778 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-10 16:28:49.788 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories - 200 null application/json; charset=utf-8 4973.2961ms
+2026-05-10 16:29:03.319 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/categories - application/json 57
+2026-05-10 16:29:03.329 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.AddCategory (E_Kart_Application)'
+2026-05-10 16:29:03.345 +05:30 [INF] Route matched with {action = "AddCategory", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCategory(E_Kart_Application.DTOs.CategoryDto.CreateCategoryDto) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-10 16:29:03.655 +05:30 [INF] Executed DbCommand (100ms) [Parameters=[@__name_0_rewritten='?' (Size = 15)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE [c].[CategoryName] LIKE @__name_0_rewritten ESCAPE N'\'
+2026-05-10 16:29:03.825 +05:30 [INF] Executed DbCommand (61ms) [Parameters=[@p0='?' (Size = 15), @p1='?' (Size = 4000), @p2='?' (Size = 8000) (DbType = Binary)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Categories] ([CategoryName], [Description], [Picture])
+OUTPUT INSERTED.[CategoryID]
+VALUES (@p0, @p1, @p2);
+2026-05-10 16:29:03.861 +05:30 [INF] Category created
+2026-05-10 16:29:03.864 +05:30 [INF] Executing OkObjectResult, writing value of type 'E_Kart_Application.DTOs.CategoryDto.CategoryDto'.
+2026-05-10 16:29:03.868 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.AddCategory (E_Kart_Application) in 518.04ms
+2026-05-10 16:29:03.871 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.AddCategory (E_Kart_Application)'
+2026-05-10 16:29:03.872 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/categories - 200 null application/json; charset=utf-8 552.7643ms
+2026-05-10 16:29:12.669 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories/2 - null null
+2026-05-10 16:29:12.677 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategoryById (E_Kart_Application)'
+2026-05-10 16:29:12.686 +05:30 [INF] Route matched with {action = "GetCategoryById", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryById(Int32) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-10 16:29:12.790 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE [c].[CategoryID] = @__id_0
+2026-05-10 16:29:12.795 +05:30 [INF] Category fetched
+2026-05-10 16:29:12.796 +05:30 [INF] Executing OkObjectResult, writing value of type 'E_Kart_Application.DTOs.CategoryDto.CategoryDto'.
+2026-05-10 16:29:12.799 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetCategoryById (E_Kart_Application) in 108.3854ms
+2026-05-10 16:29:12.801 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategoryById (E_Kart_Application)'
+2026-05-10 16:29:12.803 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories/2 - 200 null application/json; charset=utf-8 133.6917ms
+2026-05-10 16:29:29.750 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories/3/products - null null
+2026-05-10 16:29:29.758 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetProductsByCategory (E_Kart_Application)'
+2026-05-10 16:29:29.762 +05:30 [INF] Route matched with {action = "GetProductsByCategory", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductsByCategory(Int32) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-10 16:29:29.811 +05:30 [INF] Executed DbCommand (36ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE [c].[CategoryID] = @__id_0
+2026-05-10 16:29:30.005 +05:30 [INF] Executed DbCommand (115ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[CategoryID], [p].[Discontinued], [p].[ProductName], [p].[QuantityPerUnit], [p].[ReorderLevel], [p].[SupplierID], [p].[UnitPrice], [p].[UnitsInStock], [p].[UnitsOnOrder], [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Products] AS [p]
+LEFT JOIN [Categories] AS [c] ON [p].[CategoryID] = [c].[CategoryID]
+WHERE [p].[CategoryID] = @__id_0
+2026-05-10 16:29:30.063 +05:30 [INF] Products fetched
+2026-05-10 16:29:30.065 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.CategoryDto.ProductListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-10 16:29:30.108 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetProductsByCategory (E_Kart_Application) in 341.5393ms
+2026-05-10 16:29:30.112 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetProductsByCategory (E_Kart_Application)'
+2026-05-10 16:29:30.113 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories/3/products - 200 null application/json; charset=utf-8 362.8319ms
+2026-05-10 16:30:05.686 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/employees - application/json 160
+2026-05-10 16:30:05.751 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-10 16:30:05.831 +05:30 [INF] Route matched with {action = "AddEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(E_Kart_Application.DTOs.EmployeeDto.CreateEmployeeDto) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 16:30:05.985 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-05-10 16:30:06.055 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application) in 215.5773ms
+2026-05-10 16:30:06.062 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-10 16:30:06.068 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/employees - 400 null application/problem+json; charset=utf-8 393.0907ms
+2026-05-10 16:30:20.373 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/employees - application/json 164
+2026-05-10 16:30:20.387 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-10 16:30:20.392 +05:30 [INF] Route matched with {action = "AddEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(E_Kart_Application.DTOs.EmployeeDto.CreateEmployeeDto) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 16:30:20.617 +05:30 [INF] Executed DbCommand (82ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[EmployeeID], [t].[Address], [t].[BirthDate], [t].[City], [t].[Country], [t].[Extension], [t].[FirstName], [t].[HireDate], [t].[HomePhone], [t].[LastName], [t].[Notes], [t].[Photo], [t].[PhotoPath], [t].[PostalCode], [t].[Region], [t].[ReportsTo], [t].[Title], [t].[TitleOfCourtesy], [e0].[EmployeeID], [e0].[Address], [e0].[BirthDate], [e0].[City], [e0].[Country], [e0].[Extension], [e0].[FirstName], [e0].[HireDate], [e0].[HomePhone], [e0].[LastName], [e0].[Notes], [e0].[Photo], [e0].[PhotoPath], [e0].[PostalCode], [e0].[Region], [e0].[ReportsTo], [e0].[Title], [e0].[TitleOfCourtesy]
+FROM (
+    SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+    FROM [Employees] AS [e]
+    WHERE [e].[EmployeeID] = @__id_0
+) AS [t]
+LEFT JOIN [Employees] AS [e0] ON [t].[EmployeeID] = [e0].[ReportsTo]
+ORDER BY [t].[EmployeeID]
+2026-05-10 16:30:20.964 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application) in 564.2034ms
+2026-05-10 16:30:20.976 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-10 16:30:20.999 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+E_Kart_Application.Exceptions.BadRequestException: Manager not found
+   at E_Kart_Application.Services.EmployeeService.AddEmployeeAsync(CreateEmployeeDto dto) in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Services\EmployeeService.cs:line 67
+   at E_Kart_Application.Controllers.EmployeesController.AddEmployee(CreateEmployeeDto dto) in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Controllers\EmployeesController.cs:line 74
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-10 16:30:21.330 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/employees - 500 null text/plain; charset=utf-8 957.9507ms
+2026-05-10 16:30:40.365 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/employees - application/json 162
+2026-05-10 16:30:40.392 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-10 16:30:40.397 +05:30 [INF] Route matched with {action = "AddEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(E_Kart_Application.DTOs.EmployeeDto.CreateEmployeeDto) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-10 16:30:40.450 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-05-10 16:30:40.457 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application) in 52.4532ms
+2026-05-10 16:30:40.463 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-10 16:30:40.468 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/employees - 400 null application/problem+json; charset=utf-8 102.8278ms

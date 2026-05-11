@@ -70,9 +70,7 @@ public partial class EkartContext : DbContext
 
     public virtual DbSet<Territory> Territories { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=LAPTOP-E7HN04IG\\SQLEXPRESS;Database=EKART;Trusted_Connection=True;TrustServerCertificate=True;");
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -151,30 +149,7 @@ public partial class EkartContext : DbContext
             entity.Property(e => e.PostalCode).HasMaxLength(10);
             entity.Property(e => e.Region).HasMaxLength(15);
 
-            entity.HasMany(d => d.CustomerTypes).WithMany(p => p.Customers)
-                .UsingEntity<Dictionary<string, object>>(
-                    "CustomerCustomerDemo",
-                    r => r.HasOne<CustomerDemographic>().WithMany()
-                        .HasForeignKey("CustomerTypeId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_CustomerCustomerDemo"),
-                    l => l.HasOne<Customer>().WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_CustomerCustomerDemo_Customers"),
-                    j =>
-                    {
-                        j.HasKey("CustomerId", "CustomerTypeId").IsClustered(false);
-                        j.ToTable("CustomerCustomerDemo");
-                        j.IndexerProperty<string>("CustomerId")
-                            .HasMaxLength(5)
-                            .IsFixedLength()
-                            .HasColumnName("CustomerID");
-                        j.IndexerProperty<string>("CustomerTypeId")
-                            .HasMaxLength(10)
-                            .IsFixedLength()
-                            .HasColumnName("CustomerTypeID");
-                    });
+           
         });
 
         modelBuilder.Entity<CustomerAndSuppliersByCity>(entity =>
@@ -324,9 +299,7 @@ public partial class EkartContext : DbContext
             entity.Property(e => e.ShipRegion).HasMaxLength(15);
             entity.Property(e => e.ShippedDate).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.CustomerId)
-                .HasConstraintName("FK_Orders_Customers");
+           
 
             entity.HasOne(d => d.Employee).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.EmployeeId)

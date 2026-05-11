@@ -1,0 +1,564 @@
+2026-05-08 10:01:12.000 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-08 10:01:12.071 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-08 10:01:12.247 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-08 10:01:12.261 +05:30 [INF] Hosting environment: Development
+2026-05-08 10:01:12.289 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-08 10:01:14.007 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-08 10:01:14.760 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 781.0749ms
+2026-05-08 10:01:14.766 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-08 10:01:14.766 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-08 10:01:14.824 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 57.8626ms
+2026-05-08 10:01:14.931 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 164.9414ms
+2026-05-08 10:01:17.080 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-08 10:01:17.159 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 91.1155ms
+2026-05-08 10:01:25.413 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/managers - null null
+2026-05-08 10:01:25.440 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-08 10:01:25.515 +05:30 [INF] Route matched with {action = "GetManagers", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetManagers() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 10:01:31.147 +05:30 [INF] Executed DbCommand (247ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy], [e1].[EmployeeID], [e1].[Address], [e1].[BirthDate], [e1].[City], [e1].[Country], [e1].[Extension], [e1].[FirstName], [e1].[HireDate], [e1].[HomePhone], [e1].[LastName], [e1].[Notes], [e1].[Photo], [e1].[PhotoPath], [e1].[PostalCode], [e1].[Region], [e1].[ReportsTo], [e1].[Title], [e1].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+LEFT JOIN [Employees] AS [e1] ON [e].[EmployeeID] = [e1].[ReportsTo]
+WHERE EXISTS (
+    SELECT 1
+    FROM [Employees] AS [e0]
+    WHERE [e].[EmployeeID] = [e0].[ReportsTo])
+ORDER BY [e].[EmployeeID]
+2026-05-08 10:01:31.659 +05:30 [INF] Managers fetched
+2026-05-08 10:01:31.691 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 10:01:31.719 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application) in 6189.8186ms
+2026-05-08 10:01:31.722 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-08 10:01:31.740 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/managers - 200 null application/json; charset=utf-8 6332.5035ms
+2026-05-08 10:01:45.676 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/reports/2 - null null
+2026-05-08 10:01:45.687 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application)'
+2026-05-08 10:01:45.720 +05:30 [INF] Route matched with {action = "GetEmployeesUnderManager", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesUnderManager(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 10:01:46.023 +05:30 [INF] Executed DbCommand (109ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+WHERE [e].[ReportsTo] = @__id_0
+2026-05-08 10:01:46.057 +05:30 [INF] Employees under manager fetched
+2026-05-08 10:01:46.061 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 10:01:46.081 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application) in 353.5535ms
+2026-05-08 10:01:46.085 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application)'
+2026-05-08 10:01:46.090 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/reports/2 - 200 null application/json; charset=utf-8 414.8727ms
+2026-05-08 11:50:34.470 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-08 11:50:34.545 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-08 11:50:34.853 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-08 11:50:34.856 +05:30 [INF] Hosting environment: Development
+2026-05-08 11:50:34.861 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-08 11:50:36.167 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-08 11:50:36.688 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 538.8444ms
+2026-05-08 11:50:36.718 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-08 11:50:36.730 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-08 11:50:36.764 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 33.9989ms
+2026-05-08 11:50:36.838 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 119.7149ms
+2026-05-08 11:50:36.885 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-08 11:50:36.907 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.8495ms
+2026-05-08 11:52:05.966 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/employees - application/json 162
+2026-05-08 11:52:06.021 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-08 11:52:06.131 +05:30 [INF] Route matched with {action = "AddEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(E_Kart_Application.DTOs.EmployeeDto.CreateEmployeeDto) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 11:52:08.722 +05:30 [INF] Executed DbCommand (177ms) [Parameters=[@p0='?' (Size = 60), @p1='?' (DbType = DateTime), @p2='?' (Size = 15), @p3='?' (Size = 15), @p4='?' (Size = 4), @p5='?' (Size = 10), @p6='?' (DbType = DateTime), @p7='?' (Size = 24), @p8='?' (Size = 20), @p9='?' (Size = 4000), @p10='?' (Size = 8000) (DbType = Binary), @p11='?' (Size = 255), @p12='?' (Size = 10), @p13='?' (Size = 15), @p14='?' (DbType = Int32), @p15='?' (Size = 30), @p16='?' (Size = 25)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Employees] ([Address], [BirthDate], [City], [Country], [Extension], [FirstName], [HireDate], [HomePhone], [LastName], [Notes], [Photo], [PhotoPath], [PostalCode], [Region], [ReportsTo], [Title], [TitleOfCourtesy])
+OUTPUT INSERTED.[EmployeeID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2026-05-08 11:52:08.811 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'E_Kart_Application.DBContext.EkartContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY SAME TABLE constraint "FK_Employees_Employees". The conflict occurred in database "EKART", table "dbo.Employees", column 'EmployeeID'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:4cadf0be-5913-4f1b-bd49-94af101bd89f
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY SAME TABLE constraint "FK_Employees_Employees". The conflict occurred in database "EKART", table "dbo.Employees", column 'EmployeeID'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:4cadf0be-5913-4f1b-bd49-94af101bd89f
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-05-08 11:52:09.016 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application) in 2876.2971ms
+2026-05-08 11:52:09.022 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-08 11:52:09.033 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY SAME TABLE constraint "FK_Employees_Employees". The conflict occurred in database "EKART", table "dbo.Employees", column 'EmployeeID'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:4cadf0be-5913-4f1b-bd49-94af101bd89f
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at E_Kart_Application.Repositories.EmployeeRepository.AddEmployeeAsync(Employee employee) in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Repositories\EmployeeRepository.cs:line 49
+   at E_Kart_Application.Services.EmployeeService.AddEmployeeAsync(CreateEmployeeDto dto) in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Services\EmployeeService.cs:line 54
+   at E_Kart_Application.Controllers.EmployeesController.AddEmployee(CreateEmployeeDto dto) in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Controllers\EmployeesController.cs:line 74
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-08 11:52:09.115 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/employees - 500 null text/plain; charset=utf-8 3216.4116ms
+2026-05-08 11:53:24.099 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/managers - null null
+2026-05-08 11:53:24.116 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-08 11:53:24.124 +05:30 [INF] Route matched with {action = "GetManagers", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetManagers() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 11:53:24.594 +05:30 [INF] Executed DbCommand (76ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy], [e1].[EmployeeID], [e1].[Address], [e1].[BirthDate], [e1].[City], [e1].[Country], [e1].[Extension], [e1].[FirstName], [e1].[HireDate], [e1].[HomePhone], [e1].[LastName], [e1].[Notes], [e1].[Photo], [e1].[PhotoPath], [e1].[PostalCode], [e1].[Region], [e1].[ReportsTo], [e1].[Title], [e1].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+LEFT JOIN [Employees] AS [e1] ON [e].[EmployeeID] = [e1].[ReportsTo]
+WHERE EXISTS (
+    SELECT 1
+    FROM [Employees] AS [e0]
+    WHERE [e].[EmployeeID] = [e0].[ReportsTo])
+ORDER BY [e].[EmployeeID]
+2026-05-08 11:53:24.672 +05:30 [INF] Managers fetched
+2026-05-08 11:53:24.684 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 11:53:24.702 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application) in 573.462ms
+2026-05-08 11:53:24.716 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-08 11:53:24.718 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/managers - 200 null application/json; charset=utf-8 625.5546ms
+2026-05-08 11:54:35.979 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/employees - application/json 147
+2026-05-08 11:54:36.159 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-08 11:54:36.220 +05:30 [INF] Route matched with {action = "AddEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(E_Kart_Application.DTOs.EmployeeDto.CreateEmployeeDto) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 11:54:36.561 +05:30 [INF] Executed DbCommand (284ms) [Parameters=[@p0='?' (Size = 60), @p1='?' (DbType = DateTime), @p2='?' (Size = 15), @p3='?' (Size = 15), @p4='?' (Size = 4), @p5='?' (Size = 10), @p6='?' (DbType = DateTime), @p7='?' (Size = 24), @p8='?' (Size = 20), @p9='?' (Size = 4000), @p10='?' (Size = 8000) (DbType = Binary), @p11='?' (Size = 255), @p12='?' (Size = 10), @p13='?' (Size = 15), @p14='?' (DbType = Int32), @p15='?' (Size = 30), @p16='?' (Size = 25)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Employees] ([Address], [BirthDate], [City], [Country], [Extension], [FirstName], [HireDate], [HomePhone], [LastName], [Notes], [Photo], [PhotoPath], [PostalCode], [Region], [ReportsTo], [Title], [TitleOfCourtesy])
+OUTPUT INSERTED.[EmployeeID]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2026-05-08 11:54:36.628 +05:30 [INF] Employee created
+2026-05-08 11:54:36.632 +05:30 [INF] Executing OkObjectResult, writing value of type 'E_Kart_Application.DTOs.EmployeeDto.EmployeeDto'.
+2026-05-08 11:54:36.642 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application) in 413.2619ms
+2026-05-08 11:54:36.643 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.AddEmployee (E_Kart_Application)'
+2026-05-08 11:54:36.645 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/employees - 200 null application/json; charset=utf-8 679.4964ms
+2026-05-08 11:55:27.523 +05:30 [INF] Request starting HTTP/2 PUT https://localhost:7000/api/employees/11 - application/json 149
+2026-05-08 11:55:27.535 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.UpdateEmployee (E_Kart_Application)'
+2026-05-08 11:55:27.545 +05:30 [INF] Route matched with {action = "UpdateEmployee", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateEmployee(Int32, E_Kart_Application.DTOs.EmployeeDto.UpdateEmployeeDto) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 11:55:27.588 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+WHERE [e].[EmployeeID] = @__id_0
+2026-05-08 11:55:27.607 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 15)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Employees] SET [Country] = @p0
+OUTPUT 1
+WHERE [EmployeeID] = @p1;
+2026-05-08 11:55:27.613 +05:30 [INF] Employee updated
+2026-05-08 11:55:27.614 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-08 11:55:27.615 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.UpdateEmployee (E_Kart_Application) in 67.5527ms
+2026-05-08 11:55:27.616 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.UpdateEmployee (E_Kart_Application)'
+2026-05-08 11:55:27.617 +05:30 [INF] Request finished HTTP/2 PUT https://localhost:7000/api/employees/11 - 200 null text/plain; charset=utf-8 98.9244ms
+2026-05-08 11:55:50.625 +05:30 [INF] Request starting HTTP/2 PATCH https://localhost:7000/api/employees/11/title - application/json 20
+2026-05-08 11:55:50.631 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.UpdateEmployeeTitle (E_Kart_Application)'
+2026-05-08 11:55:50.638 +05:30 [INF] Route matched with {action = "UpdateEmployeeTitle", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateEmployeeTitle(Int32, E_Kart_Application.DTOs.EmployeeDto.UpdateEmployeeTitleDto) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 11:55:50.666 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+WHERE [e].[EmployeeID] = @__id_0
+2026-05-08 11:55:50.682 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 30)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Employees] SET [Title] = @p0
+OUTPUT 1
+WHERE [EmployeeID] = @p1;
+2026-05-08 11:55:50.685 +05:30 [INF] Employee title updated
+2026-05-08 11:55:50.687 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-08 11:55:50.689 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.UpdateEmployeeTitle (E_Kart_Application) in 48.1642ms
+2026-05-08 11:55:50.692 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.UpdateEmployeeTitle (E_Kart_Application)'
+2026-05-08 11:55:50.694 +05:30 [INF] Request finished HTTP/2 PATCH https://localhost:7000/api/employees/11/title - 200 null text/plain; charset=utf-8 69.507ms
+2026-05-08 11:56:04.537 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/managers - null null
+2026-05-08 11:56:04.550 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-08 11:56:04.555 +05:30 [INF] Route matched with {action = "GetManagers", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetManagers() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 11:56:04.569 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy], [e1].[EmployeeID], [e1].[Address], [e1].[BirthDate], [e1].[City], [e1].[Country], [e1].[Extension], [e1].[FirstName], [e1].[HireDate], [e1].[HomePhone], [e1].[LastName], [e1].[Notes], [e1].[Photo], [e1].[PhotoPath], [e1].[PostalCode], [e1].[Region], [e1].[ReportsTo], [e1].[Title], [e1].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+LEFT JOIN [Employees] AS [e1] ON [e].[EmployeeID] = [e1].[ReportsTo]
+WHERE EXISTS (
+    SELECT 1
+    FROM [Employees] AS [e0]
+    WHERE [e].[EmployeeID] = [e0].[ReportsTo])
+ORDER BY [e].[EmployeeID]
+2026-05-08 11:56:04.585 +05:30 [INF] Managers fetched
+2026-05-08 11:56:04.588 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 11:56:04.590 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application) in 31.8812ms
+2026-05-08 11:56:04.592 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetManagers (E_Kart_Application)'
+2026-05-08 11:56:04.594 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/managers - 200 null application/json; charset=utf-8 57.5581ms
+2026-05-08 11:56:19.210 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees - null null
+2026-05-08 11:56:19.213 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-08 11:56:19.219 +05:30 [INF] Route matched with {action = "GetEmployees", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployees() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 11:56:19.243 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy], [e0].[EmployeeID], [e0].[Address], [e0].[BirthDate], [e0].[City], [e0].[Country], [e0].[Extension], [e0].[FirstName], [e0].[HireDate], [e0].[HomePhone], [e0].[LastName], [e0].[Notes], [e0].[Photo], [e0].[PhotoPath], [e0].[PostalCode], [e0].[Region], [e0].[ReportsTo], [e0].[Title], [e0].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+LEFT JOIN [Employees] AS [e0] ON [e].[EmployeeID] = [e0].[ReportsTo]
+ORDER BY [e].[EmployeeID]
+2026-05-08 11:56:19.257 +05:30 [INF] Employees fetched
+2026-05-08 11:56:19.258 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 11:56:19.259 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application) in 35.1485ms
+2026-05-08 11:56:19.261 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-08 11:56:19.263 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees - 200 null application/json; charset=utf-8 54.1598ms
+2026-05-08 11:56:44.094 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/employees/reports/2 - null null
+2026-05-08 11:56:44.122 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application)'
+2026-05-08 11:56:44.127 +05:30 [INF] Route matched with {action = "GetEmployeesUnderManager", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesUnderManager(Int32) on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-08 11:56:44.156 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+WHERE [e].[ReportsTo] = @__id_0
+2026-05-08 11:56:44.169 +05:30 [INF] Employees under manager fetched
+2026-05-08 11:56:44.170 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 11:56:44.173 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application) in 43.514ms
+2026-05-08 11:56:44.175 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployeesUnderManager (E_Kart_Application)'
+2026-05-08 11:56:44.176 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/employees/reports/2 - 200 null application/json; charset=utf-8 82.3734ms
+2026-05-08 11:57:00.122 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories - null null
+2026-05-08 11:57:00.128 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-08 11:57:00.133 +05:30 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategories() on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:57:00.158 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+2026-05-08 11:57:00.179 +05:30 [INF] Categories fetched
+2026-05-08 11:57:00.180 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.CategoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 11:57:00.183 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application) in 48.1178ms
+2026-05-08 11:57:00.185 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-08 11:57:00.187 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories - 200 null application/json; charset=utf-8 66.762ms
+2026-05-08 11:57:20.637 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7000/api/categories - application/json 59
+2026-05-08 11:57:20.654 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.AddCategory (E_Kart_Application)'
+2026-05-08 11:57:20.660 +05:30 [INF] Route matched with {action = "AddCategory", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCategory(E_Kart_Application.DTOs.CreateCategoryDto) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:57:20.754 +05:30 [INF] Executed DbCommand (52ms) [Parameters=[@p0='?' (Size = 15), @p1='?' (Size = 4000), @p2='?' (Size = 8000) (DbType = Binary)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Categories] ([CategoryName], [Description], [Picture])
+OUTPUT INSERTED.[CategoryID]
+VALUES (@p0, @p1, @p2);
+2026-05-08 11:57:20.762 +05:30 [INF] Category created
+2026-05-08 11:57:20.764 +05:30 [INF] Executing OkObjectResult, writing value of type 'E_Kart_Application.DTOs.CategoryDto'.
+2026-05-08 11:57:20.768 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.AddCategory (E_Kart_Application) in 103.771ms
+2026-05-08 11:57:20.770 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.AddCategory (E_Kart_Application)'
+2026-05-08 11:57:20.772 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7000/api/categories - 200 null application/json; charset=utf-8 135.5904ms
+2026-05-08 11:57:29.353 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories/9 - null null
+2026-05-08 11:57:29.367 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategoryById (E_Kart_Application)'
+2026-05-08 11:57:29.374 +05:30 [INF] Route matched with {action = "GetCategoryById", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoryById(Int32) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:57:29.406 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE [c].[CategoryID] = @__id_0
+2026-05-08 11:57:29.410 +05:30 [INF] Category fetched
+2026-05-08 11:57:29.411 +05:30 [INF] Executing OkObjectResult, writing value of type 'E_Kart_Application.DTOs.CategoryDto'.
+2026-05-08 11:57:29.412 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetCategoryById (E_Kart_Application) in 33.403ms
+2026-05-08 11:57:29.414 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategoryById (E_Kart_Application)'
+2026-05-08 11:57:29.417 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories/9 - 200 null application/json; charset=utf-8 63.5487ms
+2026-05-08 11:57:58.167 +05:30 [INF] Request starting HTTP/2 PUT https://localhost:7000/api/categories/9 - application/json 70
+2026-05-08 11:57:58.179 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.UpdateCategory (E_Kart_Application)'
+2026-05-08 11:57:58.186 +05:30 [INF] Route matched with {action = "UpdateCategory", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCategory(Int32, E_Kart_Application.DTOs.UpdateCategoryDto) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:57:58.215 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__category_CategoryId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE [c].[CategoryID] = @__category_CategoryId_0
+2026-05-08 11:57:58.231 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categories] SET [Description] = @p0
+OUTPUT 1
+WHERE [CategoryID] = @p1;
+2026-05-08 11:57:58.236 +05:30 [INF] Category updated
+2026-05-08 11:57:58.238 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-08 11:57:58.241 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.UpdateCategory (E_Kart_Application) in 51.4026ms
+2026-05-08 11:57:58.244 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.UpdateCategory (E_Kart_Application)'
+2026-05-08 11:57:58.246 +05:30 [INF] Request finished HTTP/2 PUT https://localhost:7000/api/categories/9 - 200 null text/plain; charset=utf-8 79.9212ms
+2026-05-08 11:58:05.558 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories/2/products - null null
+2026-05-08 11:58:05.565 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetProductsByCategory (E_Kart_Application)'
+2026-05-08 11:58:05.571 +05:30 [INF] Route matched with {action = "GetProductsByCategory", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductsByCategory(Int32) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:58:05.613 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductID], [p].[CategoryID], [p].[Discontinued], [p].[ProductName], [p].[QuantityPerUnit], [p].[ReorderLevel], [p].[SupplierID], [p].[UnitPrice], [p].[UnitsInStock], [p].[UnitsOnOrder], [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Products] AS [p]
+LEFT JOIN [Categories] AS [c] ON [p].[CategoryID] = [c].[CategoryID]
+WHERE [p].[CategoryID] = @__id_0
+2026-05-08 11:58:05.651 +05:30 [INF] Products fetched
+2026-05-08 11:58:05.652 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.ProductListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 11:58:05.667 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetProductsByCategory (E_Kart_Application) in 92.8492ms
+2026-05-08 11:58:05.671 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetProductsByCategory (E_Kart_Application)'
+2026-05-08 11:58:05.673 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories/2/products - 200 null application/json; charset=utf-8 115.5172ms
+2026-05-08 11:58:16.710 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories/search?name=bev - null null
+2026-05-08 11:58:16.718 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.SearchCategories (E_Kart_Application)'
+2026-05-08 11:58:16.723 +05:30 [INF] Route matched with {action = "SearchCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchCategories(System.String) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:58:16.788 +05:30 [INF] Executed DbCommand (40ms) [Parameters=[@__name_0_rewritten='?' (Size = 15)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE [c].[CategoryName] LIKE @__name_0_rewritten ESCAPE N'\'
+2026-05-08 11:58:16.794 +05:30 [INF] Categories searched
+2026-05-08 11:58:16.797 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.CategoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 11:58:16.800 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.SearchCategories (E_Kart_Application) in 73.9645ms
+2026-05-08 11:58:16.802 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.SearchCategories (E_Kart_Application)'
+2026-05-08 11:58:16.804 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories/search?name=bev - 200 null application/json; charset=utf-8 94.6379ms
+2026-05-08 11:58:22.719 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories/with-product-count - null null
+2026-05-08 11:58:22.723 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategoriesWithProductCount (E_Kart_Application)'
+2026-05-08 11:58:22.728 +05:30 [INF] Route matched with {action = "GetCategoriesWithProductCount", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategoriesWithProductCount() on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:58:22.757 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture], [p].[ProductID], [p].[CategoryID], [p].[Discontinued], [p].[ProductName], [p].[QuantityPerUnit], [p].[ReorderLevel], [p].[SupplierID], [p].[UnitPrice], [p].[UnitsInStock], [p].[UnitsOnOrder]
+FROM [Categories] AS [c]
+LEFT JOIN [Products] AS [p] ON [c].[CategoryID] = [p].[CategoryID]
+ORDER BY [c].[CategoryID]
+2026-05-08 11:58:22.781 +05:30 [INF] Categories with product count fetched
+2026-05-08 11:58:22.783 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.CategoryWithProductCountDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 11:58:22.787 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetCategoriesWithProductCount (E_Kart_Application) in 53.4127ms
+2026-05-08 11:58:22.789 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategoriesWithProductCount (E_Kart_Application)'
+2026-05-08 11:58:22.791 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories/with-product-count - 200 null application/json; charset=utf-8 71.6566ms
+2026-05-08 11:58:29.436 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories/empty - null null
+2026-05-08 11:58:29.441 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetEmptyCategories (E_Kart_Application)'
+2026-05-08 11:58:29.445 +05:30 [INF] Route matched with {action = "GetEmptyCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmptyCategories() on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:58:29.473 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM [Products] AS [p]
+    WHERE [c].[CategoryID] = [p].[CategoryID])
+2026-05-08 11:58:29.477 +05:30 [INF] Empty categories fetched
+2026-05-08 11:58:29.478 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.CategoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 11:58:29.480 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetEmptyCategories (E_Kart_Application) in 32.7883ms
+2026-05-08 11:58:29.482 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetEmptyCategories (E_Kart_Application)'
+2026-05-08 11:58:29.483 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories/empty - 200 null application/json; charset=utf-8 47.1024ms
+2026-05-08 11:58:49.665 +05:30 [INF] Request starting HTTP/2 PATCH https://localhost:7000/api/categories/9/name - application/json 40
+2026-05-08 11:58:49.682 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.UpdateCategoryName (E_Kart_Application)'
+2026-05-08 11:58:49.689 +05:30 [INF] Route matched with {action = "UpdateCategoryName", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCategoryName(Int32, E_Kart_Application.DTOs.UpdateCategoryNameDto) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:58:49.717 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE [c].[CategoryID] = @__id_0
+2026-05-08 11:58:49.749 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categories] SET [CategoryName] = @p0
+OUTPUT 1
+WHERE [CategoryID] = @p1;
+2026-05-08 11:58:49.758 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'E_Kart_Application.DBContext.EkartContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated in table 'EKART.dbo.Categories', column 'CategoryName'. Truncated value: 'Disposable item'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithRowsAffectedOnlyAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:4cadf0be-5913-4f1b-bd49-94af101bd89f
+Error Number:2628,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated in table 'EKART.dbo.Categories', column 'CategoryName'. Truncated value: 'Disposable item'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithRowsAffectedOnlyAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:4cadf0be-5913-4f1b-bd49-94af101bd89f
+Error Number:2628,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-05-08 11:58:49.896 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.UpdateCategoryName (E_Kart_Application) in 203.2055ms
+2026-05-08 11:58:49.899 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.UpdateCategoryName (E_Kart_Application)'
+2026-05-08 11:58:49.902 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated in table 'EKART.dbo.Categories', column 'CategoryName'. Truncated value: 'Disposable item'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithRowsAffectedOnlyAsync(Int32 commandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:4cadf0be-5913-4f1b-bd49-94af101bd89f
+Error Number:2628,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at E_Kart_Application.Repositories.CategoryRepository.UpdateCategoryNameAsync(Int32 id, String name) in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Repositories\CategoryRepository.cs:line 98
+   at E_Kart_Application.Services.CategoryService.UpdateCategoryNameAsync(Int32 id, UpdateCategoryNameDto dto) in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Services\CategoryService.cs:line 91
+   at E_Kart_Application.Controllers.CategoriesController.UpdateCategoryName(Int32 id, UpdateCategoryNameDto dto) in C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application\Controllers\CategoriesController.cs:line 117
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-08 11:58:49.923 +05:30 [INF] Request finished HTTP/2 PATCH https://localhost:7000/api/categories/9/name - 500 null text/plain; charset=utf-8 257.8671ms
+2026-05-08 11:59:02.407 +05:30 [INF] Request starting HTTP/2 PATCH https://localhost:7000/api/categories/9/name - application/json 39
+2026-05-08 11:59:02.414 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.UpdateCategoryName (E_Kart_Application)'
+2026-05-08 11:59:02.415 +05:30 [INF] Route matched with {action = "UpdateCategoryName", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCategoryName(Int32, E_Kart_Application.DTOs.UpdateCategoryNameDto) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:59:02.425 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE [c].[CategoryID] = @__id_0
+2026-05-08 11:59:02.438 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 15)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categories] SET [CategoryName] = @p0
+OUTPUT 1
+WHERE [CategoryID] = @p1;
+2026-05-08 11:59:02.440 +05:30 [INF] Category name updated
+2026-05-08 11:59:02.441 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-08 11:59:02.442 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.UpdateCategoryName (E_Kart_Application) in 23.4999ms
+2026-05-08 11:59:02.443 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.UpdateCategoryName (E_Kart_Application)'
+2026-05-08 11:59:02.444 +05:30 [INF] Request finished HTTP/2 PATCH https://localhost:7000/api/categories/9/name - 200 null text/plain; charset=utf-8 37.7402ms
+2026-05-08 11:59:42.350 +05:30 [INF] Request starting HTTP/2 PATCH https://localhost:7000/api/categories/9/description - application/json 60
+2026-05-08 11:59:42.364 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.UpdateCategoryDescription (E_Kart_Application)'
+2026-05-08 11:59:42.371 +05:30 [INF] Route matched with {action = "UpdateCategoryDescription", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCategoryDescription(Int32, E_Kart_Application.DTOs.UpdateCategoryDescriptionDto) on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 11:59:42.384 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+WHERE [c].[CategoryID] = @__id_0
+2026-05-08 11:59:42.392 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Categories] SET [Description] = @p0
+OUTPUT 1
+WHERE [CategoryID] = @p1;
+2026-05-08 11:59:42.395 +05:30 [INF] Category description updated
+2026-05-08 11:59:42.396 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-05-08 11:59:42.398 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.UpdateCategoryDescription (E_Kart_Application) in 22.8684ms
+2026-05-08 11:59:42.403 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.UpdateCategoryDescription (E_Kart_Application)'
+2026-05-08 11:59:42.405 +05:30 [INF] Request finished HTTP/2 PATCH https://localhost:7000/api/categories/9/description - 200 null text/plain; charset=utf-8 55.7894ms
+2026-05-08 12:05:29.425 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-08 12:05:29.484 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-08 12:05:29.710 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-08 12:05:29.712 +05:30 [INF] Hosting environment: Development
+2026-05-08 12:05:29.714 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-08 12:05:30.278 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-08 12:05:30.562 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-08 12:05:30.562 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 293.5233ms
+2026-05-08 12:05:30.562 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-08 12:05:30.588 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 26.8422ms
+2026-05-08 12:05:30.621 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 59.4993ms
+2026-05-08 12:05:30.657 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-08 12:05:30.681 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.1667ms
+2026-05-08 12:05:39.987 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/api/categories - null null
+2026-05-08 12:05:40.007 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-08 12:05:40.050 +05:30 [INF] Route matched with {action = "GetCategories", controller = "Categories"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCategories() on controller E_Kart_Application.Controllers.CategoriesController (E_Kart_Application).
+2026-05-08 12:05:42.415 +05:30 [INF] Executed DbCommand (149ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryID], [c].[CategoryName], [c].[Description], [c].[Picture]
+FROM [Categories] AS [c]
+2026-05-08 12:05:42.532 +05:30 [INF] Categories fetched
+2026-05-08 12:05:42.545 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.CategoryDto.CategoryDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-08 12:05:42.561 +05:30 [INF] Executed action E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application) in 2502.7135ms
+2026-05-08 12:05:42.565 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.CategoriesController.GetCategories (E_Kart_Application)'
+2026-05-08 12:05:42.578 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/api/categories - 200 null application/json; charset=utf-8 2591.5267ms

@@ -1,3 +1,5 @@
+using EKartMVC.Services;
+
 namespace EKartMVC
 {
     public class Program
@@ -5,7 +7,11 @@ namespace EKartMVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddHttpClient<IAdminService,AdminServices>(client =>
+     {
+         client.BaseAddress =
+            new Uri("https://localhost:7000/");
+     });
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -28,7 +34,7 @@ namespace EKartMVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Admin}/{action=GetEmployeeall}/{id?}");
 
             app.Run();
         }

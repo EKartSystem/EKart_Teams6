@@ -1,0 +1,65 @@
+2026-05-11 11:52:46.131 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-11 11:52:46.198 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-11 11:52:46.354 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-11 11:52:46.358 +05:30 [INF] Hosting environment: Development
+2026-05-11 11:52:46.361 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-11 11:52:49.582 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-11 11:52:50.421 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 844.0172ms
+2026-05-11 11:52:50.473 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-11 11:52:50.500 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 26.1494ms
+2026-05-11 11:52:50.513 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-11 11:52:50.803 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 290.3565ms
+2026-05-11 11:52:50.891 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-11 11:52:50.938 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.411ms
+2026-05-11 11:53:35.674 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-11 11:53:35.734 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-11 11:53:36.299 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-11 11:53:36.305 +05:30 [INF] Hosting environment: Development
+2026-05-11 11:53:36.307 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-11 11:53:37.049 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-11 11:53:37.702 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-11 11:53:37.702 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-11 11:53:37.712 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 667.3769ms
+2026-05-11 11:53:37.716 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 14.0318ms
+2026-05-11 11:53:37.827 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 125.0816ms
+2026-05-11 11:53:38.012 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-11 11:53:38.050 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 38.1517ms
+2026-05-11 11:54:12.275 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-11 11:54:12.337 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-11 11:54:12.475 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-11 11:54:12.477 +05:30 [INF] Hosting environment: Development
+2026-05-11 11:54:12.479 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-11 11:54:13.444 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-11 11:54:14.010 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 568.4154ms
+2026-05-11 11:54:14.053 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-11 11:54:14.053 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-11 11:54:14.075 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 22.0039ms
+2026-05-11 11:54:14.629 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 576.2611ms
+2026-05-11 11:54:14.670 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-11 11:54:14.715 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 45.3348ms
+2026-05-11 11:57:20.305 +05:30 [INF] Now listening on: https://localhost:7000
+2026-05-11 11:57:20.427 +05:30 [INF] Now listening on: http://localhost:5229
+2026-05-11 11:57:20.619 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-11 11:57:20.622 +05:30 [INF] Hosting environment: Development
+2026-05-11 11:57:20.624 +05:30 [INF] Content root path: C:\Users\HP\Desktop\C# Sprint Project\EKart_Teams6\E_Kart_Application
+2026-05-11 11:57:22.698 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/index.html - null null
+2026-05-11 11:57:23.413 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 717.5446ms
+2026-05-11 11:57:23.442 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_vs/browserLink - null null
+2026-05-11 11:57:23.444 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-11 11:57:23.497 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_framework/aspnetcore-browser-refresh.js - 200 14941 application/javascript; charset=utf-8 53.7216ms
+2026-05-11 11:57:23.607 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/_vs/browserLink - 200 null text/javascript; charset=UTF-8 164.9557ms
+2026-05-11 11:57:23.709 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - null null
+2026-05-11 11:57:23.770 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 61.4283ms
+2026-05-11 11:58:09.954 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:7000/api/employees - null null
+2026-05-11 11:58:09.990 +05:30 [INF] Executing endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-11 11:58:10.062 +05:30 [INF] Route matched with {action = "GetEmployees", controller = "Employees"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployees() on controller E_Kart_Application.Controllers.EmployeesController (E_Kart_Application).
+2026-05-11 11:58:16.136 +05:30 [INF] Executed DbCommand (289ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[EmployeeID], [e].[Address], [e].[BirthDate], [e].[City], [e].[Country], [e].[Extension], [e].[FirstName], [e].[HireDate], [e].[HomePhone], [e].[LastName], [e].[Notes], [e].[Photo], [e].[PhotoPath], [e].[PostalCode], [e].[Region], [e].[ReportsTo], [e].[Title], [e].[TitleOfCourtesy], [e0].[EmployeeID], [e0].[Address], [e0].[BirthDate], [e0].[City], [e0].[Country], [e0].[Extension], [e0].[FirstName], [e0].[HireDate], [e0].[HomePhone], [e0].[LastName], [e0].[Notes], [e0].[Photo], [e0].[PhotoPath], [e0].[PostalCode], [e0].[Region], [e0].[ReportsTo], [e0].[Title], [e0].[TitleOfCourtesy]
+FROM [Employees] AS [e]
+LEFT JOIN [Employees] AS [e0] ON [e].[EmployeeID] = [e0].[ReportsTo]
+ORDER BY [e].[EmployeeID]
+2026-05-11 11:58:16.550 +05:30 [INF] Employees fetched
+2026-05-11 11:58:16.567 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[E_Kart_Application.DTOs.EmployeeDto.EmployeeListingDto, E_Kart_Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-11 11:58:16.603 +05:30 [INF] Executed action E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application) in 6528.406ms
+2026-05-11 11:58:16.609 +05:30 [INF] Executed endpoint 'E_Kart_Application.Controllers.EmployeesController.GetEmployees (E_Kart_Application)'
+2026-05-11 11:58:16.631 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:7000/api/employees - 200 null application/json; charset=utf-8 6676.7296ms
