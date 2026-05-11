@@ -1,10 +1,10 @@
-<<<<<<< HEAD
 using System.Text;
 using E_Kart_Application.DBContext;
 using E_Kart_Application.Exceptions;
 using E_Kart_Application.Mappings;
 using E_Kart_Application.Repositories;
 using E_Kart_Application.Services;
+using E_Kart_Application.Validators;
 using E_Kart_Application.Validators.Orders;
 using E_Kart_Application.Validators.OrderDetails;
 using FluentValidation;
@@ -12,19 +12,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using E_Kart_Application.Validators;
 using E_Kart_Application.Filters;
-=======
-using E_Kart_Application.DBContext;
-using E_Kart_Application.Mappings;
-using E_Kart_Application.Repositories;
-using E_Kart_Application.Services;
-using E_Kart_Application.Validators;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
-using Serilog;
->>>>>>> origin/feature/employee-categories-module
 
 namespace E_Kart_Application
 {
@@ -32,30 +20,14 @@ namespace E_Kart_Application
     {
         public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Information()
-                .WriteTo.Console()
-                .WriteTo.File(
-                    "Logs/log-.txt",
-                    rollingInterval: RollingInterval.Day)
-                .CreateLogger();
-
             var builder = WebApplication.CreateBuilder(args);
 
-<<<<<<< HEAD
             // 1. Database Configuration
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<EKARTContext>(options =>
                 options.UseSqlServer(connectionString));
-=======
-            builder.Host.UseSerilog();
 
-            builder.Services.AddDbContext<EkartContext>(options =>
-                options.UseSqlServer(
-                    builder.Configuration.GetConnectionString("DefaultConnection")));
->>>>>>> origin/feature/employee-categories-module
-
-            // 2. Repository & Service Registrations (Combined)
+            // 2. Service Registrations (Products, Locations, Customers)
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<ILocationRepository, LocationRepository>();
@@ -63,26 +35,31 @@ namespace E_Kart_Application
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
             builder.Services.AddScoped<ICustomerService, CustomerService>();
 
-            // New Order Services from the Merge
+            // 3. Service Registrations (Orders & OrderDetails - from previous merge)
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
             builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
 
-            // 3. Tools & Mapping
+            // 4. Service Registrations (Employees & Categories - from current merge)
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+            // 5. Tools, Auth Helpers & Controllers
             builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddScoped<LogActionFilter>();
             builder.Services.AddScoped<TokenService>();
             builder.Services.AddControllers();
 
-<<<<<<< HEAD
-            // 4. Validation (Combined)
+            // 6. Validation Configuration
             builder.Services.AddValidatorsFromAssemblyContaining<AddProductValidator>();
-            builder.Services.AddValidatorsFromAssemblyContaining<LoginValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<CreateOrderDtoValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryValidator>();
             builder.Services.AddFluentValidationAutoValidation();
 
-            // 5. JWT Authentication
+            // 7. JWT Authentication Setup
             var jwtKey = builder.Configuration["Jwt:Key"];
             if (string.IsNullOrEmpty(jwtKey))
             {
@@ -109,50 +86,26 @@ namespace E_Kart_Application
                 };
             });
 
-=======
->>>>>>> origin/feature/employee-categories-module
             builder.Services.AddEndpointsApiExplorer();
-
             builder.Services.AddSwaggerGen();
-
-            builder.Services.AddAutoMapper(typeof(MappingProfile));
-
-            builder.Services.AddFluentValidationAutoValidation();
-
-            builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryValidator>();
-
-            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-
-            builder.Services.AddScoped<ICategoryService, CategoryService>();
-
-            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-
-            builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
             var app = builder.Build();
 
-<<<<<<< HEAD
-            // 6. Middleware Pipeline (Correct Order)
-=======
->>>>>>> origin/feature/employee-categories-module
+            // 8. Middleware Pipeline
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-
                 app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();
 
-            // Middleware must be in this order: Exceptions -> Auth -> Auth -> Controllers
+            // Global Exception Middleware must be near the top
             app.UseMiddleware<GlobalExceptionMiddleware>();
 
-<<<<<<< HEAD
             app.UseAuthentication();
             app.UseAuthorization();
 
-=======
->>>>>>> origin/feature/employee-categories-module
             app.MapControllers();
 
             app.Run();

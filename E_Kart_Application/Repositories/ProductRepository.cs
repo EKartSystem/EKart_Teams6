@@ -4,7 +4,6 @@ using E_Kart_Application.Exceptions;
 using E_Kart_Application.Models;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
 
 namespace E_Kart_Application.Repositories
 {

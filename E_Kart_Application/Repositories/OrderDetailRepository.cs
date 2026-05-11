@@ -6,9 +6,9 @@ namespace E_Kart_Application.Repositories
 {
     public class OrderDetailRepository : IOrderDetailRepository
     {
-        private readonly EkartContext _context;
+        private readonly EKARTContext _context;
 
-        public OrderDetailRepository(EkartContext context)
+        public OrderDetailRepository(EKARTContext context)
         {
             _context = context;
         }

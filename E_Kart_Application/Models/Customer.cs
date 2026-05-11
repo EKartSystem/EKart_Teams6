@@ -29,16 +29,7 @@ public partial class Customer
 
     public string? PasswordHash { get; set; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     public string Role { get; set; } = null!;
-=======
-    public string Role { get; set; } = "Customer";
->>>>>>> origin/feature/orders
-=======
-    public string Role { get; set; } = null!;
->>>>>>> origin/feature/employee-categories-module
-
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
     public virtual ICollection<CustomerDemographic> CustomerTypes { get; set; } = new List<CustomerDemographic>();

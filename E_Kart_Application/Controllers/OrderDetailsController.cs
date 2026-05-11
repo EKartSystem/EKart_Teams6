@@ -8,7 +8,7 @@ namespace E_Kart_Application.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
 
     public class OrderDetailsController : ControllerBase
     {

@@ -18,7 +18,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("regions")]
-        [Authorize(Roles ="Admin,Customer")]
+        //[Authorize(Roles ="Admin,Customer")]
         public async Task<ActionResult<List<RegionDto>>> GetRegions()
         {
             var regions = await _service.GetAllRegionsAsync();

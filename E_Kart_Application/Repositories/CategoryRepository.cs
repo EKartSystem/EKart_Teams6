@@ -6,8 +6,8 @@ namespace E_Kart_Application.Repositories
 {
     public class CategoryRepository:ICategoryRepository
     {
-        private readonly EkartContext _context;
-        public CategoryRepository(EkartContext Context)
+        private readonly EKARTContext _context;
+        public CategoryRepository(EKARTContext Context)
         {
             _context = Context;
         }

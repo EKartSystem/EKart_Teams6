@@ -7,9 +7,9 @@ namespace E_Kart_Application.Repositories
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        private readonly EkartContext _context;
+        private readonly EKARTContext _context;
 
-        public EmployeeRepository(EkartContext context)
+        public EmployeeRepository(EKARTContext context)
         {
             _context = context;
         }

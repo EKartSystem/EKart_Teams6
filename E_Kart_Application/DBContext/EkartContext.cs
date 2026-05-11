@@ -70,11 +70,6 @@ public partial class EKARTContext : DbContext
 
     public virtual DbSet<Territory> Territories { get; set; }
 
-<<<<<<< HEAD
-=======
-    
-
->>>>>>> origin/feature/employee-categories-module
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AlphabeticalListOfProduct>(entity =>

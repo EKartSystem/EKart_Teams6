@@ -4,18 +4,7 @@
     {
         public NotFoundException(string message) : base(message)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> origin/feature/orders
-        }
-    }
-}
-=======
 
         }
     }
 }
->>>>>>> origin/feature/employee-categories-module
