@@ -26,15 +26,21 @@ namespace E_Kart_Application.Services
             return _mapper.Map<ProductDetailsDto>(addedprod);
         }
 
-        public async Task<IEnumerable<ProductListingDto>> GetAllProductsAsync()
-        {
-            var prod = await _repo.GetAllProductsAsync();
-            if (prod == null)
-                throw new NotFoundException($"No Products Found");
-            var products = _mapper.Map<IEnumerable<ProductListingDto>>(prod);
-            return products;
-        }
+        //public async Task<IEnumerable<ProductListingDto>> GetAllProductsAsync()
+        //{
+        //    var prod = await _repo.GetAllProductsAsync();
+        //    if (prod == null)
+        //        throw new NotFoundException($"No Products Found");
+        //    var products = _mapper.Map<IEnumerable<ProductListingDto>>(prod);
+        //    return products;
+        //}
 
+        public async Task<(IEnumerable<ProductListingDto> Products, int TotalCount)> GetPagedProductsAsync(int pageNumber, int pageSize)
+        {
+            var (prod, totalCount) = await _repo.GetPagedProductsAsync(pageNumber, pageSize);
+            var products = _mapper.Map<IEnumerable<ProductListingDto>>(prod);
+            return (products, totalCount);
+        }
         public async Task<IEnumerable<ProductDetailsDto>> GetExpensiveProductsAsync()
         {
             var prod = await _repo.GetExpensiveProductsAsync();

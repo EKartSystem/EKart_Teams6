@@ -18,19 +18,34 @@ namespace E_Kart_Application.Controllers
             _service = service;
         }
 
-        [HttpGet]
-        [Authorize(Roles ="Admin,Customer")]
-        [ServiceFilter(typeof(LogActionFilter))]
-        public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetALlProducts()
+        //[HttpGet]
+        //[Authorize(Roles ="Admin,Customer")]
+        //[ServiceFilter(typeof(LogActionFilter))]
+        //public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetALlProducts()
+        //{
+        //    var x = await _service.GetAllProductsAsync();
+        //    if (x == null)
+        //        return NotFound("Products Not Found");
+        //    return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
+        //    {
+        //        Success=true,
+        //        Message="All Products Fetched",
+        //        Data=x
+        //    });
+        //}
+        [HttpGet("paged")]
+        [Authorize(Roles = "Admin,Customer")]
+        public async Task<IActionResult> GetPagedProducts([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
-            var x = await _service.GetAllProductsAsync();
-            if (x == null)
-                return NotFound("Products Not Found");
-            return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
+            var(prod, count) = await _service.GetPagedProductsAsync(pageNumber, pageSize);
+
+            return Ok(new
             {
-                Success=true,
-                Message="All Products Fetched",
-                Data=x
+                Success = true,
+                Data = prod,
+                TotalCount = count,
+                PageNumber = pageNumber,
+                PageSize = pageSize
             });
         }
 

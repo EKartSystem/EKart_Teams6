@@ -3,6 +3,7 @@ using E_Kart_Application.Common;
 using E_Kart_Application.DTOs;
 using E_Kart_Application.DTOs.CategoryDto;
 using E_Kart_Application.DTOs.ProductsDTO;
+using EKartMVC.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EKartMVC.Services
@@ -14,21 +15,38 @@ namespace EKartMVC.Services
         {
             _httpClient = httpClient;
         }
-        public async Task<List<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>> GetDataAsync(string? token = null)
+        //public async Task<List<ProductListingDto>> GetDataAsync(string? token = null)
+        //{
+        //    if (!string.IsNullOrEmpty(token))
+        //    {
+        //        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        //    }
+        //    var response = await _httpClient.GetAsync("api/ProductsApi");
+        //    if (response.IsSuccessStatusCode)
+        //    { 
+        //        var result = await response.Content.ReadFromJsonAsync<ApiResponse<List<ProductListingDto>>>();
+        //        return result?.Data ?? new List<ProductListingDto>();
+        //    }
+        //    return new List<ProductListingDto>();
+        //}
+
+        public async Task<PagedResponse<ProductListingDto>> GetPagedDataAsync(int pageNumber, int pageSize, string? token = null)
         {
             if (!string.IsNullOrEmpty(token))
             {
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             }
-            var response = await _httpClient.GetAsync("api/ProductsApi");
-            if (response.IsSuccessStatusCode)
-            { 
-                var result = await response.Content.ReadFromJsonAsync<ApiResponse<List<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>>>();
-                return result?.Data ?? new List<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>();
-            }
-            return new List<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>();
-        }
 
+            // API call with query parameters
+            var response = await _httpClient.GetAsync($"api/ProductsApi/paged?pageNumber={pageNumber}&pageSize={pageSize}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<PagedResponse<ProductListingDto>>();
+            }
+
+            return new PagedResponse<ProductListingDto> { Data = new List<ProductListingDto>() };
+        }
         public async Task<ProductDetailsDto> GetProductData(int id, string? token=null)
         {
             if(!String.IsNullOrEmpty(token))
@@ -44,7 +62,7 @@ namespace EKartMVC.Services
             return null;
         }
 
-        public async Task<IEnumerable<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>> GetProductByName([FromQuery] string name, string? token =null)
+        public async Task<IEnumerable<ProductListingDto>> GetProductByName([FromQuery] string name, string? token =null)
         {
             if (!String.IsNullOrEmpty(token))
             {
@@ -53,10 +71,10 @@ namespace EKartMVC.Services
             var response = await _httpClient.GetAsync($"api/ProductsApi/search?name={Uri.EscapeDataString(name)}");
             if (response.IsSuccessStatusCode)
             {
-                var result = await response.Content.ReadFromJsonAsync<ApiResponse<IEnumerable<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>>>();
-                return result?.Data ?? Enumerable.Empty<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>();
+                var result = await response.Content.ReadFromJsonAsync<ApiResponse<IEnumerable<ProductListingDto>>>();
+                return result?.Data ?? Enumerable.Empty<ProductListingDto>();
             }
-            return Enumerable.Empty<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>();
+            return Enumerable.Empty<ProductListingDto>();
         }
 
         public async Task<List<ProductDetailsDto>> GetExpensiveProductAsync(string? token = null)

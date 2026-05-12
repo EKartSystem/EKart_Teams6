@@ -4,7 +4,8 @@ namespace E_Kart_Application.Services
 {
     public interface IProductService
     {
-        Task<IEnumerable<ProductListingDto>> GetAllProductsAsync();
+        //Task<IEnumerable<ProductListingDto>> GetAllProductsAsync();
+        Task<(IEnumerable<ProductListingDto> Products, int TotalCount)> GetPagedProductsAsync(int pageNumber, int pageSize);
         Task<ProductDetailsDto?> GetProductByIdAsync(int productId);
         Task<IEnumerable<ProductListingDto>> GetProductsByCategoryAsync(int categoryId);
         Task<IEnumerable<ProductListingDto>> GetProductsBySupplierAsync(int supplierId);

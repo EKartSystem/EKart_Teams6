@@ -24,9 +24,17 @@ namespace E_Kart_Application.Repositories
                 .FirstOrDefaultAsync(x => x.ProductId == product.ProductId);
         }
 
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        //public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        //{
+        //    return await _context.Products.Include(x=>x.Category).ToListAsync();
+        //}
+
+        public async Task<(IEnumerable<Product> Products, int TotalCount)> GetPagedProductsAsync(int pageNumber, int pageSize)
         {
-            return await _context.Products.Include(x=>x.Category).ToListAsync();
+            var totalCount = await _context.Products.CountAsync();
+            var products = await _context.Products.Include(x => x.Category).OrderBy(x => x.ProductName) .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize).ToListAsync();
+            return (products, totalCount);
         }
 
         public async Task<IEnumerable<Product>> GetAllProductsByCategoryAsync(int categoryId)

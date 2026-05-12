@@ -13,32 +13,71 @@ namespace EKartMVC.Controllers
         {
             _service = service;
         }
-        public async Task<IActionResult> Index(string? name, bool? showExpensive=null)
+        //public async Task<IActionResult> Index(string? name, bool? showExpensive=null)
+        //{
+        //    var token = HttpContext.Session.GetString("jwt");
+        //    IEnumerable<ProductListingDto> products;
+        //    if (showExpensive.HasValue && showExpensive.Value)
+        //    {
+        //        var expensiveData = await _service.GetExpensiveProductAsync(token);
+        //        products = expensiveData.Select(e => new ProductListingDto
+        //        {
+        //            ProductId = e.ProductId, 
+        //            ProductName = e.ProductName,
+        //            UnitPrice = e.UnitPrice,
+        //            CategoryName = e.CategoryName ?? "Premium",
+        //            IsInStock = e.UnitsInStock > 0
+        //        }).ToList();
+        //        return View(products);
+        //    }
+
+        //    if (string.IsNullOrWhiteSpace(name))
+        //    {
+        //        products = await _service.GetDataAsync(token);
+        //    }
+        //    else
+        //    {
+        //        products = await _service.GetProductByName(name,token);
+        //    }
+        //    return View(products);
+        //}
+
+        public async Task<IActionResult> Index(string? name, bool? showExpensive = null, int pageNumber = 1)
         {
+            int pageSize = 8; 
             var token = HttpContext.Session.GetString("jwt");
-            IEnumerable<ProductListingDto> products;
+            IEnumerable<ProductListingDto> products = new List<ProductListingDto>();
+            int totalCount = 0;
             if (showExpensive.HasValue && showExpensive.Value)
             {
                 var expensiveData = await _service.GetExpensiveProductAsync(token);
                 products = expensiveData.Select(e => new ProductListingDto
                 {
-                    ProductId = e.ProductId, 
+                    ProductId = e.ProductId,
                     ProductName = e.ProductName,
                     UnitPrice = e.UnitPrice,
                     CategoryName = e.CategoryName ?? "Premium",
                     IsInStock = e.UnitsInStock > 0
                 }).ToList();
-                return View(products);
-            }
 
-            if (string.IsNullOrWhiteSpace(name))
+                totalCount = products.Count();
+            }
+            else if (!string.IsNullOrWhiteSpace(name))
             {
-                products = await _service.GetDataAsync(token);
+                var searchResult = await _service.GetProductByName(name, token);
+                products = searchResult.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                totalCount = searchResult.Count();
             }
             else
             {
-                products = await _service.GetProductByName(name,token);
+                var pagedData = await _service.GetPagedDataAsync(pageNumber, pageSize, token);
+                products = pagedData.Data;
+                totalCount = pagedData.TotalCount;
             }
+            ViewBag.Name = name;
+            ViewBag.ShowExpensive = showExpensive;
+            ViewBag.CurrentPage = pageNumber;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalCount / pageSize);
             return View(products);
         }
 
