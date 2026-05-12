@@ -17,12 +17,12 @@ namespace E_Kart_Application.Services
             _mapper = mapper;
         }
 
-        public async Task<ProductDetailsDto> AddProductAsync(CreateProductDto createDto)
+        public async Task<ProductDetailsDto> AddProductAsync(ProductDto createDto)
         {
             var prod = _mapper.Map<Product>(createDto);
             var addedprod = await _repo.AddProductAsync(prod);
             if (addedprod == null)
-                throw new BadRequestException("Not able to add Project");
+                throw new BadRequestException("Not able to add Product");
             return _mapper.Map<ProductDetailsDto>(addedprod);
         }
 
@@ -35,12 +35,13 @@ namespace E_Kart_Application.Services
             return products;
         }
 
-        public async Task<IEnumerable<ExpensiveProductDto>> GetExpensiveProductsAsync()
+        public async Task<IEnumerable<ProductDetailsDto>> GetExpensiveProductsAsync()
         {
             var prod = await _repo.GetExpensiveProductsAsync();
             if (prod == null)
                 throw new NotFoundException("No Products to display.");
-            return prod;
+            var res = _mapper.Map<IEnumerable<ProductDetailsDto>>(prod);
+            return res;
         }
 
         public async Task<IEnumerable<ProductListingDto>> GetInStockProductsAsync()
@@ -55,8 +56,8 @@ namespace E_Kart_Application.Services
         public async Task<ProductDetailsDto?> GetProductByIdAsync(int productId)
         {
             var prod = await _repo.GetProductByIdAsync(productId);
-            if (prod == null)
-                throw new NotFoundException($"No product with Id : {productId}");
+            //if (prod == null)
+            //    throw new NotFoundException($"No product with Id : {productId}");
             return _mapper.Map<ProductDetailsDto>(prod);
         }
 
@@ -100,7 +101,7 @@ namespace E_Kart_Application.Services
             await _repo.UpdateProductPriceAsync(id, newPrice);
         }
 
-        public async Task UpdateProductAsync(int id, UpdateProductDto updateDto)
+        public async Task UpdateProductAsync(int id, ProductDto updateDto)
         {
             var prod = await _repo.GetProductByIdAsync(id);
             if (prod == null)

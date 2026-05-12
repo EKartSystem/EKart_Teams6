@@ -1,6 +1,6 @@
 ﻿namespace E_Kart_Application.DTOs.ProductsDTO
 {
-    public class CreateProductDto
+    public class ProductDto
     {
         public string ProductName { get; set; } = null!;
         public int? SupplierId { get; set; }

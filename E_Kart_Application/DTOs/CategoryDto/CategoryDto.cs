@@ -32,16 +32,7 @@
     {
         public string? Description { get; set; }
     }
-    public class ProductListingDto
-    {
-        public int ProductId { get; set; }
-        public string ProductName { get; set; } = null!;
-        public string CategoryName { get; set; } = null!;
-        public decimal? UnitPrice { get; set; }
-        public string? QuantityPerUnit { get; set; }
-        public bool IsInStock { get; set; }
-    }
-    public class UpdateCategoryNameDto
+public class UpdateCategoryNameDto
     {
         public string? CategoryName { get; set; }
     }

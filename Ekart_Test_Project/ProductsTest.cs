@@ -10,25 +10,34 @@ namespace Ekart_Test_Project
 {
     public class ProductsTest
     {
-        [Fact] 
+        [Fact]
         public async Task GetTenMostExpensiveProductsTest()
         {
             var mockRepo = new Mock<IProductRepository>();
             var mockMapper = new Mock<IMapper>();
-            var FakeProducts = new List<ExpensiveProductDto>
+
+            var FakeProducts = new List<Product>
             {
-                new ExpensiveProductDto { TenMostExpensiveProducts = "Product A", UnitPrice = 100 },
-                new ExpensiveProductDto { TenMostExpensiveProducts = "Product B", UnitPrice = 90 }
+                new Product { ProductId = 1, ProductName = "Product A", UnitPrice = 100 },
+                new Product { ProductId = 2, ProductName = "Product B", UnitPrice = 90 }
             };
+            var expectedDtos = new List<ProductDetailsDto>
+            {
+                new ProductDetailsDto { ProductId = 1, ProductName = "Product A", UnitPrice = 100 },
+                new ProductDetailsDto { ProductId = 2, ProductName = "Product B", UnitPrice = 90 }
+            };
+
             mockRepo.Setup(x => x.GetExpensiveProductsAsync()).ReturnsAsync(FakeProducts);
-            var service = new ProductService(mockRepo.Object,mockMapper.Object);
+            mockMapper.Setup(m => m.Map<IEnumerable<ProductDetailsDto>>(FakeProducts)).Returns(expectedDtos);
+            var service = new ProductService(mockRepo.Object, mockMapper.Object);
             var result = await service.GetExpensiveProductsAsync();
 
             Assert.NotNull(result);
             Assert.Equal(2, result.Count());
-            Assert.Equal("Product A", result.First().TenMostExpensiveProducts);
             mockRepo.Verify(x => x.GetExpensiveProductsAsync(), Times.Once);
+            mockMapper.Verify(m => m.Map<IEnumerable<ProductDetailsDto>>(FakeProducts), Times.Once);
         }
+
         [Fact] 
         public async Task GetTenMostExpensiveProductsTest1()
         {
@@ -162,7 +171,7 @@ namespace Ekart_Test_Project
                 ProductName = "Coffee",
                 UnitPrice = 20
             };
-            var u = new CreateProductDto
+            var u = new ProductDto
             {
                 ProductName = "Coffee",
                 UnitPrice = 20
@@ -184,7 +193,7 @@ namespace Ekart_Test_Project
             var mockRepo = new Mock<IProductRepository>();
             var mockMapper = new Mock<IMapper>();
             var service = new ProductService(mockRepo.Object, mockMapper.Object);
-            await Assert.ThrowsAsync<BadRequestException>(() => service.AddProductAsync(new CreateProductDto()));
+            await Assert.ThrowsAsync<BadRequestException>(() => service.AddProductAsync(new ProductDto()));
             
         }
     }

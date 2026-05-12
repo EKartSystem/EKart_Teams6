@@ -15,7 +15,7 @@ namespace Ekart_Test_Project.Services
     {
         private readonly Mock<IOrderDetailRepository> _repositoryMock;
         private readonly IMapper _mapper;
-        private readonly EkartContext _context;
+        private readonly EKARTContext _context;
         private readonly OrderDetailService _service;
 
         public OrderDetailServiceTests()
@@ -26,10 +26,10 @@ namespace Ekart_Test_Project.Services
                 cfg.AddProfile<MappingProfile>();
             });
             _mapper = mapperConfig.CreateMapper();
-            var options = new DbContextOptionsBuilder<EkartContext>()
+            var options = new DbContextOptionsBuilder<EKARTContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
-            _context = new EkartContext(options);
+            _context = new EKARTContext(options);
             _service = new OrderDetailService(
                 _repositoryMock.Object,
                 _mapper,

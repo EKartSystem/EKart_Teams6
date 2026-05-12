@@ -130,14 +130,14 @@ namespace E_Kart_Application.Services
             return _mapper.Map<OrderDto>(order);
         }
 
-        public async Task<OrderDto> UpdateOrderStatusAsync(int id, UpdateOrderStatusDto dto)
+        public async Task<OrderDto> UpdateOrderStatusAsync(int id, DateTime? shippedDate)
         {
             var order = await _repository.GetByIdAsync(id);
             if (order == null)
             {
                 throw new NotFoundException($"Order with id {id} not found");
             }
-            _mapper.Map(dto, order);
+            order.ShippedDate = shippedDate;
             await _repository.UpdateAsync(order);
             return _mapper.Map<OrderDto>(order);
         }
@@ -154,14 +154,14 @@ namespace E_Kart_Application.Services
             return _mapper.Map<OrderDto>(order);
         }
 
-        public async Task<OrderDto> UpdateOrderShipperAsync(int id, UpdateOrderShipperDto dto)
+        public async Task<OrderDto> UpdateOrderShipperAsync(int id, int shipVia)
         {
             var order = await _repository.GetByIdAsync(id);
             if (order == null)
             {
                 throw new NotFoundException($"Order with id {id} not found");
             }
-            _mapper.Map(dto, order);
+            order.ShipVia = shipVia;
             await _repository.UpdateAsync(order);
             return _mapper.Map<OrderDto>(order);
         }

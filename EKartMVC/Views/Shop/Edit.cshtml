@@ -1,0 +1,47 @@
+﻿@model E_Kart_Application.DTOs.ProductsDTO.ProductDto
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-sm rounded-4 mx-auto" style="max-width: 700px;">
+        <div class="card-header bg-dark text-white p-4 rounded-top-4">
+            <h4 class="mb-0 fw-bold">Edit Product</h4>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" name="id" value="@ViewContext.RouteData.Values["id"]" />
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label asp-for="ProductName" class="form-label small fw-bold">Product Name</label>
+                        <input asp-for="ProductName" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="UnitPrice" class="form-label small fw-bold">Unit Price</label>
+                        <input asp-for="UnitPrice" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="UnitsInStock" class="form-label small fw-bold">Stock</label>
+                        <input asp-for="UnitsInStock" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="CategoryId" class="form-label small fw-bold">Category</label>
+                        <select asp-for="CategoryId" class="form-select"
+                                asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "CategoryName"))">
+                            <option value="">-- Select Category --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="SupplierId" class="form-label small fw-bold">Supplier</label>
+                        <select asp-for="SupplierId" class="form-select"
+                                asp-items="@(new SelectList(ViewBag.Suppliers, "SupplierId", "CompanyName"))">
+                            <option value="">-- Select Supplier --</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mt-4 d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-link text-muted px-0">Back to List</a>
+                        <button type="submit" class="btn btn-success px-5 rounded-pill">Update Changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

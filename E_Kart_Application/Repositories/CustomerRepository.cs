@@ -5,6 +5,7 @@ using E_Kart_Application.DTOs.Customersdto;
 using E_Kart_Application.Exceptions;
 using E_Kart_Application.Models;
 using Microsoft.EntityFrameworkCore;
+using EKARTContext = E_Kart_Application.DBContext.EKARTContext;
 
 
 namespace E_Kart_Application.Repositories
@@ -33,12 +34,12 @@ namespace E_Kart_Application.Repositories
 
         public async Task<IEnumerable<Customer>> SearchCustomersAsync(string name)
         {
-            return await _context.Customers.Include(x=>x.Orders).Where(x => x.ContactName!.Contains(name)).ToListAsync();
+            return await _context.Customers.Include(x => x.Orders).Where(x => x.ContactName!.Contains(name)).ToListAsync();
         }
 
         public async Task<IEnumerable<Customer>> GetCustomersByCountryAsync(string country)
         {
-            return await _context.Customers.Include(x=>x.Orders).Where(x => x.Country == country).ToListAsync();
+            return await _context.Customers.Include(x => x.Orders).Where(x => x.Country == country).ToListAsync();
         }
 
         public async Task<IEnumerable<Customer>> GetTopCustomersAsync()
@@ -58,18 +59,20 @@ namespace E_Kart_Application.Repositories
             return customer;
         }
 
-        public async Task<Customer?> LoginAsync(string contactName,string password,string role)
+        public async Task<Customer?> LoginAsync(string contactName, string password, string role)
         {
             string hashedPassword;
             using (SHA256 sha256 = SHA256.Create())
             {
-                byte[] bytes =sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                hashedPassword =BitConverter.ToString(bytes).Replace("-", "");
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                hashedPassword = BitConverter.ToString(bytes).Replace("-", "");
             }
-            return await _context.Customers.FirstOrDefaultAsync(x =>x.ContactName == contactName &&x.PasswordHash == hashedPassword &&x.Role == role);
+            return await _context.Customers.FirstOrDefaultAsync(x => x.ContactName == contactName && x.PasswordHash == hashedPassword && x.Role.ToLower() == role.ToLower());
         }
 
-        public async Task<bool> UpdateCustomerAsync(string id,Customer customer)
+
+
+        public async Task<bool> UpdateCustomerAsync(string id, Customer customer)
         {
             var data = await _context.Customers.FirstOrDefaultAsync(x => x.CustomerId == id);
             if (data == null)
@@ -83,8 +86,10 @@ namespace E_Kart_Application.Repositories
             return true;
         }
 
-        public async Task<bool> UpdateAddressAsync(string id,UpdateAddressDto dto)
+        public async Task<bool> UpdateAddressAsync(string id, string address)
         {
+            if (string.IsNullOrWhiteSpace(address))
+                return false;
             var data = await _context.Customers.FirstOrDefaultAsync(x => x.CustomerId == id);
 
             if (data == null)
@@ -92,20 +97,21 @@ namespace E_Kart_Application.Repositories
                 return false;
             }
 
-            data.Address = dto.Address;
+            data.Address = address;
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<bool> UpdateContactAsync(string id,UpdateContactDto dto)
+        public async Task<bool> UpdateContactAsync(string id, string contactName)
         {
+            if (string.IsNullOrWhiteSpace(contactName))
+                return false;
             var data = await _context.Customers.FirstOrDefaultAsync(x => x.CustomerId == id);
             if (data == null)
             {
                 return false;
             }
-            data.ContactName = dto.ContactName;
-            data.Phone = dto.Phone;
+            data.ContactName = contactName;
             await _context.SaveChangesAsync();
             return true;
         }
@@ -114,4 +120,3 @@ namespace E_Kart_Application.Repositories
 
 
 }
-

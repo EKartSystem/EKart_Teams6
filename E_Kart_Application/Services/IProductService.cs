@@ -8,11 +8,11 @@ namespace E_Kart_Application.Services
         Task<ProductDetailsDto?> GetProductByIdAsync(int productId);
         Task<IEnumerable<ProductListingDto>> GetProductsByCategoryAsync(int categoryId);
         Task<IEnumerable<ProductListingDto>> GetProductsBySupplierAsync(int supplierId);
-        Task<IEnumerable<ExpensiveProductDto>> GetExpensiveProductsAsync();
+        Task<IEnumerable<ProductDetailsDto>> GetExpensiveProductsAsync();
         Task<IEnumerable<ProductListingDto>> SearchProductsAsync(string name);
         Task<IEnumerable<ProductListingDto>> GetInStockProductsAsync();
-        Task<ProductDetailsDto> AddProductAsync(CreateProductDto createDto);
-        Task UpdateProductAsync(int id, UpdateProductDto updateDto);
+        Task<ProductDetailsDto> AddProductAsync(ProductDto createDto);
+        Task UpdateProductAsync(int id, ProductDto updateDto);
         Task UpdatePriceAsync(int id, decimal newPrice);
         Task UpdateStockAsync(int id, short units);
     }

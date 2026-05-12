@@ -22,12 +22,9 @@ namespace E_Kart_Application
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            // 1. Database Configuration
             builder.Services.AddDbContext<EKARTContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // 2. Repository & Service Registrations (All Modules)
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<ILocationRepository, LocationRepository>();
@@ -43,13 +40,11 @@ namespace E_Kart_Application
             builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
-            // Shivansh's Modules
             builder.Services.AddScoped<IShipperRepository, ShipperRepository>();
             builder.Services.AddScoped<IShipperService, ShipperService>();
             builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
             builder.Services.AddScoped<ISupplierService, SupplierService>();
 
-            // 3. Infrastructure (AutoMapper, Filters, Auth Helpers)
             //builder.Services.AddAutoMapper(typeof(MappingProfile));
             //builder.Services.AddAutoMapper(typeof(ShipperMappingProfile));
             //builder.Services.AddAutoMapper(typeof(SupplierMappingProfile));
@@ -57,22 +52,15 @@ namespace E_Kart_Application
             builder.Services.AddScoped<LogActionFilter>();
             builder.Services.AddScoped<TokenService>();
 
-            // 4. Controllers & JSON Configuration
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
                 {
-                    // This stops the infinite loop (Shipper -> Order -> Shipper)
                     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
-
-                    // This makes the output cleaner by hiding null values
                     options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
                 });
 
-            // 5. Validation Configuration
-            builder.Services.AddValidatorsFromAssemblyContaining<AddProductValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<ProductValidator>();
             builder.Services.AddFluentValidationAutoValidation();
-
-            // 6. JWT Authentication Setup
             var jwtKey = builder.Configuration["Jwt:Key"];
             if (!string.IsNullOrEmpty(jwtKey))
             {
@@ -101,15 +89,11 @@ namespace E_Kart_Application
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
-            // 7. Middleware Pipeline
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-            // Custom Global Exception Middleware (Must be high in the pipeline)
             app.UseMiddleware<GlobalExceptionMiddleware>();
 
             app.UseHttpsRedirection();

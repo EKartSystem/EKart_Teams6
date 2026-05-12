@@ -3,7 +3,7 @@ using E_Kart_Application.DTOs.Orders;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
-namespace E_Kart_MVC.Services
+namespace EKartMVC.Services
 {
     public class OrderApiService
     {

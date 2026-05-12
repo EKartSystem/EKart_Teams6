@@ -4,97 +4,68 @@
     ViewData["Title"] = "Product Details";
 }
 
-<div class="container mt-4">
-
-    <h3>Product Details</h3>
-
-    <div class="card shadow-sm mt-3">
-        <div class="card-body">
-
-            <div class="d-flex justify-content-between align-items-start">
-                <div>
-                    <h4 class="fw-bold mb-1">
-                        @Model.ProductName
-                    </h4>
-                    <p class="text-muted mb-2">
-                        Category: @Model.CategoryName
-                    </p>
-                </div>
-
-                <div class="text-primary fw-bold fs-5">
-                    @Model.UnitPrice?.ToString("C")
+<div class="container mt-5">
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="row g-0">
+            <div class="col-md-4 bg-primary text-white p-5 d-flex flex-column justify-content-center align-items-center text-center">
+                <h1 class="display-4 fw-bold mb-0">@Model.UnitPrice?.ToString("C")</h1>
+                <p class="text-white-50 mb-4">Current List Price</p>
+                
+                <div class="w-100">
+                    <div class="d-grid gap-2">
+                        <span class="badge @(Model.IsInStock ? "bg-light text-success" : "bg-danger") py-2 fs-6">
+                            <i class="bi bi-box-seam me-2"></i>@(Model.IsInStock ? "Available" : "Out of Stock")
+                        </span>
+                        @if (Model.Discontinued)
+                        {
+                            <span class="badge bg-warning text-dark py-2">Discontinued</span>
+                        }
+                    </div>
                 </div>
             </div>
 
-            <hr />
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <strong>Category Description:</strong>
-                    <p class="text-muted">
-                        @Model.CategoryDescription
-                    </p>
+            <div class="col-md-8 bg-white p-5">
+                <div class="mb-4">
+                    <h2 class="fw-bold text-dark mb-1">@Model.ProductName</h2>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3">@Model.CategoryName</span>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <strong>Supplier:</strong>
-                    <p class="text-muted">
-                        @Model.SupplierCompanyName
-                    </p>
+                <p class="text-secondary mb-5">@Model.CategoryDescription</p>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-6">
+                        <label class="text-uppercase small fw-bold text-muted d-block mb-1">Supplier</label>
+                        <p class="mb-0 text-dark">@Model.SupplierCompanyName</p>
+                        <small class="text-muted">@Model.SupplierCountry</small>
+                    </div>
+                    <div class="col-6">
+                        <label class="text-uppercase small fw-bold text-muted d-block mb-1">Packaging</label>
+                        <p class="mb-0 text-dark">@Model.QuantityPerUnit</p>
+                    </div>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <strong>Supplier Country:</strong>
-                    <p class="text-muted">
-                        @Model.SupplierCountry
-                    </p>
+                <div class="row g-3 p-3 bg-light rounded-3 border">
+                    <div class="col-4 text-center border-end">
+                        <span class="d-block h5 mb-0 fw-bold">@Model.UnitsInStock</span>
+                        <small class="text-muted text-uppercase" style="font-size: 0.65rem;">In Stock</small>
+                    </div>
+                    <div class="col-4 text-center border-end">
+                        <span class="d-block h5 mb-0 fw-bold">@Model.UnitsOnOrder</span>
+                        <small class="text-muted text-uppercase" style="font-size: 0.65rem;">On Order</small>
+                    </div>
+                    <div class="col-4 text-center">
+                        <span class="d-block h5 mb-0 fw-bold">@Model.ReorderLevel</span>
+                        <small class="text-muted text-uppercase" style="font-size: 0.65rem;">Reorder</small>
+                    </div>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <strong>Quantity Per Unit:</strong>
-                    <p class="text-muted">
-                        @Model.QuantityPerUnit
-                    </p>
+                <div class="mt-5 d-flex justify-content-between align-items-center">
+                    <a asp-action="Index" class="btn btn-link text-decoration-none text-muted p-0">
+                        &larr; Back to Catalog
+                    </a>
+                    <button class="btn btn-primary px-4 rounded-pill shadow-sm">Add to Cart</button>
                 </div>
-
-                <div class="col-md-4 mb-3">
-                    <strong>Units In Stock:</strong>
-                    <p>@Model.UnitsInStock</p>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                    <strong>Units On Order:</strong>
-                    <p>@Model.UnitsOnOrder</p>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                    <strong>Reorder Level:</strong>
-                    <p>@Model.ReorderLevel</p>
-                </div>
-            <hr />
-            <div class="d-flex gap-2">
-                @if (Model.IsInStock)
-                {
-                    <span class="badge bg-success rounded-pill p-2">
-                        In Stock
-                    </span>
-                }
-                else
-                {
-                    <span class="badge bg-danger rounded-pill p-2">
-                        Out of Stock
-                    </span>
-                }
-                @if (Model.Discontinued)
-                {
-                    <span class="badge bg-secondary rounded-pill p-2">
-                        Discontinued
-                    </span>
-                }
             </div>
-            <a asp-action="Index" class="btn btn-outline-secondary mt-4">
-                Back to Products
-            </a>
-
         </div>
     </div>
 </div>

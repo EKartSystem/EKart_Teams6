@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using E_Kart_Application.DTOs.CategoryDto;
+using E_Kart_Application.DTOs.ProductsDTO;
 using E_Kart_Application.Exceptions;
 using E_Kart_Application.Models;
 using E_Kart_Application.Repositories;

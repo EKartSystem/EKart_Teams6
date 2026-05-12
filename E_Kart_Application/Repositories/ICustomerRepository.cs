@@ -30,10 +30,10 @@ namespace E_Kart_Application.Repositories
 
         Task<bool> UpdateAddressAsync(
             string id,
-            UpdateAddressDto dto);
+            string address);
 
         Task<bool> UpdateContactAsync(
             string id,
-            UpdateContactDto dto);
+            string contact);
     }
 }

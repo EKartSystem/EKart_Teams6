@@ -10,7 +10,7 @@
 
         public string? Phone { get; set; }
 
-        public string Role { get; set; } = "Customer";
+        public string Role { get; set; } = string.Empty;
 
         public int TotalOrders { get; set; }
     }

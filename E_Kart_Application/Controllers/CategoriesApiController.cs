@@ -4,14 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace E_Kart_Application.Controllers
 {
-    [Route("api/categories")]
+    [Route("api/[Controller]")]
     [ApiController]
-    public class CategoriesController : ControllerBase
+    public class CategoriesApiController : ControllerBase
     {
         private readonly ICategoryService _service;
-        private readonly ILogger<CategoriesController> _logger;
+        private readonly ILogger<CategoriesApiController> _logger;
 
-        public CategoriesController(ICategoryService service,ILogger<CategoriesController> logger)
+        public CategoriesApiController(ICategoryService service,ILogger<CategoriesApiController> logger)
         {
             _service = service;
             _logger = logger;

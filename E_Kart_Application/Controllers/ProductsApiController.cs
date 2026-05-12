@@ -19,11 +19,13 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles ="Admin,Customer")]
+        [Authorize(Roles ="Admin,Customer")]
         [ServiceFilter(typeof(LogActionFilter))]
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetALlProducts()
         {
             var x = await _service.GetAllProductsAsync();
+            if (x == null)
+                return NotFound("Products Not Found");
             return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
             {
                 Success=true,
@@ -33,10 +35,12 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("{id}")]
-        //[Authorize(Roles = "Admin,Customer")]
+        [Authorize(Roles = "Admin,Customer")]
         public async Task<ActionResult<ProductDetailsDto>> GetProductById(int id)
         {
             var x = await _service.GetProductByIdAsync(id);
+            if (x == null)
+                return NotFound($"No Product Exist with Id : {id}");
             return Ok(new ApiResponse<ProductDetailsDto>
             {
                 Success = true,
@@ -50,6 +54,8 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetInStock()
         {
             var x = await _service.GetInStockProductsAsync();
+            if (x == null)
+                return NotFound("Products Not Found");
             return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
             {
                 Success = true,
@@ -63,6 +69,8 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetProductByCategory(int categoryId)
         {
             var x = await _service.GetProductsByCategoryAsync(categoryId);
+            if (x == null)
+                return NotFound($"Products Not Found with CategoryId : {categoryId}");
             return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
             {
                 Success = true,
@@ -76,6 +84,8 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> GetProductBySuppliers(int supplierId)
         {
             var x = await _service.GetProductsBySupplierAsync(supplierId);
+            if (x == null)
+                return NotFound($"Products Not Found with supplierId : {supplierId}");
             return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
             {
                 Success = true,
@@ -86,9 +96,11 @@ namespace E_Kart_Application.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<ProductDetailsDto>> Create(CreateProductDto createDto)
+        public async Task<ActionResult<ProductDetailsDto>> Create(ProductDto createDto)
         {
             var result = await _service.AddProductAsync(createDto);
+            if (result == null)
+                return BadRequest("Not able to Add Product. Something went wrong");
             return CreatedAtAction(nameof(GetProductById), new { id = result.ProductId },
                 new ApiResponse<ProductDetailsDto>
                  {
@@ -102,8 +114,10 @@ namespace E_Kart_Application.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(int id, UpdateProductDto updateDto)
+        public async Task<IActionResult> Update(int id, ProductDto updateDto)
         {
+            if (updateDto == null) 
+                return BadRequest("Update data is required.");
             await _service.UpdateProductAsync(id, updateDto);
             return NoContent();
         }
@@ -129,6 +143,8 @@ namespace E_Kart_Application.Controllers
         public async Task<ActionResult<IEnumerable<ProductListingDto>>> SearchProductsByName([FromQuery] string name)
         {
             var results = await _service.SearchProductsAsync(name);
+            if (results == null)
+                return NotFound($"Products Not Found with name : {name}");
             return Ok(new ApiResponse<IEnumerable<ProductListingDto>>
             {
                 Success = true,
@@ -139,10 +155,13 @@ namespace E_Kart_Application.Controllers
 
         [HttpGet("expensiveProducts")]
         [ServiceFilter(typeof(LogActionFilter))]
-        public async Task<ActionResult<IEnumerable<ExpensiveProductDto>>> TenExpensiveProduct()
+        [Authorize(Roles = "Admin,Customer")]
+        public async Task<ActionResult<IEnumerable<ProductDetailsDto>>> TenExpensiveProduct()
         {
             var x = await _service.GetExpensiveProductsAsync();
-            return Ok(new ApiResponse<IEnumerable<ExpensiveProductDto>>
+            if (x == null)
+                return NotFound("No Expensive Products Found");
+            return Ok(new ApiResponse<IEnumerable<ProductDetailsDto>>
             {
                 Success = true,
                 Message = "TOP 10 Expensive Products",

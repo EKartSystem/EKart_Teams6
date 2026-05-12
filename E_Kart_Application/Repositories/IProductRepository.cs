@@ -12,7 +12,7 @@ namespace E_Kart_Application.Repositories
         Task<IEnumerable<Product>> SearchProductsByNameAsync(string name);
         Task<IEnumerable<Product>> GetAllProductsInStock();
 
-        Task<IEnumerable<ExpensiveProductDto>> GetExpensiveProductsAsync();
+        Task<IEnumerable<Product>> GetExpensiveProductsAsync();
         Task<Product> AddProductAsync(Product product);
         Task UpdateAsync(Product product);
         Task UpdateProductPriceAsync(int id, decimal newPrice);

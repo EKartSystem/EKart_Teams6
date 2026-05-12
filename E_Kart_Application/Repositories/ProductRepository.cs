@@ -44,9 +44,10 @@ namespace E_Kart_Application.Repositories
             return await _context.Products.Where(x => x.UnitsInStock > 0).Include(x=>x.Category).ToListAsync();
         }
 
-        public async Task<IEnumerable<ExpensiveProductDto>> GetExpensiveProductsAsync()
+        public async Task<IEnumerable<Product>> GetExpensiveProductsAsync()
         {
-            return await _context.Database.SqlQuery<ExpensiveProductDto>($"EXEC [Ten Most Expensive Products]").ToListAsync();
+            return await _context.Products.Include(x => x.Category).Include(x => x.Supplier) 
+            .OrderByDescending(x => x.UnitPrice).Take(10).ToListAsync();
         }
 
         public async Task<Product?> GetProductByIdAsync(int productId)

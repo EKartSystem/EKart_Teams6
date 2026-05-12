@@ -26,8 +26,7 @@ namespace E_Kart_Application.Mappings
                 .ForMember(dest => dest.SupplierCountry, opt => opt.MapFrom(src => src.Supplier.Country))
                 .ForMember(dest => dest.IsInStock, opt => opt.MapFrom(src => src.UnitsInStock > 0));
 
-            CreateMap<CreateProductDto, Product>();
-            CreateMap<UpdateProductDto, Product>();
+            CreateMap<ProductDto, Product>().ReverseMap();
 
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<Category, CreateCategoryDto>().ReverseMap();
@@ -58,15 +57,11 @@ namespace E_Kart_Application.Mappings
                 .ReverseMap();
 
             CreateMap<Customer, UpdateCustomerDto>().ReverseMap();
-            CreateMap<Customer, UpdateAddressDto>().ReverseMap();
-            CreateMap<Customer, UpdateContactDto>().ReverseMap();
 
             CreateMap<Order, OrderDto>();
             CreateMap<CreateOrderDto, Order>();
             CreateMap<UpdateOrderDto, Order>();
             CreateMap<UpdateOrderAddressDto, Order>();
-            CreateMap<UpdateOrderStatusDto, Order>();
-            CreateMap<UpdateOrderShipperDto, Order>();
 
             CreateMap<OrderDetail, OrderDetailResponseDto>().ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName));
             CreateMap<UpdateOrderDetailDto, OrderDetail>();

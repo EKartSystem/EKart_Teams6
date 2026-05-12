@@ -1,5 +1,6 @@
 ﻿using E_Kart_Application.DTOs;
 using E_Kart_Application.DTOs.Customersdto;
+using E_Kart_Application.DTOs.Orders;
 using E_Kart_Application.Models;
 
 namespace E_Kart_Application.Services
@@ -20,7 +21,7 @@ namespace E_Kart_Application.Services
 
         Task<CustomerDto> RegisterCustomerAsync(RegisterCustomerDto dto);
 
-        Task<CustomerDto?> LoginAsync(CustomerLogin  dto);
+        Task<CustomerDto?> LoginAsync(CustomerLogin dto);
 
         Task<bool> UpdateCustomerAsync(
             string id,
@@ -28,10 +29,10 @@ namespace E_Kart_Application.Services
 
         Task<bool> UpdateAddressAsync(
             string id,
-            UpdateAddressDto dto);
+             string address);
 
         Task<bool> UpdateContactAsync(
             string id,
-            UpdateContactDto dto);
+            string contactName);
     }
 }

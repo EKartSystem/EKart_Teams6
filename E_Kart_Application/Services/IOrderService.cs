@@ -11,8 +11,8 @@ namespace E_Kart_Application.Services
         Task<IEnumerable<OrderDto>> GetOrdersByShipperAsync(int shipperId);
         Task<OrderDto> CreateOrderAsync(CreateOrderDto dto);
         Task<OrderDto?> UpdateOrderAsync(int id, UpdateOrderDto dto);
-        Task<OrderDto?> UpdateOrderStatusAsync(int id, UpdateOrderStatusDto dto);
+        Task<OrderDto?> UpdateOrderStatusAsync(int id, DateTime? shippedDate);
         Task<OrderDto?> UpdateOrderAddressAsync(int id, UpdateOrderAddressDto dto);
-        Task<OrderDto?> UpdateOrderShipperAsync(int id, UpdateOrderShipperDto dto);
+        Task<OrderDto?> UpdateOrderShipperAsync(int id, int shipVia);
     }
 }

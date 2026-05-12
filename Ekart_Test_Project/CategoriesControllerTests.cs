@@ -11,15 +11,15 @@ namespace E_Kart_Application.Tests.Controllers
     public class CategoriesControllerTests
     {
         private readonly Mock<ICategoryService> _serviceMock;
-        private readonly Mock<ILogger<CategoriesController>> _loggerMock;
-        private readonly CategoriesController _controller;
+        private readonly Mock<ILogger<CategoriesApiController>> _loggerMock;
+        private readonly CategoriesApiController _controller;
 
         public CategoriesControllerTests()
         {
             _serviceMock = new Mock<ICategoryService>();
-            _loggerMock = new Mock<ILogger<CategoriesController>>();
+            _loggerMock = new Mock<ILogger<CategoriesApiController>>();
 
-            _controller = new CategoriesController(
+            _controller = new CategoriesApiController(
                 _serviceMock.Object,
                 _loggerMock.Object);
         }

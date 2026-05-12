@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace E_Kart_Application.Validators
 {
-    public class AddProductValidator : AbstractValidator<CreateProductDto>
+    public class ProductValidator : AbstractValidator<ProductDto>
     {
-        public AddProductValidator()
+        public ProductValidator()
         {
             RuleFor(x => x.ProductName).NotEmpty().MaximumLength(100);
             RuleFor(x => x.UnitPrice).NotNull().GreaterThan(0);
