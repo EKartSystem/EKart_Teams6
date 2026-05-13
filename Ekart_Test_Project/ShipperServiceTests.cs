@@ -16,9 +16,9 @@ public class ShipperServiceTests
 
     public ShipperServiceTests()
     {
-        _mockRepo   = new Mock<IShipperRepository>();
+        _mockRepo = new Mock<IShipperRepository>();
         _mockMapper = new Mock<IMapper>();
-        _service    = new ShipperService(_mockRepo.Object, _mockMapper.Object);
+        _service = new ShipperService(_mockRepo.Object, _mockMapper.Object);
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public class ShipperServiceTests
     [Fact]
     public async Task GetByIdAsync_ExistingId_ReturnsShipperDto()
     {
-        var shipper    = new Shipper { ShipperId = 1, CompanyName = "Speedy Express", Phone = "(503) 555-9831" };
+        var shipper = new Shipper { ShipperId = 1, CompanyName = "Speedy Express", Phone = "(503) 555-9831" };
         var shipperDto = new ShipperDto { ShipperId = 1, CompanyName = "Speedy Express", Phone = "(503) 555-9831" };
 
         _mockRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(shipper);
@@ -73,15 +73,15 @@ public class ShipperServiceTests
     [Fact]
     public async Task CreateAsync_ValidDto_ReturnsCreatedShipperDto()
     {
-        var createDto  = new CreateShipperDto { CompanyName = "TestShipper", Phone = "1234567890" };
-        var shipper    = new Shipper { ShipperId = 4, CompanyName = "TestShipper", Phone = "1234567890" };
+        var requestDto = new ShipperRequestDto { CompanyName = "TestShipper", Phone = "1234567890" };
+        var shipper = new Shipper { ShipperId = 4, CompanyName = "TestShipper", Phone = "1234567890" };
         var shipperDto = new ShipperDto { ShipperId = 4, CompanyName = "TestShipper", Phone = "1234567890" };
 
-        _mockMapper.Setup(m => m.Map<Shipper>(createDto)).Returns(shipper);
+        _mockMapper.Setup(m => m.Map<Shipper>(requestDto)).Returns(shipper);
         _mockRepo.Setup(r => r.CreateAsync(shipper)).ReturnsAsync(shipper);
         _mockMapper.Setup(m => m.Map<ShipperDto>(shipper)).Returns(shipperDto);
 
-        var result = await _service.CreateAsync(createDto);
+        var result = await _service.CreateAsync(requestDto);
 
         Assert.NotNull(result);
         Assert.Equal(4, result.ShipperId);
@@ -91,14 +91,14 @@ public class ShipperServiceTests
     [Fact]
     public async Task UpdateAsync_ExistingId_ReturnsTrue()
     {
-        var updateDto = new UpdateShipperDto { CompanyName = "Updated Express", Phone = "9999999999" };
-        var existing  = new Shipper { ShipperId = 1, CompanyName = "Speedy Express", Phone = "(503) 555-9831" };
+        var requestDto = new ShipperRequestDto { CompanyName = "Updated Express", Phone = "9999999999" };
+        var existing = new Shipper { ShipperId = 1, CompanyName = "Speedy Express", Phone = "(503) 555-9831" };
 
         _mockRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(existing);
-        _mockMapper.Setup(m => m.Map(updateDto, existing));
+        _mockMapper.Setup(m => m.Map(requestDto, existing));
         _mockRepo.Setup(r => r.UpdateAsync(existing)).ReturnsAsync(true);
 
-        var result = await _service.UpdateAsync(1, updateDto);
+        var result = await _service.UpdateAsync(1, requestDto);
 
         Assert.True(result);
     }
@@ -106,11 +106,11 @@ public class ShipperServiceTests
     [Fact]
     public async Task UpdateAsync_NonExistingId_ReturnsFalse()
     {
-        var updateDto = new UpdateShipperDto { CompanyName = "Ghost Shipper", Phone = "0000000000" };
+        var requestDto = new ShipperRequestDto { CompanyName = "Ghost Shipper", Phone = "0000000000" };
 
         _mockRepo.Setup(r => r.GetByIdAsync(999)).ReturnsAsync((Shipper?)null);
 
-        var result = await _service.UpdateAsync(999, updateDto);
+        var result = await _service.UpdateAsync(999, requestDto);
 
         Assert.False(result);
     }

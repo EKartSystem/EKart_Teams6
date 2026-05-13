@@ -16,9 +16,9 @@ public class SupplierServiceTests
 
     public SupplierServiceTests()
     {
-        _mockRepo   = new Mock<ISupplierRepository>();
+        _mockRepo = new Mock<ISupplierRepository>();
         _mockMapper = new Mock<IMapper>();
-        _service    = new SupplierService(_mockRepo.Object, _mockMapper.Object);
+        _service = new SupplierService(_mockRepo.Object, _mockMapper.Object);
     }
 
     [Fact]
@@ -26,9 +26,9 @@ public class SupplierServiceTests
     {
         var suppliers = new List<Supplier>
         {
-            new Supplier { SupplierId = 1, CompanyName = "Exotic Liquids",   Country = "UK"  },
-            new Supplier { SupplierId = 2, CompanyName = "Tokyo Traders",    Country = "Japan" },
-            new Supplier { SupplierId = 3, CompanyName = "Grandma Kelly's",  Country = "USA" }
+            new Supplier { SupplierId = 1, CompanyName = "Exotic Liquids",  Country = "UK"    },
+            new Supplier { SupplierId = 2, CompanyName = "Tokyo Traders",   Country = "Japan" },
+            new Supplier { SupplierId = 3, CompanyName = "Grandma Kelly's", Country = "USA"   }
         };
         var supplierDtos = new List<SupplierDto>
         {
@@ -49,7 +49,7 @@ public class SupplierServiceTests
     [Fact]
     public async Task GetByIdAsync_ExistingId_ReturnsSupplierDto()
     {
-        var supplier    = new Supplier { SupplierId = 1, CompanyName = "Exotic Liquids", Country = "UK" };
+        var supplier = new Supplier { SupplierId = 1, CompanyName = "Exotic Liquids", Country = "UK" };
         var supplierDto = new SupplierDto { SupplierId = 1, CompanyName = "Exotic Liquids", Country = "UK" };
 
         _mockRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(supplier);
@@ -75,21 +75,21 @@ public class SupplierServiceTests
     [Fact]
     public async Task CreateAsync_ValidDto_ReturnsCreatedSupplierDto()
     {
-        var createDto = new CreateSupplierDto
+        var requestDto = new SupplierRequestDto
         {
-            CompanyName  = "TestSupplier",
-            ContactName  = "Test Person",
-            Country      = "India",
-            Phone        = "9876543210"
+            CompanyName = "TestSupplier",
+            ContactName = "Test Person",
+            Country = "India",
+            Phone = "9876543210"
         };
-        var supplier    = new Supplier { SupplierId = 31, CompanyName = "TestSupplier", Country = "India" };
+        var supplier = new Supplier { SupplierId = 31, CompanyName = "TestSupplier", Country = "India" };
         var supplierDto = new SupplierDto { SupplierId = 31, CompanyName = "TestSupplier", Country = "India" };
 
-        _mockMapper.Setup(m => m.Map<Supplier>(createDto)).Returns(supplier);
+        _mockMapper.Setup(m => m.Map<Supplier>(requestDto)).Returns(supplier);
         _mockRepo.Setup(r => r.CreateAsync(supplier)).ReturnsAsync(supplier);
         _mockMapper.Setup(m => m.Map<SupplierDto>(supplier)).Returns(supplierDto);
 
-        var result = await _service.CreateAsync(createDto);
+        var result = await _service.CreateAsync(requestDto);
 
         Assert.NotNull(result);
         Assert.Equal(31, result.SupplierId);
@@ -99,14 +99,14 @@ public class SupplierServiceTests
     [Fact]
     public async Task UpdateAsync_ExistingId_ReturnsTrue()
     {
-        var updateDto = new UpdateSupplierDto { CompanyName = "Updated Supplier", Country = "France" };
-        var existing  = new Supplier { SupplierId = 1, CompanyName = "Exotic Liquids", Country = "UK" };
+        var requestDto = new SupplierRequestDto { CompanyName = "Updated Supplier", Country = "France" };
+        var existing = new Supplier { SupplierId = 1, CompanyName = "Exotic Liquids", Country = "UK" };
 
         _mockRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(existing);
-        _mockMapper.Setup(m => m.Map(updateDto, existing));
+        _mockMapper.Setup(m => m.Map(requestDto, existing));
         _mockRepo.Setup(r => r.UpdateAsync(existing)).ReturnsAsync(true);
 
-        var result = await _service.UpdateAsync(1, updateDto);
+        var result = await _service.UpdateAsync(1, requestDto);
 
         Assert.True(result);
     }
@@ -114,11 +114,11 @@ public class SupplierServiceTests
     [Fact]
     public async Task UpdateAsync_NonExistingId_ReturnsFalse()
     {
-        var updateDto = new UpdateSupplierDto { CompanyName = "Ghost Supplier", Country = "Nowhere" };
+        var requestDto = new SupplierRequestDto { CompanyName = "Ghost Supplier", Country = "Nowhere" };
 
         _mockRepo.Setup(r => r.GetByIdAsync(999)).ReturnsAsync((Supplier?)null);
 
-        var result = await _service.UpdateAsync(999, updateDto);
+        var result = await _service.UpdateAsync(999, requestDto);
 
         Assert.False(result);
     }
@@ -154,10 +154,10 @@ public class SupplierServiceTests
     {
         var patchDto = new PatchSupplierContactDto
         {
-            ContactName  = "New Contact",
+            ContactName = "New Contact",
             ContactTitle = "Manager",
-            Phone        = "1112223333",
-            Fax          = "4445556666"
+            Phone = "1112223333",
+            Fax = "4445556666"
         };
 
         _mockRepo.Setup(r => r.UpdateContactAsync(1, patchDto)).ReturnsAsync(true);
