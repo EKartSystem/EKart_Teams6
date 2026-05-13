@@ -40,7 +40,6 @@ namespace E_Kart_Application
 
             builder.Services.AddFluentValidationAutoValidation();
 
-            builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryValidator>();
 
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 

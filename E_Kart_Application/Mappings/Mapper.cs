@@ -10,51 +10,33 @@ namespace E_Kart_Application.Mappings
     {
         public MappingProfile()
         {
+            
             CreateMap<Category, CategoryDto>()
+                .ForMember(
+                    dest => dest.ProductCount,
+                    opt => opt.MapFrom(
+                        src => src.Products.Count))
                 .ReverseMap();
-
-            CreateMap<Category, CreateCategoryDto>()
-                .ReverseMap();
-
-            CreateMap<Category, UpdateCategoryDto>()
-                .ReverseMap();
-
-            CreateMap<Category, UpdateCategoryNameDto>()
-                .ReverseMap();
-
-            CreateMap<Category, UpdateCategoryDescriptionDto>()
-                .ReverseMap();
-
+            CreateMap<Category, ResponseCategoryDto>().ReverseMap();
             CreateMap<Product, ProductListingDto>()
                 .ForMember(
                     dest => dest.CategoryName,
-                    opt => opt.MapFrom(src => src.Category.CategoryName)
-                )
+                    opt => opt.MapFrom(
+                        src => src.Category.CategoryName))
 
                 .ForMember(
                     dest => dest.IsInStock,
-                    opt => opt.MapFrom(src => src.UnitsInStock > 0)
-                )
-
-                .ReverseMap();
-
-            CreateMap<Category, CategoryWithProductCountDto>()
-                .ForMember(
-                    dest => dest.ProductCount,
-                    opt => opt.MapFrom(src => src.Products.Count)
-                );
+                    opt => opt.MapFrom(
+                        src => src.UnitsInStock > 0));
             //employee
-            CreateMap<Employee, EmployeeDto>()
+            CreateMap<Employee, ResponseEmployeeDto>()
      .ReverseMap();
             CreateMap<Territory,TerritoryDto>().ReverseMap();
-            CreateMap<Employee, CreateEmployeeDto>()
-                .ReverseMap();
+           
 
-            CreateMap<Employee, UpdateEmployeeDto>()
-                .ReverseMap();
+           
 
-            CreateMap<Employee, UpdateEmployeeTitleDto>()
-                .ReverseMap();
+           
 
             CreateMap<Employee, EmployeeListingDto>()
                 .ForMember(

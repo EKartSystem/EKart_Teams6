@@ -27,7 +27,7 @@ namespace E_Kart_Application.Services
             return _mapper.Map< IEnumerable<EmployeeListingDto>>(data);
         }
 
-        public async Task<EmployeeDto?>GetEmployeeByIdAsync(int id)
+        public async Task<ResponseEmployeeDto?>GetEmployeeByIdAsync(int id)
         {
             var data = await _repository.GetEmployeeByIdAsync(id);
 
@@ -37,7 +37,7 @@ namespace E_Kart_Application.Services
                     "Employee not found");
             }
 
-            return _mapper.Map<EmployeeDto>(data);
+            return _mapper.Map<ResponseEmployeeDto>(data);
         }
 
         public async Task<IEnumerable<EmployeeListingDto>>GetManagersAsync()
@@ -47,14 +47,14 @@ namespace E_Kart_Application.Services
             return _mapper.Map<IEnumerable<EmployeeListingDto>>(data);
         }
 
-        public async Task<IEnumerable<EmployeeDto>>GetEmployeesUnderManagerAsync(int id)
+        public async Task<IEnumerable<ResponseEmployeeDto>>GetEmployeesUnderManagerAsync(int id)
         {
             var data = await _repository.GetEmployeesUnderManagerAsync(id);
 
-            return _mapper.Map<IEnumerable<EmployeeDto>>(data);
+            return _mapper.Map<IEnumerable<ResponseEmployeeDto>>(data);
         }
 
-        public async Task<EmployeeDto> AddEmployeeAsync(CreateEmployeeDto dto)
+        public async Task<ResponseEmployeeDto> AddEmployeeAsync(ResponseEmployeeDto dto)
         {
             if (dto.ReportsTo != null)
             {
@@ -73,10 +73,10 @@ namespace E_Kart_Application.Services
 
             var data = await _repository.AddEmployeeAsync(employee);
 
-            return _mapper.Map<EmployeeDto>(data);
+            return _mapper.Map<ResponseEmployeeDto>(data);
         }
 
-        public async Task<bool>UpdateEmployeeAsync(int id, UpdateEmployeeDto dto)
+        public async Task<bool>UpdateEmployeeAsync(int id, ResponseEmployeeDto dto)
         {
             var existingEmployee =await _repository.GetEmployeeByIdAsync(id);
 
@@ -105,17 +105,21 @@ namespace E_Kart_Application.Services
             return await _repository.UpdateEmployeeAsync(id,employee);
         }
 
-        public async Task<bool>UpdateEmployeeTitleAsync(int id, UpdateEmployeeTitleDto dto)
-        {
-            var employee = await _repository.GetEmployeeByIdAsync(id);
+       public async Task<bool> UpdateEmployeeTitleAsync(int id, string title)
+{
+    var employee = await _repository.GetEmployeeByIdAsync(id);
 
-            if (employee == null)
-            {
-                throw new NotFoundException("Employee not found");
-            }
+    if (employee == null)
+    {
+        return false;
+    }
 
-            return await _repository.UpdateEmployeeTitleAsync(id,dto.Title!);
-        }
+    employee.Title = title;
+
+    await _repository.UpdateEmployeeAsync(id, employee);
+
+    return true;
+}
 
         public async Task<IEnumerable<TerritoryDto>> GetEmployeeTerritory(int id)
         {

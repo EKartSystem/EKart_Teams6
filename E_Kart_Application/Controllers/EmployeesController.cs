@@ -69,7 +69,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddEmployee(CreateEmployeeDto dto)
+        public async Task<IActionResult> AddEmployee(ResponseEmployeeDto dto)
         {
             var data = await _service.AddEmployeeAsync(dto);
 
@@ -79,7 +79,7 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmployee( int id, UpdateEmployeeDto dto)
+        public async Task<IActionResult> UpdateEmployee( int id, ResponseEmployeeDto dto)
         {
             var result = await _service.UpdateEmployeeAsync(id, dto);
 
@@ -96,9 +96,9 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPatch("{id}/title")]
-        public async Task<IActionResult> UpdateEmployeeTitle(int id,UpdateEmployeeTitleDto dto)
+        public async Task<IActionResult> UpdateEmployeeTitle(int id, [FromBody] string title)
         {
-            var result = await _service.UpdateEmployeeTitleAsync(id, dto);
+            var result = await _service.UpdateEmployeeTitleAsync(id, title);
 
             if (!result)
             {

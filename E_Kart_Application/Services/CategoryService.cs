@@ -1,139 +1,96 @@
 ﻿using AutoMapper;
 using E_Kart_Application.DTOs.CategoryDto;
-using E_Kart_Application.Exceptions;
 using E_Kart_Application.Models;
 using E_Kart_Application.Repositories;
-using NuGet.Protocol.Core.Types;
 
 namespace E_Kart_Application.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly ICategoryRepository _repository;
+        private readonly ICategoryRepository _repo;
+
         private readonly IMapper _mapper;
 
-        public CategoryService(
-            ICategoryRepository repository,
-            IMapper mapper)
+        public CategoryService(ICategoryRepository repo, IMapper mapper)
         {
-            _repository = repository;
+            _repo = repo;
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CategoryDto>>GetCategoriesAsync()
+        public async Task<IEnumerable<ResponseCategoryDto>> GetCategoriesAsync()
         {
-            var data = await _repository.GetCategoriesAsync();
+            var data = await _repo.GetCategoriesAsync();
 
-            return _mapper.Map<IEnumerable<CategoryDto>>(data);
+            return _mapper.Map <IEnumerable<ResponseCategoryDto>>(data);
         }
 
-        public async Task<CategoryDto?>GetCategoryByIdAsync(int id)
+        public async Task<ResponseCategoryDto?>GetCategoryByIdAsync(int id)
         {
-            var data = await _repository.GetCategoryByIdAsync(id);
-
-            if (data == null)
-            {
-                throw new NotFoundException("Category not found");
-            }
-
-            return _mapper.Map<CategoryDto>(data);
+            var data =await _repo.GetCategoryByIdAsync(id);
+           return _mapper.Map<ResponseCategoryDto>(data);
         }
 
-        public async Task<IEnumerable<ProductListingDto>>GetProductsByCategoryAsync(int id)
+        public async Task<IEnumerable<ProductListingDto>> GetProductsByCategoryAsync(int id)
         {
-            var category = await _repository.GetCategoryByIdAsync(id);
-
-            if (category == null)
-            {
-                throw new NotFoundException(
-                    "Category not found");
-            }
-
-            var data = await _repository.GetProductsByCategoryAsync(id);
+            var data = await _repo.GetProductsByCategoryAsync(id);
 
             return _mapper.Map<IEnumerable<ProductListingDto>>(data);
         }
 
-        public async Task<IEnumerable<CategoryDto>>SearchCategoriesAsync(string name)
+        public async Task<IEnumerable<ResponseCategoryDto>> SearchCategoriesAsync(string name)
         {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new BadRequestException("Category name is required");
-            }
+            var data =await _repo.SearchCategoriesAsync(name);
 
-            var data = await _repository.SearchCategoriesAsync(name);
-
-            return _mapper.Map<IEnumerable<CategoryDto>>(data);
+            return _mapper.Map <IEnumerable<ResponseCategoryDto>>(data);
         }
 
-        public async Task<IEnumerable<CategoryWithProductCountDto>>GetCategoriesWithProductCountAsync()
+        public async Task<IEnumerable<CategoryDto>> GetCategoriesWithProductCountAsync()
         {
-            var data = await _repository.GetCategoriesWithProductCountAsync();
+            var data = await _repo.GetCategoriesWithProductCountAsync();
 
-            return _mapper.Map <IEnumerable<CategoryWithProductCountDto>>(data);
+            return _mapper.Map <IEnumerable<CategoryDto>>(data);
         }
 
-        public async Task<IEnumerable<CategoryDto>> GetEmptyCategoriesAsync()
+        public async Task<IEnumerable<ResponseCategoryDto>>GetEmptyCategoriesAsync()
         {
-            var data = await _repository.GetEmptyCategoriesAsync();
+            var data = await _repo.GetEmptyCategoriesAsync();
 
-            return _mapper.Map<IEnumerable<CategoryDto>>(data);
+            return _mapper.Map <IEnumerable<ResponseCategoryDto>>(data);
         }
 
-        public async Task<CategoryDto>AddCategoryAsync(CreateCategoryDto dto)
+        public async Task<ResponseCategoryDto>AddCategoryAsync(ResponseCategoryDto dto)
         {
-            var categories = await _repository.SearchCategoriesAsync(dto.CategoryName!);
+            var category =
+                _mapper.Map<Category>(dto);
 
-            if (categories.Any())
-            {
-                throw new BadRequestException("Category already exists");
-            }
+            var data =
+                await _repo.AddCategoryAsync(category);
 
-            var category = _mapper.Map<Category>(dto);
-
-            var result = await _repository.AddCategoryAsync(category);
-
-            return _mapper.Map<CategoryDto>(result);
+            return _mapper.Map<ResponseCategoryDto>(data);
         }
 
-        public async Task<bool> UpdateCategoryAsync(int id,UpdateCategoryDto dto)
+        public async Task<bool>UpdateCategoryAsync(int id,ResponseCategoryDto dto)
         {
-            var existingCategory = await _repository.GetCategoryByIdAsync(id);
-
-            if (existingCategory == null)
-            {
-                throw new NotFoundException("Category not found");
-            }
-
-            var category = _mapper.Map<Category>(dto);
-
-            category.CategoryId = id;
-
-            return await _repository.UpdateCategoryAsync(category);
-        }
-
-        public async Task<bool>UpdateCategoryNameAsync(int id,UpdateCategoryNameDto dto)
-        {
-            var category = await _repository.GetCategoryByIdAsync(id);
+            var category =await _repo.GetCategoryByIdAsync(id);
 
             if (category == null)
             {
-                throw new NotFoundException("Category not found");
+                return false;
             }
 
-            return await _repository.UpdateCategoryNameAsync(id,dto.CategoryName!);
+            _mapper.Map(dto, category);
+
+            return await _repo .UpdateCategoryAsync(category);
         }
 
-        public async Task<bool>UpdateCategoryDescriptionAsync( int id, UpdateCategoryDescriptionDto dto)
+        public async Task<bool>UpdateCategoryNameAsync( int id,string? name)
         {
-            var category = await _repository.GetCategoryByIdAsync(id);
+            return await _repo .UpdateCategoryNameAsync( id, name);
+        }
 
-            if (category == null)
-            {
-                throw new NotFoundException("Category not found");
-            }
-
-            return await _repository.UpdateCategoryDescriptionAsync( id, dto.Description!);
+        public async Task<bool> UpdateCategoryDescriptionAsync(int id, string? description)
+        {
+            return await _repo.UpdateCategoryDescriptionAsync(id, description);
         }
     }
 }

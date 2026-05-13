@@ -4,7 +4,7 @@ using FluentValidation;
 namespace E_Kart_Application.Validators
 {
     public class CreateEmployeeValidator
-        : AbstractValidator<CreateEmployeeDto>
+        : AbstractValidator<ResponseEmployeeDto>
     {
         public CreateEmployeeValidator()
         {

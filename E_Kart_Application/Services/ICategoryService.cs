@@ -4,29 +4,24 @@ namespace E_Kart_Application.Services
 {
     public interface ICategoryService
     {
-        Task<IEnumerable<CategoryDto>> GetCategoriesAsync();
+        Task<IEnumerable<ResponseCategoryDto>> GetCategoriesAsync();
 
-        Task<CategoryDto?> GetCategoryByIdAsync(int id);
+        Task<ResponseCategoryDto?> GetCategoryByIdAsync(int id);
 
         Task<IEnumerable<ProductListingDto>> GetProductsByCategoryAsync(int id);
 
-        Task<IEnumerable<CategoryDto>> SearchCategoriesAsync(string name);
+        Task<IEnumerable<ResponseCategoryDto>> SearchCategoriesAsync(string name);
 
-        Task<IEnumerable<CategoryWithProductCountDto>>
-            GetCategoriesWithProductCountAsync();
+        Task<IEnumerable<CategoryDto>>GetCategoriesWithProductCountAsync();
 
-        Task<IEnumerable<CategoryDto>> GetEmptyCategoriesAsync();
+        Task<IEnumerable<ResponseCategoryDto>>GetEmptyCategoriesAsync();
 
-        Task<CategoryDto> AddCategoryAsync(CreateCategoryDto dto);
+        Task<ResponseCategoryDto>AddCategoryAsync(ResponseCategoryDto dto);
 
-        Task<bool> UpdateCategoryAsync(int id, UpdateCategoryDto dto);
+        Task<bool> UpdateCategoryAsync(int id,ResponseCategoryDto dto);
 
-        Task<bool> UpdateCategoryNameAsync(
-            int id,
-            UpdateCategoryNameDto dto);
+        Task<bool> UpdateCategoryNameAsync(int id, string? name);
 
-        Task<bool> UpdateCategoryDescriptionAsync(
-            int id,
-            UpdateCategoryDescriptionDto dto);
+        Task<bool> UpdateCategoryDescriptionAsync(int id, string? description);
     }
 }

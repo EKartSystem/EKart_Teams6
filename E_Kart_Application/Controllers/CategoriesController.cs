@@ -1,20 +1,20 @@
 ﻿using E_Kart_Application.DTOs.CategoryDto;
+using E_Kart_Application.Exceptions;
 using E_Kart_Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Kart_Application.Controllers
 {
-    [Route("api/categories")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _service;
-        private readonly ILogger<CategoriesController> _logger;
 
-        public CategoriesController(ICategoryService service,ILogger<CategoriesController> logger)
+        public CategoriesController(
+            ICategoryService service)
         {
             _service = service;
-            _logger = logger;
         }
 
         [HttpGet]
@@ -22,7 +22,8 @@ namespace E_Kart_Application.Controllers
         {
             var data = await _service.GetCategoriesAsync();
 
-            _logger.LogInformation("Categories fetched");
+            if (!data.Any())
+                throw new NotFoundException("No categories found");
 
             return Ok(data);
         }
@@ -33,13 +34,7 @@ namespace E_Kart_Application.Controllers
             var data = await _service.GetCategoryByIdAsync(id);
 
             if (data == null)
-            {
-                _logger.LogWarning("Category not found");
-
-                return NotFound("Category not found");
-            }
-
-            _logger.LogInformation("Category fetched");
+                throw new NotFoundException($"Category with id {id} not found");
 
             return Ok(data);
         }
@@ -49,17 +44,22 @@ namespace E_Kart_Application.Controllers
         {
             var data = await _service.GetProductsByCategoryAsync(id);
 
-            _logger.LogInformation("Products fetched");
+            if (!data.Any())
+                throw new NotFoundException("No products found");
 
             return Ok(data);
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchCategories(string name)
+        public async Task<IActionResult> SearchCategories([FromQuery] string name)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new BadRequestException("Category name is required");
+
             var data = await _service.SearchCategoriesAsync(name);
 
-            _logger.LogInformation("Categories searched");
+            if (!data.Any())
+                throw new NotFoundException("No matching categories found");
 
             return Ok(data);
         }
@@ -69,7 +69,8 @@ namespace E_Kart_Application.Controllers
         {
             var data = await _service.GetCategoriesWithProductCountAsync();
 
-            _logger.LogInformation("Categories with product count fetched");
+            if (!data.Any())
+                throw new NotFoundException("No categories found");
 
             return Ok(data);
         }
@@ -79,70 +80,69 @@ namespace E_Kart_Application.Controllers
         {
             var data = await _service.GetEmptyCategoriesAsync();
 
-            _logger.LogInformation("Empty categories fetched");
+            if (!data.Any())
+                throw new NotFoundException("No empty categories found");
 
             return Ok(data);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCategory(CreateCategoryDto dto)
+        public async Task<IActionResult> AddCategory([FromBody] ResponseCategoryDto dto)
         {
-            var data = await _service.AddCategoryAsync(dto);
+            if (dto == null)
+                throw new BadRequestException("Invalid category data");
 
-            _logger.LogInformation("Category created");
+            if (string.IsNullOrWhiteSpace(dto.CategoryName))
+                throw new BadRequestException("Category name is required");
+
+            var data = await _service.AddCategoryAsync(dto);
 
             return Ok(data);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCategory(int id, UpdateCategoryDto dto)
+        public async Task<IActionResult> UpdateCategory(int id, [FromBody] ResponseCategoryDto dto)
         {
+            if (dto == null)
+                throw new BadRequestException("Invalid category data");
+
+            if (string.IsNullOrWhiteSpace(dto.CategoryName))
+                throw new BadRequestException("Category name is required");
+
             var result = await _service.UpdateCategoryAsync(id, dto);
 
             if (!result)
-            {
-                _logger.LogWarning("Category not found");
+                throw new NotFoundException($"Category with id {id} not found");
 
-                return NotFound("Category not found");
-            }
-
-            _logger.LogInformation("Category updated");
-
-            return Ok("Category updated successfully");
+            return Ok();
         }
 
         [HttpPatch("{id}/name")]
-        public async Task<IActionResult> UpdateCategoryName(int id, UpdateCategoryNameDto dto)
+        public async Task<IActionResult> UpdateCategoryName(int id, [FromBody] string name)
         {
-            var result = await _service.UpdateCategoryNameAsync(id, dto);
+            if (string.IsNullOrWhiteSpace(name))
+                throw new BadRequestException("Category name is required");
+
+            var result = await _service.UpdateCategoryNameAsync(id, name);
 
             if (!result)
-            {
-                _logger.LogWarning("Category not found");
+                throw new NotFoundException($"Category with id {id} not found");
 
-                return NotFound("Category not found");
-            }
-
-            _logger.LogInformation("Category name updated");
-
-            return Ok("Category name updated successfully");
+            return Ok();
         }
 
         [HttpPatch("{id}/description")]
-        public async Task<IActionResult> UpdateCategoryDescription(int id, UpdateCategoryDescriptionDto dto)
+        public async Task<IActionResult> UpdateCategoryDescription(int id, [FromBody] string description)
         {
-            var result = await _service.UpdateCategoryDescriptionAsync(id, dto);
+            if (string.IsNullOrWhiteSpace(description))
+                throw new BadRequestException("Description is required");
+
+            var result = await _service.UpdateCategoryDescriptionAsync(id, description);
 
             if (!result)
-            {
-                _logger.LogWarning("Category not found");
+                throw new NotFoundException($"Category with id {id} not found");
 
-                return NotFound("Category not found");
-            }
-
-            _logger.LogInformation("Category description updated");
-
-            return Ok("Category description updated successfully");
+            return Ok();
         }
     }
 }
