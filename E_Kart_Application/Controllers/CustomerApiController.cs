@@ -47,7 +47,7 @@ namespace E_Kart_Application.Controllers
             if (data == null)
             {
                 _logger.LogWarning("Customer not found for id: {id}", id);
-                return NotFound("Customer not found");  
+                throw new NotFoundException ("Customer not found");
             }
 
             _logger.LogInformation("Customer fetched");
@@ -65,7 +65,7 @@ namespace E_Kart_Application.Controllers
             if (data == null || !data.Any())
             {
                 _logger.LogWarning("No orders found for customer id: {id}", id);
-                return NotFound("No orders found");   
+                throw new NotFoundException("No orders found");
             }
 
             _logger.LogInformation("Customer orders fetched");
@@ -82,7 +82,7 @@ namespace E_Kart_Application.Controllers
             if (data == null || !data.Any())
             {
                 _logger.LogWarning("No customers found for name: {name}", name);
-                return NotFound("No customers found");   
+                throw new NotFoundException ("No customers found");
             }
 
             _logger.LogInformation("Customers found");
@@ -100,11 +100,11 @@ namespace E_Kart_Application.Controllers
             if (data == null || !data.Any())
             {
                 _logger.LogWarning("No customers found for country: {country}", country);
-                return NotFound("No customers found");   
+                throw new NotFoundException ("No customers found");
             }
 
             _logger.LogInformation("Customers by country fetched");
-            return Ok(data);  
+            return Ok(data);
         }
 
         [HttpGet("top")]
@@ -117,7 +117,7 @@ namespace E_Kart_Application.Controllers
             if (data == null || !data.Any())
             {
                 _logger.LogWarning("No top customers found");
-                return NoContent();   
+                throw new NotFoundException("No top customers found");
             }
 
             _logger.LogInformation("Top customers fetched");
@@ -133,7 +133,7 @@ namespace E_Kart_Application.Controllers
             if (data == null)
             {
                 _logger.LogWarning("Customer registration failed");
-                return BadRequest("Registration failed");   
+                throw new BadRequestException("Registration failed");
             }
 
             _logger.LogInformation("Customer registered");
@@ -149,7 +149,7 @@ namespace E_Kart_Application.Controllers
                 throw new BadRequestException("Invalid Credentials");
             var token = _tokenService.CreateToken(data);
             _logger.LogInformation("Customer logged in");
-            return Ok(new { token });
+            return Ok(new { Token = token });
         }
 
         [HttpPut("{id}")]
@@ -162,7 +162,7 @@ namespace E_Kart_Application.Controllers
             if (!result)
             {
                 _logger.LogWarning("Customer not found for id: {id}", id);
-                return NotFound("Customer not found");   
+                return NotFound("Customer not found");
             }
 
             _logger.LogInformation("Customer updated");
@@ -176,7 +176,7 @@ namespace E_Kart_Application.Controllers
             var result = await _service.UpdateAddressAsync(id, address);
 
             if (!result)
-                return NotFound("Customer not found");
+                throw new NotFoundException("Customer not found");
 
             _logger.LogInformation("Customer address updated");
             return Ok("Customer address updated successfully");
@@ -188,7 +188,7 @@ namespace E_Kart_Application.Controllers
             var result = await _service.UpdateContactAsync(id, contactName);
 
             if (!result)
-                return NotFound("Customer not found");
+                throw new NotFoundException ("Customer not found");
 
             _logger.LogInformation("Customer contact updated");
             return Ok("Customer contact updated successfully");

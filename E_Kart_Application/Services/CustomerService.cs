@@ -90,19 +90,23 @@ namespace E_Kart_Application.Services
         public async Task<CustomerDto> RegisterCustomerAsync(RegisterCustomerDto dto)
         {
             var customer = _mapper.Map<Customer>(dto);
-            customer.CustomerId = GenerateCustomerId(dto.CompanyName);
+            customer.CustomerId = Guid.NewGuid().ToString().Substring(0, 5);
             using SHA256 sha256 = SHA256.Create();
             byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(dto.Password));
 
             customer.PasswordHash = BitConverter.ToString(bytes).Replace("-", "");
-            customer.Role = dto.Role;
+            customer.Role = "Customer";
+
+          
             var data = await _repository.RegisterCustomerAsync(customer);
             return _mapper.Map<CustomerDto>(data);
         }
 
         public async Task<CustomerDto?> LoginAsync(CustomerLogin dto)
         {
-            var data = await _repository.LoginAsync(dto.ContactName, dto.Password, dto.Role);
+            var role = dto.Role ?? "Customer";
+
+            var data = await _repository.LoginAsync(dto.ContactName, dto.Password, role);
             if (data == null)
             {
                 throw new UnauthorizedAccessException("Invalid credentials.");    

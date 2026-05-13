@@ -9,10 +9,13 @@ namespace E_Kart_Application.Exceptions
 
         private readonly ILogger<GlobalExceptionMiddleware> _logger;
 
-        public GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExceptionMiddleware> logger)
+        private readonly IWebHostEnvironment _env;
+
+        public GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExceptionMiddleware> logger, IWebHostEnvironment env)
         {
             _next = next;
             _logger = logger;
+            _env = env;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -41,7 +44,8 @@ namespace E_Kart_Application.Exceptions
             {
                 _logger.LogError(ex, ex.Message);
 
-                await HandleExceptionAsync(context, HttpStatusCode.InternalServerError, "Internal Server Error");
+                var message = _env.IsDevelopment() ? ex.Message : "Internal Server Error";
+                await HandleExceptionAsync(context, HttpStatusCode.InternalServerError, message);
             }
         }
 

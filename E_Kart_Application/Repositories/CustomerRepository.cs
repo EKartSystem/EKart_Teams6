@@ -67,7 +67,7 @@ namespace E_Kart_Application.Repositories
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
                 hashedPassword = BitConverter.ToString(bytes).Replace("-", "");
             }
-            return await _context.Customers.FirstOrDefaultAsync(x => x.ContactName == contactName && x.PasswordHash == hashedPassword && x.Role == role);
+            return await _context.Customers.FirstOrDefaultAsync(x => x.ContactName == contactName && x.PasswordHash == hashedPassword && x.Role.ToLower() == role.ToLower());
         }
         
         
