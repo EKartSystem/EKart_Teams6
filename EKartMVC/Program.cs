@@ -1,3 +1,5 @@
+
+using System.Net.Http.Json;
 namespace EKartMVC
 {
     public class Program
@@ -8,6 +10,37 @@ namespace EKartMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            // Configure HttpClient for the API. In Development accept the local dev certificate
+            if (builder.Environment.IsDevelopment())
+            {
+                builder.Services.AddHttpClient<CustomerApiService>(client =>
+                {
+                    client.BaseAddress = new Uri("https://localhost:7000/");
+                })
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+                {
+                    // Only for local development to accept the ASP.NET Core dev certificate
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                });
+            }
+            else
+            {
+                builder.Services.AddHttpClient<CustomerApiService>(client =>
+                {
+                    client.BaseAddress = new Uri("https://localhost:7000/");
+                });
+            }
+            // Session requires a backing cache
+            builder.Services.AddDistributedMemoryCache();
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // session timeout
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+
 
             var app = builder.Build();
 
@@ -15,7 +48,6 @@ namespace EKartMVC
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -23,12 +55,14 @@ namespace EKartMVC
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
+
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Account}/{action=Login}/{id?}");
 
             app.Run();
         }

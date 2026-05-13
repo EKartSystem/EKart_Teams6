@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="row g-4">
+    <div class="col-12 col-md-3 col-lg-2">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white fw-semibold">
+                Admin Panel
+            </div>
+            <div class="list-group list-group-flush">
+                <a asp-controller="Admin" asp-action="Index" class="list-group-item list-group-item-action">
+                    Customers
+                </a>
+                <button type="button" class="list-group-item list-group-item-action" disabled>
+                    Employees
+                </button>
+                <button type="button" class="list-group-item list-group-item-action" disabled>
+                    Categories
+                </button>
+                <button type="button" class="list-group-item list-group-item-action" disabled>
+                    Orders
+                </button>
+                <button type="button" class="list-group-item list-group-item-action" disabled>
+                    Shipper
+                </button>
+                <button type="button" class="list-group-item list-group-item-action" disabled>
+                    Supplier
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-9 col-lg-10">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title mb-3">Admin Dashboard</h2>
+                <p class="card-text text-muted mb-0">
+                    Select an option from the admin panel to manage EKart data.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

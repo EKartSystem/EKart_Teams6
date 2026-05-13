@@ -1,0 +1,25 @@
+@using E_Kart_Application.DTOs.Customersdto
+@model CustomerDto
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h2 class="mb-3">Profile</h2>
+
+<dl class="row bg-white border rounded p-3">
+    <dt class="col-sm-3">Customer ID</dt>
+    <dd class="col-sm-9">@Model.CustomerId</dd>
+
+    <dt class="col-sm-3">Name</dt>
+    <dd class="col-sm-9">@Model.ContactName</dd>
+
+    <dt class="col-sm-3">Phone</dt>
+    <dd class="col-sm-9">@Model.Phone</dd>
+
+    <dt class="col-sm-3">Address</dt>
+    <dd class="col-sm-9">@Model.Address</dd>
+
+    <dt class="col-sm-3">Role</dt>
+    <dd class="col-sm-9">@Model.Role</dd>
+</dl>

@@ -1,46 +1,67 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EKartMVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/EKartMVC.styles.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EKartMVC</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+<body class="bg-light">
+    @{
+        var name = Context.Session.GetString("username");
+        var role = Context.Session.GetString("role");
+        var isLoggedIn = !string.IsNullOrWhiteSpace(name);
+        var isAdmin = string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase);
+        var dashboardController = isAdmin ? "Admin" : "Customer";
+        var dashboardAction = isAdmin ? "AdminDashboard" : "CustomerDashboard";
+        var profileController = isAdmin ? "Admin" : "Customer";
+    }
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 shadow-sm">
+        <a class="navbar-brand fw-semibold" asp-controller="@dashboardController" asp-action="@dashboardAction">E-Kart</a>
+
+        <div class="ms-auto">
+            @if (isLoggedIn)
+            {
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle d-flex align-items-center gap-2"
+                            type="button"
+                            id="userMenuButton"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        <span>@name</span>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
+                        @if (isAdmin)
+                        {
+                            <a class="dropdown-item" asp-controller="@profileController" asp-action="Profile">
+                                Profile
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="dropdown-item disabled text-muted" href="#" tabindex="-1" aria-disabled="true">
+                                Your Profile
+                            </a>
+                        }
+                        <li>
+                            <a class="dropdown-item text-danger" asp-controller="Account" asp-action="Logout">Logout</a>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - EKartMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            }
+            else
+            {
+                <a class="btn btn-outline-light btn-sm" asp-controller="Account" asp-action="Login">Login</a>
+            }
         </div>
-    </footer>
+    </nav>
+
+    <main class="container py-4">
+        @RenderBody()
+    </main>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,0 +1,34 @@
+@using E_Kart_Application.DTOs.Customersdto
+@model List<CustomerDto>
+
+@{
+    ViewData["Title"] = "Top Customers";
+}
+
+<h3 class="mb-3">Top Customers</h3>
+
+<a class="btn btn-outline-secondary mb-3" asp-controller="Admin" asp-action="Index">Back</a>
+
+<table class="table table-bordered table-striped bg-white">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Total Orders</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.CustomerId</td>
+                <td>@customer.ContactName</td>
+                <td>@customer.Phone</td>
+                <td>@customer.Address</td>
+                <td>@customer.TotalOrders</td>
+            </tr>
+        }
+    </tbody>
+</table>

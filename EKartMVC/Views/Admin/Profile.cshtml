@@ -1,0 +1,36 @@
+@using E_Kart_Application.DTOs.Customersdto
+@model CustomerDto
+
+@{
+    ViewData["Title"] = "Admin Profile";
+}
+
+<h2 class="mb-3">Admin Profile</h2>
+
+<dl class="row bg-white border rounded p-3">
+    @if (!string.IsNullOrWhiteSpace(Model.CustomerId))
+    {
+        <dt class="col-sm-3">Admin ID</dt>
+        <dd class="col-sm-9">@Model.CustomerId</dd>
+    }
+
+    <dt class="col-sm-3">Name</dt>
+    <dd class="col-sm-9">@Model.ContactName</dd>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Phone))
+    {
+        <dt class="col-sm-3">Phone</dt>
+        <dd class="col-sm-9">@Model.Phone</dd>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Address))
+    {
+        <dt class="col-sm-3">Address</dt>
+        <dd class="col-sm-9">@Model.Address</dd>
+    }
+
+    <dt class="col-sm-3">Role</dt>
+    <dd class="col-sm-9">@Model.Role</dd>
+</dl>
+
+<a class="btn btn-outline-primary" asp-controller="Admin" asp-action="AdminDashboard">Back to dashboard</a>

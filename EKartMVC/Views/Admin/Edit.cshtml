@@ -1,0 +1,26 @@
+﻿@using E_Kart_Application.DTOs.Customersdto
+@model UpdateCustomerDto
+
+<h3>Edit Customer</h3>
+
+<form method="post">
+    <div class="mb-2">
+        <label class="form-label">Contact Name</label>
+        <input asp-for="ContactName" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Phone</label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Address</label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+
+    <p class="text-danger">@ViewBag.Error</p>
+
+    <button class="btn btn-success">Update</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+</form>

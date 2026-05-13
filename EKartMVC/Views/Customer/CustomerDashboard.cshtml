@@ -1,0 +1,49 @@
+@model CustomerDashboardViewModel
+
+@{
+    ViewData["Title"] = "Customer Dashboard";
+    var customerName = Model.Customer?.ContactName ?? Context.Session.GetString("username") ?? "Customer";
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+        <h2 class="mb-1">Welcome, @customerName</h2>
+        <div class="text-muted">Here is your order and profile summary.</div>
+    </div>
+
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-primary" asp-controller="Customer" asp-action="Profile">View Profile</a>
+        <a class="btn btn-outline-secondary" asp-controller="Customer" asp-action="Orders">View Orders</a>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="bg-white border rounded p-3 h-100">
+            <div class="text-muted">Total Orders</div>
+            <div class="display-6">@Model.TotalOrders</div>
+        </div>
+    </div>
+
+   
+    </div>
+
+    
+<div class="row g-3">
+    <div class="col-lg-4">
+        <div class="bg-white border rounded p-3 h-100">
+            <h5>Profile Summary</h5>
+            <dl class="mb-0">
+                <dt>Customer ID</dt>
+                <dd>@Model.Customer?.CustomerId</dd>
+
+                <dt>Phone</dt>
+                <dd>@Model.Customer?.Phone</dd>
+
+                <dt>Address</dt>
+                <dd>@Model.Customer?.Address</dd>
+            </dl>
+        </div>
+    </div>
+
+    </div>

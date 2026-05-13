@@ -1,0 +1,28 @@
+﻿@using E_Kart_Application.DTOs.Customersdto
+@model List<CustomerDto>
+
+<h2>Customers</h2>
+
+<table class="table table-bordered table-striped bg-white">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.ContactName</td>
+                <td>@c.Phone</td>
+                <td>@c.Address</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" href="/Admin/Edit/@c.CustomerId">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
