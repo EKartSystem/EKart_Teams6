@@ -2,14 +2,7 @@ using E_Kart_Application.DTOs;
 using E_Kart_Application.Models;
 namespace E_Kart_Application.Services
 {
-    // Service layer interface.
-    // The Service sits BETWEEN the Controller and the Repository.
-    //
-    // Controller → calls Service (business logic)
-    // Service    → calls Repository (database)
-    //
-    // The Service works with DTOs (not raw models).
-    // The Repository works with raw Models (not DTOs).
+    
     public interface IShipperService
     {
         Task<IEnumerable<ShipperDto>> GetAllAsync();

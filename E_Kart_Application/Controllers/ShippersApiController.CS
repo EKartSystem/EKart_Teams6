@@ -34,7 +34,6 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("{id:int}/orders")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetOrdersByShipper(int id)
         {
             var shipper = await _service.GetByIdAsync(id);
@@ -54,7 +53,6 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpGet("with-order-count")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetWithOrderCount()
         {
             var result = await _service.GetWithOrderCountAsync();
@@ -62,7 +60,6 @@ namespace E_Kart_Application.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] CreateShipperDto dto)
         {
             if (!ModelState.IsValid)

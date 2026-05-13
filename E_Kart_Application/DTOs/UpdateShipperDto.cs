@@ -2,8 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace E_Kart_Application.DTOs
 {
-    // Used for PUT /api/shippers/{id}
-    // PUT = replace the WHOLE record, so ALL fields are required here.
     public class UpdateShipperDto
     {
         [Required(ErrorMessage = "Company name is required")]

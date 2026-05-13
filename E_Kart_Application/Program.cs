@@ -19,10 +19,6 @@ namespace E_Kart_Application
                 options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddDbContext<EKARTContext>(options =>
-                options.UseSqlServer(
-                    builder.Configuration.GetConnectionString("DefaultConnection")));
-
             builder.Services.AddScoped<IShipperRepository, ShipperRepository>();
             builder.Services.AddScoped<IShipperService, ShipperService>();
             builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
@@ -54,7 +50,6 @@ namespace E_Kart_Application
 
             app.UseExceptionHandler();
             app.UseHttpsRedirection();
-            app.UseAuthorization();
             app.MapControllers();
             app.Run();
         }
