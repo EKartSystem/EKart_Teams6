@@ -90,7 +90,7 @@ namespace E_Kart_Application.Services
         public async Task<CustomerDto> RegisterCustomerAsync(RegisterCustomerDto dto)
         {
             var customer = _mapper.Map<Customer>(dto);
-            customer.CustomerId = Guid.NewGuid().ToString().Substring(0, 5);
+            customer.CustomerId = GenerateCustomerId(dto.CompanyName);
             using SHA256 sha256 = SHA256.Create();
             byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(dto.Password));
 
