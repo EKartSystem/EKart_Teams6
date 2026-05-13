@@ -26,7 +26,7 @@ namespace E_Kart_Application
 
             builder.Services.AddAutoMapper(typeof(ShipperService).Assembly);
             builder.Services.AddFluentValidationAutoValidation();
-            builder.Services.AddValidatorsFromAssemblyContaining<CreateShipperValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<ShipperRequestValidator>();
 
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>

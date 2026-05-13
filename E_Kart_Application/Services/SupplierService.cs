@@ -13,7 +13,7 @@ public class SupplierService : ISupplierService
     public SupplierService(ISupplierRepository repository, IMapper mapper)
     {
         _repository = repository;
-        _mapper     = mapper;
+        _mapper = mapper;
     }
 
     public async Task<IEnumerable<SupplierDto>> GetAllAsync()
@@ -51,14 +51,14 @@ public class SupplierService : ISupplierService
         return await _repository.GetWithProductCountAsync();
     }
 
-    public async Task<SupplierDto> CreateAsync(CreateSupplierDto dto)
+    public async Task<SupplierDto> CreateAsync(SupplierRequestDto dto)
     {
         var supplier = _mapper.Map<Supplier>(dto);
-        var created  = await _repository.CreateAsync(supplier);
+        var created = await _repository.CreateAsync(supplier);
         return _mapper.Map<SupplierDto>(created);
     }
 
-    public async Task<bool> UpdateAsync(int id, UpdateSupplierDto dto)
+    public async Task<bool> UpdateAsync(int id, SupplierRequestDto dto)
     {
         var existing = await _repository.GetByIdAsync(id);
         if (existing == null) return false;

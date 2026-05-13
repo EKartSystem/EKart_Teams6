@@ -2,18 +2,13 @@ using AutoMapper;
 using E_Kart_Application.DTOs;
 using E_Kart_Application.Models;
 
-namespace E_Kart_Application.Mappings
-{    
-    public class ShipperMappingProfile : Profile
+namespace E_Kart_Application.Mappings;
+
+public class ShipperMappingProfile : Profile
+{
+    public ShipperMappingProfile()
     {
-        public ShipperMappingProfile()
-        {
-
-            CreateMap<Shipper, ShipperDto>();
-
-            CreateMap<CreateShipperDto, Shipper>();
-
-            CreateMap<UpdateShipperDto, Shipper>();
-        }
+        CreateMap<Shipper, ShipperDto>();
+        CreateMap<ShipperRequestDto, Shipper>();
     }
 }

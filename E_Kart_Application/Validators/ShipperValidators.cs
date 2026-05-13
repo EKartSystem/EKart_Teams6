@@ -1,63 +1,44 @@
 using E_Kart_Application.DTOs;
 using FluentValidation;
 
-namespace E_Kart_Application.Validators
+namespace E_Kart_Application.Validators;
+
+public class ShipperRequestValidator : AbstractValidator<ShipperRequestDto>
 {
-    public class CreateShipperValidator : AbstractValidator<CreateShipperDto>
+    public ShipperRequestValidator()
     {
-        public CreateShipperValidator()
-        {
-            RuleFor(x => x.CompanyName)
-                .NotEmpty().WithMessage("Company name is required")
-                .MaximumLength(40).WithMessage("Company name cannot exceed 40 characters")
-                .MinimumLength(2).WithMessage("Company name must be at least 2 characters");
+        RuleFor(x => x.CompanyName)
+            .NotEmpty().WithMessage("Company name is required")
+            .MinimumLength(2).WithMessage("Company name must be at least 2 characters")
+            .MaximumLength(40).WithMessage("Company name cannot exceed 40 characters");
 
-            RuleFor(x => x.Phone)
-                .MaximumLength(24).WithMessage("Phone number cannot exceed 24 characters")
-                .Matches(@"^[\d\s\(\)\-\+]*$")
-                .WithMessage("Phone number can only contain digits, spaces, brackets, dashes and +")
-                .When(x => !string.IsNullOrEmpty(x.Phone)); // only validate if phone is provided
-        }
+        RuleFor(x => x.Phone)
+            .MaximumLength(24).WithMessage("Phone cannot exceed 24 characters")
+            .Matches(@"^[\d\s\(\)\-\+]*$")
+            .WithMessage("Phone can only contain digits, spaces, brackets, dashes and +")
+            .When(x => !string.IsNullOrEmpty(x.Phone));
     }
+}
 
-    public class UpdateShipperValidator : AbstractValidator<UpdateShipperDto>
+public class PatchShipperNameValidator : AbstractValidator<PatchShipperNameDto>
+{
+    public PatchShipperNameValidator()
     {
-        public UpdateShipperValidator()
-        {
-            RuleFor(x => x.CompanyName)
-                .NotEmpty().WithMessage("Company name is required")
-                .MaximumLength(40).WithMessage("Company name cannot exceed 40 characters")
-                .MinimumLength(2).WithMessage("Company name must be at least 2 characters");
-
-            RuleFor(x => x.Phone)
-                .MaximumLength(24).WithMessage("Phone number cannot exceed 24 characters")
-                .Matches(@"^[\d\s\(\)\-\+]*$")
-                .WithMessage("Phone number can only contain digits, spaces, brackets, dashes and +")
-                .When(x => !string.IsNullOrEmpty(x.Phone));
-        }
+        RuleFor(x => x.CompanyName)
+            .NotEmpty().WithMessage("Company name is required")
+            .MinimumLength(2).WithMessage("Company name must be at least 2 characters")
+            .MaximumLength(40).WithMessage("Company name cannot exceed 40 characters");
     }
+}
 
-    // Validator for PATCH name endpoint
-    public class PatchShipperNameValidator : AbstractValidator<PatchShipperNameDto>
+public class PatchShipperPhoneValidator : AbstractValidator<PatchShipperPhoneDto>
+{
+    public PatchShipperPhoneValidator()
     {
-        public PatchShipperNameValidator()
-        {
-            RuleFor(x => x.CompanyName)
-                .NotEmpty().WithMessage("Company name is required")
-                .MaximumLength(40).WithMessage("Company name cannot exceed 40 characters")
-                .MinimumLength(2).WithMessage("Company name must be at least 2 characters");
-        }
-    }
-
-    public class PatchShipperPhoneValidator : AbstractValidator<PatchShipperPhoneDto>
-    {
-        public PatchShipperPhoneValidator()
-        {
-            RuleFor(x => x.Phone)
-                .MaximumLength(24).WithMessage("Phone number cannot exceed 24 characters")
-                .Matches(@"^[\d\s\(\)\-\+]*$")
-                .WithMessage("Phone number can only contain digits, spaces, brackets, dashes and +")
-                .When(x => !string.IsNullOrEmpty(x.Phone));
-        }
+        RuleFor(x => x.Phone)
+            .MaximumLength(24).WithMessage("Phone cannot exceed 24 characters")
+            .Matches(@"^[\d\s\(\)\-\+]*$")
+            .WithMessage("Phone can only contain digits, spaces, brackets, dashes and +")
+            .When(x => !string.IsNullOrEmpty(x.Phone));
     }
 }

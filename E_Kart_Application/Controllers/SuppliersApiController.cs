@@ -71,7 +71,7 @@ public class SuppliersApiController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Create([FromBody] CreateSupplierDto dto)
+    public async Task<IActionResult> Create([FromBody] SupplierRequestDto dto)
     {
         if (!ModelState.IsValid)
             throw new BadRequestException("Invalid supplier data provided.");
@@ -81,7 +81,7 @@ public class SuppliersApiController : ControllerBase
 
     [HttpPut("{id:int}")]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> Update(int id, [FromBody] UpdateSupplierDto dto)
+    public async Task<IActionResult> Update(int id, [FromBody] SupplierRequestDto dto)
     {
         if (!ModelState.IsValid)
             throw new BadRequestException("Invalid supplier data provided.");
