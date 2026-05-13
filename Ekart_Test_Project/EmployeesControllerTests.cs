@@ -1,245 +1,246 @@
-using E_Kart_Application.Controllers;
-using E_Kart_Application.DTOs.EmployeeDto;
-using E_Kart_Application.DTOs.LocationDTO;
-using E_Kart_Application.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Moq;
 using Xunit;
+using Moq;
+using FluentAssertions;
+using AutoMapper;
 
-namespace E_Kart_Application.Tests.Controllers
+using E_Kart_Application.Services;
+using E_Kart_Application.Repositories;
+using E_Kart_Application.DTOs.EmployeeDto;
+using E_Kart_Application.Models;
+using E_Kart_Application.Exceptions;
+
+namespace Ekart_Test_Project
 {
-    public class EmployeesControllerTests
+    public class EmployeeApiTest
     {
-        private readonly Mock<IEmployeeService> _serviceMock;
+        private readonly Mock<IEmployeeRepository> _repoMock;
 
-        private readonly Mock<ILogger<EmployeesController>> _loggerMock;
+        private readonly Mock<IMapper> _mapperMock;
 
-        private readonly EmployeesController _controller;
+        private readonly EmployeeService _service;
 
-        public EmployeesControllerTests()
+        public EmployeeApiTest()
         {
-            _serviceMock = new Mock<IEmployeeService>();
+            _repoMock =
+                new Mock<IEmployeeRepository>();
 
-            _loggerMock =
-                new Mock<ILogger<EmployeesController>>();
+            _mapperMock =
+                new Mock<IMapper>();
 
-            _controller = new EmployeesController(
-                _serviceMock.Object,
-                _loggerMock.Object);
+            _service =
+                new EmployeeService(
+                    _repoMock.Object,
+                    _mapperMock.Object);
         }
 
         [Fact]
-        public async Task GetEmployees()
+        public async Task GetEmployees_Positive_Test1()
         {
-            var employees = new List<EmployeeListingDto>
-            {
-                new EmployeeListingDto
+            var employees =
+                new List<Employee>
                 {
-                    EmployeeId = 1,
-                    FullName = "Mayank Sharma",
-                    Title = "Developer",
-                    IsManager = false,
-                    TotalEmployeesUnderManager = 0
-                }
-            };
+                    new Employee
+                    {
+                        EmployeeId = 1,
+                        FirstName = "Nancy"
+                    }
+                };
 
-            _serviceMock
-                .Setup(x => x.GetEmployeesAsync())
+            var dtos =
+                new List<EmployeeListingDto>
+                {
+                    new EmployeeListingDto
+                    {
+                        EmployeeId = 1,
+                        FullName = "Nancy"
+                    }
+                };
+
+            _repoMock.Setup(x =>
+                x.GetEmployeesAsync())
                 .ReturnsAsync(employees);
 
-            var result = await _controller
-                .GetEmployees();
+            _mapperMock.Setup(x =>
+                x.Map<IEnumerable<EmployeeListingDto>>(employees))
+                .Returns(dtos);
 
-            var okResult =
-                Assert.IsType<OkObjectResult>(result);
+            var result =
+                await _service.GetEmployeesAsync();
 
-            Assert.Equal(
-                employees,
-                okResult.Value);
+            result.Should().NotBeEmpty();
         }
 
         [Fact]
-        public async Task GetEmployeeById()
+        public async Task GetEmployeeById_Positive_Test2()
         {
-            var employee = new EmployeeDto
-            {
-                EmployeeId = 1,
-                FirstName = "Mayank",
-                LastName = "Sharma",
-                Title = "Developer"
-            };
+            var employee =
+                new Employee
+                {
+                    EmployeeId = 1,
+                    FirstName = "Andrew"
+                };
 
-            _serviceMock
-                .Setup(x => x.GetEmployeeByIdAsync(1))
+            var dto =
+                new ResponseEmployeeDto
+                {
+                    FirstName = "Andrew"
+                };
+
+            _repoMock.Setup(x =>
+                x.GetEmployeeByIdAsync(1))
                 .ReturnsAsync(employee);
 
-            var result = await _controller
-                .GetEmployeeById(1);
+            _mapperMock.Setup(x =>
+                x.Map<ResponseEmployeeDto>(employee))
+                .Returns(dto);
 
-            var okResult =
-                Assert.IsType<OkObjectResult>(result);
+            var result =
+                await _service.GetEmployeeByIdAsync(1);
 
-            Assert.Equal(
-                employee,
-                okResult.Value);
+            result.Should().NotBeNull();
         }
 
         [Fact]
-        public async Task AddEmployee()
+        public async Task AddEmployee_Positive_Test3()
         {
-            var dto = new CreateEmployeeDto
-            {
-                FirstName = "Mayank",
-                LastName = "Sharma",
-                Title = "Developer",
-                Country = "India",
-                HomePhone = "9876543210"
-            };
+            var dto =
+                new ResponseEmployeeDto
+                {
+                    FirstName = "John",
+                    LastName = "Doe"
+                };
 
-            var employee = new EmployeeDto
-            {
-                EmployeeId = 1,
-                FirstName = "Mayank",
-                LastName = "Sharma",
-                Title = "Developer"
-            };
+            var employee =
+                new Employee
+                {
+                    EmployeeId = 1,
+                    FirstName = "John"
+                };
 
-            _serviceMock
-                .Setup(x => x.AddEmployeeAsync(dto))
+            _mapperMock.Setup(x =>
+                x.Map<Employee>(dto))
+                .Returns(employee);
+
+            _repoMock.Setup(x =>
+                x.AddEmployeeAsync(employee))
                 .ReturnsAsync(employee);
 
-            var result = await _controller
-                .AddEmployee(dto);
+            _mapperMock.Setup(x =>
+                x.Map<ResponseEmployeeDto>(employee))
+                .Returns(dto);
 
-            var okResult =
-                Assert.IsType<OkObjectResult>(result);
+            var result =
+                await _service.AddEmployeeAsync(dto);
 
-            Assert.Equal(
-                employee,
-                okResult.Value);
+            result.Should().NotBeNull();
         }
 
         [Fact]
-        public async Task UpdateEmployee()
+        public async Task UpdateEmployee_Positive_Test4()
         {
-            var dto = new UpdateEmployeeDto
-            {
-                FirstName = "Updated",
-                LastName = "Employee",
-                Title = "Senior Developer"
-            };
+            var dto =
+                new ResponseEmployeeDto
+                {
+                    FirstName = "Updated"
+                };
 
-            _serviceMock
-                .Setup(x =>
-                    x.UpdateEmployeeAsync(1, dto))
+            var employee =
+                new Employee
+                {
+                    EmployeeId = 1,
+                    FirstName = "Old"
+                };
+
+            _repoMock.Setup(x =>
+                x.GetEmployeeByIdAsync(1))
+                .ReturnsAsync(employee);
+
+            _mapperMock.Setup(x =>
+                x.Map<Employee>(dto))
+                .Returns(employee);
+
+            _repoMock.Setup(x =>
+                x.UpdateEmployeeAsync(1, employee))
                 .ReturnsAsync(true);
 
-            var result = await _controller
-                .UpdateEmployee(1, dto);
+            var result =
+                await _service.UpdateEmployeeAsync(
+                    1,
+                    dto);
 
-            var okResult =
-                Assert.IsType<OkObjectResult>(result);
-
-            Assert.Equal(
-                "Employee updated successfully",
-                okResult.Value);
+            result.Should().BeTrue();
         }
 
         [Fact]
-        public async Task GetEmployeeById2()
+        public async Task GetEmployeeById_Negative_Test5()
         {
-            _serviceMock
-                .Setup(x =>
-                    x.GetEmployeeByIdAsync(99))
-                .ReturnsAsync((EmployeeDto?)null);
+            _repoMock.Setup(x =>
+                x.GetEmployeeByIdAsync(100))
+                .ReturnsAsync((Employee?)null);
 
-            var result = await _controller
-                .GetEmployeeById(99);
+            Func<Task> action = async () =>
+                await _service.GetEmployeeByIdAsync(100);
 
-            var notFoundResult =
-                Assert.IsType<NotFoundObjectResult>(
-                    result);
-
-            Assert.Equal(
-                "Employee not found",
-                notFoundResult.Value);
+            await action.Should()
+                .ThrowAsync<NotFoundException>();
         }
 
         [Fact]
-        public async Task UpdateEmployee2()
+        public async Task AddEmployee_Negative_Test6()
         {
-            var dto = new UpdateEmployeeDto
-            {
-                FirstName = "Invalid"
-            };
+            var dto =
+                new ResponseEmployeeDto
+                {
+                    FirstName = "John",
+                    ReportsTo = 99
+                };
 
-            _serviceMock
-                .Setup(x =>
-                    x.UpdateEmployeeAsync(99, dto))
-                .ReturnsAsync(false);
+            _repoMock.Setup(x =>
+                x.GetEmployeeByIdAsync(99))
+                .ReturnsAsync((Employee?)null);
 
-            var result = await _controller
-                .UpdateEmployee(99, dto);
+            Func<Task> action = async () =>
+                await _service.AddEmployeeAsync(dto);
 
-            var notFoundResult =
-                Assert.IsType<NotFoundObjectResult>(
-                    result);
-
-            Assert.Equal(
-                "Employee not found",
-                notFoundResult.Value);
+            await action.Should()
+                .ThrowAsync<BadRequestException>();
         }
 
         [Fact]
-        public async Task UpdateEmployeeTitle()
+        public async Task UpdateEmployee_Negative_Test7()
         {
-            var dto = new UpdateEmployeeTitleDto
-            {
-                Title = "Manager"
-            };
+            var dto =
+                new ResponseEmployeeDto
+                {
+                    FirstName = "Test"
+                };
 
-            _serviceMock
-                .Setup(x =>
-                    x.UpdateEmployeeTitleAsync(
-                        99,
-                        dto))
-                .ReturnsAsync(false);
+            _repoMock.Setup(x =>
+                x.GetEmployeeByIdAsync(99))
+                .ReturnsAsync((Employee?)null);
 
-            var result = await _controller
-                .UpdateEmployeeTitle(99, dto);
-
-            var notFoundResult =
-                Assert.IsType<NotFoundObjectResult>(
-                    result);
-
-            Assert.Equal(
-                "Employee not found",
-                notFoundResult.Value);
-        }
-
-        [Fact]
-        public async Task AddTerritoryToEmployee()
-        {
-            _serviceMock
-                .Setup(x =>
-                    x.AddTerritoryToEmployeeAsync(
-                        99,
-                        "01581"))
-                .ReturnsAsync(false);
-
-            var result = await _controller
-                .AddTerritoryToEmployee(
+            Func<Task> action = async () =>
+                await _service.UpdateEmployeeAsync(
                     99,
-                    "01581");
+                    dto);
 
-            var notFoundResult =
-                Assert.IsType<NotFoundObjectResult>(
-                    result);
+            await action.Should()
+                .ThrowAsync<NotFoundException>();
+        }
 
-            Assert.Equal(
-                "Employee or territory not found",
-                notFoundResult.Value);
+        [Fact]
+        public async Task UpdateEmployeeTitle_Negative_Test8()
+        {
+            _repoMock.Setup(x =>
+                x.GetEmployeeByIdAsync(99))
+                .ReturnsAsync((Employee?)null);
+
+            var result =
+                await _service.UpdateEmployeeTitleAsync(
+                    99,
+                    "Manager");
+
+            result.Should().BeFalse();
         }
     }
 }

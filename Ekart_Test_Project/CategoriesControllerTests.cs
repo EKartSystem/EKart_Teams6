@@ -1,183 +1,257 @@
-﻿using E_Kart_Application.Controllers;
-using E_Kart_Application.DTOs.CategoryDto;
-using E_Kart_Application.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Xunit;
 using Moq;
-using Xunit;
+using FluentAssertions;
+using AutoMapper;
 
-namespace E_Kart_Application.Tests.Controllers
+using E_Kart_Application.Services;
+using E_Kart_Application.Repositories;
+using E_Kart_Application.DTOs.CategoryDto;
+using E_Kart_Application.Models;
+
+namespace Ekart_Test_Project
 {
-    public class CategoriesControllerTests
+    public class CategoryApiTest
     {
-        private readonly Mock<ICategoryService> _serviceMock;
-        private readonly Mock<ILogger<CategoriesController>> _loggerMock;
-        private readonly CategoriesController _controller;
+        private readonly Mock<ICategoryRepository> _repoMock;
 
-        public CategoriesControllerTests()
+        private readonly Mock<IMapper> _mapperMock;
+
+        private readonly CategoryService _service;
+
+        public CategoryApiTest()
         {
-            _serviceMock = new Mock<ICategoryService>();
-            _loggerMock = new Mock<ILogger<CategoriesController>>();
+            _repoMock =
+                new Mock<ICategoryRepository>();
 
-            _controller = new CategoriesController(
-                _serviceMock.Object,
-                _loggerMock.Object);
+            _mapperMock =
+                new Mock<IMapper>();
+
+            _service =
+                new CategoryService(
+                    _repoMock.Object,
+                    _mapperMock.Object);
         }
 
         [Fact]
-        public async Task GetCategories_Positive()
+        public async Task GetCategories_Positive_Test1()
         {
-            var categories = new List<CategoryDto>
-            {
-                new CategoryDto
+            var categories =
+                new List<Category>
                 {
-                    CategoryId = 1,
-                    CategoryName = "Beverages",
-                    Description = "Drinks"
-                }
-            };
+                    new Category
+                    {
+                        CategoryId = 1,
+                        CategoryName = "Beverages"
+                    }
+                };
 
-            _serviceMock
-                .Setup(x => x.GetCategoriesAsync())
+            var dtos =
+                new List<ResponseCategoryDto>
+                {
+                    new ResponseCategoryDto
+                    {
+                        CategoryId = 1,
+                        CategoryName = "Beverages"
+                    }
+                };
+
+            _repoMock.Setup(x =>
+                x.GetCategoriesAsync())
                 .ReturnsAsync(categories);
 
-            var result = await _controller.GetCategories();
+            _mapperMock.Setup(x =>
+                x.Map<IEnumerable<ResponseCategoryDto>>(categories))
+                .Returns(dtos);
 
-            var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.Equal(categories, okResult.Value);
+            var result =
+                await _service.GetCategoriesAsync();
+
+            result.Should().NotBeEmpty();
         }
 
         [Fact]
-        public async Task GetCategoryById_Positive()
+        public async Task GetCategoryById_Positive_Test2()
         {
-            var category = new CategoryDto
-            {
-                CategoryId = 1,
-                CategoryName = "Beverages",
-                Description = "Drinks"
-            };
+            var category =
+                new Category
+                {
+                    CategoryId = 1,
+                    CategoryName = "Food"
+                };
 
-            _serviceMock
-                .Setup(x => x.GetCategoryByIdAsync(1))
+            var dto =
+                new ResponseCategoryDto
+                {
+                    CategoryId = 1,
+                    CategoryName = "Food"
+                };
+
+            _repoMock.Setup(x =>
+                x.GetCategoryByIdAsync(1))
                 .ReturnsAsync(category);
 
-            var result = await _controller.GetCategoryById(1);
+            _mapperMock.Setup(x =>
+                x.Map<ResponseCategoryDto>(category))
+                .Returns(dto);
 
-            var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.Equal(category, okResult.Value);
+            var result =
+                await _service.GetCategoryByIdAsync(1);
+
+            result.Should().NotBeNull();
         }
 
         [Fact]
-        public async Task AddCategory()
+        public async Task AddCategory_Positive_Test3()
         {
-            var dto = new CreateCategoryDto
-            {
-                CategoryName = "Snacks",
-                Description = "Food"
-            };
+            var dto =
+                new ResponseCategoryDto
+                {
+                    CategoryName = "Snacks",
+                    Description = "Foods"
+                };
 
-            var resultDto = new CategoryDto
-            {
-                CategoryId = 2,
-                CategoryName = "Snacks",
-                Description = "Food"
-            };
+            var category =
+                new Category
+                {
+                    CategoryId = 1,
+                    CategoryName = "Snacks"
+                };
 
-            _serviceMock
-                .Setup(x => x.AddCategoryAsync(dto))
-                .ReturnsAsync(resultDto);
+            var response =
+                new ResponseCategoryDto
+                {
+                    CategoryId = 1,
+                    CategoryName = "Snacks"
+                };
 
-            var result = await _controller.AddCategory(dto);
+            _mapperMock.Setup(x =>
+                x.Map<Category>(dto))
+                .Returns(category);
 
-            var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.Equal(resultDto, okResult.Value);
+            _repoMock.Setup(x =>
+                x.AddCategoryAsync(category))
+                .ReturnsAsync(category);
+
+            _mapperMock.Setup(x =>
+                x.Map<ResponseCategoryDto>(category))
+                .Returns(response);
+
+            var result =
+                await _service.AddCategoryAsync(dto);
+
+            result.Should().NotBeNull();
         }
 
         [Fact]
-        public async Task UpdateCategory()
+        public async Task UpdateCategory_Positive_Test4()
         {
-            var dto = new UpdateCategoryDto
-            {
-                CategoryName = "Updated",
-                Description = "Updated Desc"
-            };
+            var dto =
+                new ResponseCategoryDto
+                {
+                    CategoryName = "Updated"
+                };
 
-            _serviceMock
-                .Setup(x => x.UpdateCategoryAsync(1, dto))
+            var category =
+                new Category
+                {
+                    CategoryId = 1,
+                    CategoryName = "Old"
+                };
+
+            _repoMock.Setup(x =>
+                x.GetCategoryByIdAsync(1))
+                .ReturnsAsync(category);
+
+            _repoMock.Setup(x =>
+                x.UpdateCategoryAsync(category))
                 .ReturnsAsync(true);
 
-            var result = await _controller.UpdateCategory(1, dto);
+            var result =
+                await _service.UpdateCategoryAsync(
+                    1,
+                    dto);
 
-            var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.Equal("Category updated successfully", okResult.Value);
+            result.Should().BeTrue();
         }
 
         [Fact]
-        public async Task GetCategoryById()
+        public async Task GetCategoryById_Negative_Test5()
         {
-            _serviceMock
-                .Setup(x => x.GetCategoryByIdAsync(99))
-                .ReturnsAsync((CategoryDto?)null);
+            _repoMock.Setup(x =>
+                x.GetCategoryByIdAsync(100))
+                .ReturnsAsync((Category?)null);
 
-            var result = await _controller.GetCategoryById(99);
+            var result =
+                await _service.GetCategoryByIdAsync(100);
 
-            var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
-            Assert.Equal("Category not found", notFoundResult.Value);
+            result.Should().BeNull();
         }
 
         [Fact]
-        public async Task UpdateCategory2()
+        public async Task GetCategories_Negative_Test6()
         {
-            var dto = new UpdateCategoryDto
-            {
-                CategoryName = "Invalid",
-                Description = "Invalid"
-            };
+            var categories =
+                new List<Category>();
 
-            _serviceMock
-                .Setup(x => x.UpdateCategoryAsync(99, dto))
-                .ReturnsAsync(false);
+            var dtos =
+                new List<ResponseCategoryDto>();
 
-            var result = await _controller.UpdateCategory(99, dto);
+            _repoMock.Setup(x =>
+                x.GetCategoriesAsync())
+                .ReturnsAsync(categories);
 
-            var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
-            Assert.Equal("Category not found", notFoundResult.Value);
+            _mapperMock.Setup(x =>
+                x.Map<IEnumerable<ResponseCategoryDto>>(categories))
+                .Returns(dtos);
+
+            var result =
+                await _service.GetCategoriesAsync();
+
+            result.Should().BeEmpty();
         }
 
         [Fact]
-        public async Task UpdateCategoryName()
+        public async Task SearchCategory_Negative_Test7()
         {
-            var dto = new UpdateCategoryNameDto
-            {
-                CategoryName = "New Name"
-            };
+            var categories =
+                new List<Category>();
 
-            _serviceMock
-                .Setup(x => x.UpdateCategoryNameAsync(99, dto))
-                .ReturnsAsync(false);
+            var dtos =
+                new List<ResponseCategoryDto>();
 
-            var result = await _controller.UpdateCategoryName(99, dto);
+            _repoMock.Setup(x =>
+                x.SearchCategoriesAsync("XYZ"))
+                .ReturnsAsync(categories);
 
-            var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
-            Assert.Equal("Category not found", notFoundResult.Value);
+            _mapperMock.Setup(x =>
+                x.Map<IEnumerable<ResponseCategoryDto>>(categories))
+                .Returns(dtos);
+
+            var result =
+                await _service.SearchCategoriesAsync("XYZ");
+
+            result.Should().BeEmpty();
         }
 
         [Fact]
-        public async Task UpdateCategoryDescription()
+        public async Task UpdateCategory_Negative_Test8()
         {
-            var dto = new UpdateCategoryDescriptionDto
-            {
-                Description = "New Desc"
-            };
+            var dto =
+                new ResponseCategoryDto
+                {
+                    CategoryName = "Test"
+                };
 
-            _serviceMock
-                .Setup(x => x.UpdateCategoryDescriptionAsync(99, dto))
-                .ReturnsAsync(false);
+            _repoMock.Setup(x =>
+                x.GetCategoryByIdAsync(99))
+                .ReturnsAsync((Category?)null);
 
-            var result = await _controller.UpdateCategoryDescription(99, dto);
+            var result =
+                await _service.UpdateCategoryAsync(
+                    99,
+                    dto);
 
-            var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
-            Assert.Equal("Category not found", notFoundResult.Value);
+            result.Should().BeFalse();
         }
     }
 }
