@@ -1,0 +1,65 @@
+﻿@using E_Kart_Application.DTOs.Customersdto
+@model UpdateCustomerDto
+
+@{
+    ViewData["Title"] = "Edit Customer";
+}
+
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <div class="mb-4">
+                <h2 class="fw-bold text-dark"><i class="bi bi-pencil-square me-2 text-primary"></i>Edit Customer</h2>
+                <p class="text-muted small">Update the contact information for this customer record in the EKart system.</p>
+            </div>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h6 class="m-0 fw-bold">Customer Details</h6>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <label asp-for="ContactName" class="form-label fw-semibold text-secondary small text-uppercase">Contact Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-person text-muted"></i></span>
+                                <input asp-for="ContactName" class="form-control border-start-0 ps-0" placeholder="Enter full name" />
+                            </div>
+                            <span asp-validation-for="ContactName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="form-label fw-semibold text-secondary small text-uppercase">Phone Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-telephone text-muted"></i></span>
+                                <input asp-for="Phone" class="form-control border-start-0 ps-0" placeholder="e.g. (555) 000-0000" />
+                            </div>
+                            <span asp-validation-for="Phone" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Address" class="form-label fw-semibold text-secondary small text-uppercase">Shipping Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-geo-alt text-muted"></i></span>
+                                <textarea asp-for="Address" class="form-control border-start-0 ps-0" rows="3" placeholder="Enter full street address"></textarea>
+                            </div>
+                            <span asp-validation-for="Address" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center border-top pt-4">
+                            <a class="btn btn-outline-secondary rounded-pill px-4 fw-semibold" asp-action="Customers">
+                                <i class="bi bi-arrow-left me-1"></i> Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm">
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

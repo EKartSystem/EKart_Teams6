@@ -1,0 +1,43 @@
+﻿@using E_Kart_Application.DTOs.Customersdto
+@model List<CustomerDto>
+
+<h3>Customers</h3>
+
+<form method="get" asp-action="Search" class="mb-3 d-flex">
+    <input type="text" name="name" class="form-control me-2" placeholder="Search by name" />
+    <button class="btn btn-primary">Search</button>
+</form>
+
+<a href="/Admin/TopCustomers" class="btn btn-outline-dark mb-3">
+    Top Customers
+</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.ContactName</td>
+                <td>@c.Phone</td>
+                <td>@c.Address</td>
+                <td>
+                    <a asp-action="Edit"
+                           asp-controller="Admin"
+                           asp-route-id="@c.CustomerId"
+                           class="btn btn-sm btn-warning">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

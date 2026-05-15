@@ -1,0 +1,122 @@
+﻿@model E_Kart_Application.DTOs.ProductsDTO.ProductDto
+
+@{
+    ViewData["Title"] = "Product Registration";
+}
+
+<div class="container-fluid py-4">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-1">
+                <i class="bi bi-plus-square-fill text-primary me-2"></i>Product Registration
+            </h2>
+            <p class="text-muted small mb-0">Initialize new inventory assets within the corporate master catalog.</p>
+        </div>
+        <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-4 fw-bold shadow-sm text-decoration-none">
+            <i class="bi bi-arrow-left me-1"></i> Back to Catalog
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h6 class="m-0 fw-bold"><i class="bi bi-shield-lock me-2"></i>New Asset Specification</h6>
+                </div>
+                <div class="card-body p-4 p-md-5 bg-white">
+                    <form asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 small shadow-sm mb-4"></div>
+
+                        <div class="row g-4">
+                            
+                            <div class="col-12">
+                                <label asp-for="ProductName" class="form-label fw-bold text-secondary small text-uppercase">Official Product Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-tag text-muted"></i></span>
+                                    <input asp-for="ProductName" class="form-control border-start-0 ps-0 shadow-none" placeholder="e.g. Industrial Sensor X1" required />
+                                </div>
+                                <span asp-validation-for="ProductName" class="text-danger small"></span>
+                            </div>
+
+                            
+                            <div class="col-md-6">
+                                <label asp-for="UnitPrice" class="form-label fw-bold text-secondary small text-uppercase">Unit Price (INR)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-currency-rupee text-muted"></i></span>
+                                    <input asp-for="UnitPrice" type="number" step="0.01" class="form-control border-start-0 ps-0 shadow-none" placeholder="0.00" />
+                                </div>
+                                <span asp-validation-for="UnitPrice" class="text-danger small"></span>
+                            </div>
+
+                            
+                            <div class="col-md-6">
+                                <label asp-for="QuantityPerUnit" class="form-label fw-bold text-secondary small text-uppercase">Quantity Per Unit</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-box text-muted"></i></span>
+                                    <input asp-for="QuantityPerUnit" class="form-control border-start-0 ps-0 shadow-none" placeholder="e.g. 10 boxes x 20kg" />
+                                </div>
+                                <span asp-validation-for="QuantityPerUnit" class="text-danger small"></span>
+                            </div>
+
+                            
+                            <div class="col-md-6">
+                                <label asp-for="UnitsInStock" class="form-label fw-bold text-secondary small text-uppercase">Units In Stock</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-box-seam text-muted"></i></span>
+                                    <input asp-for="UnitsInStock" type="number" class="form-control border-start-0 ps-0 shadow-none" placeholder="Quantity" />
+                                </div>
+                                <span asp-validation-for="UnitsInStock" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="ReorderLevel" class="form-label fw-bold text-secondary small text-uppercase">Reorder Level</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-bell text-muted"></i></span>
+                                    <input asp-for="ReorderLevel" type="number" class="form-control border-start-0 ps-0 shadow-none" placeholder="Min. level before reorder" />
+                                </div>
+                                <span asp-validation-for="ReorderLevel" class="text-danger small"></span>
+                            </div>
+
+                            
+                            <div class="col-md-6">
+                                <label asp-for="CategoryId" class="form-label fw-bold text-secondary small text-uppercase">Category</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-grid-3x3-gap text-muted"></i></span>
+                                    <select asp-for="CategoryId" class="form-select border-start-0 ps-0 shadow-none"
+                                            asp-items="@(ViewBag.Categories != null ? new SelectList(ViewBag.Categories, "CategoryId", "CategoryName") : new SelectList(Enumerable.Empty<SelectListItem>()))">
+                                        <option value="">-- Assign Category --</option>
+                                    </select>
+                                </div>
+                                <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="SupplierId" class="form-label fw-bold text-secondary small text-uppercase">Supplier</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-truck text-muted"></i></span>
+                                    <select asp-for="SupplierId" class="form-select border-start-0 ps-0 shadow-none"
+                                            asp-items="@(ViewBag.Suppliers != null ? new SelectList(ViewBag.Suppliers, "SupplierId", "CompanyName") : new SelectList(Enumerable.Empty<SelectListItem>()))">
+                                        <option value="">-- Assign Supplier --</option>
+                                    </select>
+                                </div>
+                                <span asp-validation-for="SupplierId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        
+                        <div class="d-flex justify-content-between align-items-center border-top mt-5 pt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary rounded-pill px-4 fw-semibold text-decoration-none">
+                                <i class="bi bi-x-circle me-1"></i> Discard
+                            </a>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm">
+                                <i class="bi bi-check-lg me-1"></i> Add Product
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

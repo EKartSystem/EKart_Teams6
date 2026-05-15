@@ -1,0 +1,93 @@
+@using E_Kart_Application.DTOs.Customersdto
+@model CustomerDto
+
+@{
+    ViewData["Title"] = "Profile";
+    var role = Model.Role ?? "";
+}
+
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a asp-controller="@(role == "Admin" ? "Admin" : "Shop")"
+                           asp-action="@(role == "Admin" ? "AdminDashboard" : "Index")"
+                           class="text-decoration-none">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active">Profile</li>
+                </ol>
+            </nav>
+
+            <div class="card shadow border-0 overflow-hidden">
+
+                <div class="bg-primary" style="height: 100px;"></div>
+
+                <div class="card-body pt-0 text-center">
+
+                    <div class="mt-n5 mb-3">
+                        <div class="rounded-circle bg-white shadow-sm d-flex align-items-center justify-content-center"
+                             style="width: 100px; height: 100px; margin-top: -50px; border: 4px solid #fff;">
+                            <i class="bi bi-person-badge text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+
+                    <h3 class="fw-bold mb-1">@Model.ContactName</h3>
+                    <span class="badge bg-primary-subtle text-primary px-3 py-2 mb-4">
+                        @(role == "Admin" ? "Admin" : "Customer")
+                    </span>
+                    <hr />
+                    <div class="text-start px-3">
+
+                        <div class="row mb-3">
+                            <div class="col-sm-4 fw-bold text-muted">
+                                @(role == "Admin" ? "Admin ID" : "Customer ID")
+                            </div>
+                            <div class="col-sm-8">
+                                @(string.IsNullOrWhiteSpace(Model.CustomerId) ? "N/A" : Model.CustomerId)
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-4 fw-bold text-muted">Phone</div>
+                            <div class="col-sm-8">
+                                @(string.IsNullOrWhiteSpace(Model.Phone) ? "Not Provided" : Model.Phone)
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-4 fw-bold text-muted">Address</div>
+                            <div class="col-sm-8">
+                                @(string.IsNullOrWhiteSpace(Model.Address) ? "Not Provided" : Model.Address)
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4 d-flex justify-content-center gap-3">
+
+                        <a class="btn btn-primary"
+                           asp-action="EditProfile"
+                           asp-route-id="@Model.CustomerId">
+                            Edit Profile
+                        </a>
+                        <a class="btn btn-secondary"
+                           asp-controller="@(role == "Admin" ? "Admin" : "Shop")"
+                           asp-action="@(role == "Admin" ? "AdminDashboard" : "Index")">
+                            Back to Dashboard
+                        </a>
+
+                    </div>
+                </div>
+                <div class="card-footer text-center text-muted">
+                    Last login: @DateTime.Now.ToString("MMM dd, yyyy HH:mm")
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+@model EKartMVC.ViewModel.AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid py-4">
+    <div class="row g-4">
+        <div class="col-12 col-md-3 col-lg-2">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-primary text-white fw-bold py-3">
+                    <i class="bi bi-shield-lock me-2"></i>Admin Panel
+                </div>
+                <div class="list-group list-group-flush small">
+                    <a asp-controller="Admin" asp-action="Customers" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-people me-2"></i>Customers
+                    </a>
+                    <a asp-controller="Shop" asp-action="Index" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-box-seam me-2"></i>Products
+                    </a>
+                    <a asp-controller="Employee" asp-action="GetEmployeeall" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-person-badge me-2"></i>Employees
+                    </a>
+                    <a asp-controller="Employee" asp-action="GetCategories" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-tags me-2"></i>Categories
+                    </a>
+                    <a asp-controller="Order" asp-action="Index" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-cart-check me-2"></i>Orders
+                    </a>
+                    <a asp-controller="Shipper" asp-action="Index" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-truck me-2"></i>Shippers
+                    </a>
+                    <a asp-controller="Supplier" asp-action="Index" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-building me-2"></i>Suppliers
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-9 col-lg-10">
+
+            <div class="mb-4">
+                <h2 class="fw-bold text-dark">Dashboard Overview</h2>
+                <p class="text-muted">Welcome back, Administrator. Here is what's happening with EKart today.</p>
+            </div>
+
+            
+            <div class="row g-3 mb-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card border-0 border-start border-primary border-4 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Products</div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">@Model.TotalProducts</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card border-0 border-start border-success border-4 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Orders</div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">@Model.TotalOrders</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card border-0 border-start border-info border-4 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Active Customers</div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">@Model.TotalCustomers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card border-0 border-start border-warning border-4 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Shipments</div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">@Model.PendingShipments</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white py-3">
+                    <h6 class="m-0 fw-bold text-primary">System Notifications</h6>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info border-0 shadow-sm d-flex align-items-center" role="alert">
+                        <i class="bi bi-info-circle-fill me-3 fs-4"></i>
+                        <div>
+                            <strong>Inventory Alert:</strong> @Model.PendingShipments orders are pending shipment.
+                            <a asp-controller="Order" asp-action="Index" class="alert-link">View Orders</a>
+                        </div>
+                    </div>
+                    <p class="card-text text-center py-5 text-muted">
+                        <i class="bi bi-graph-up display-1 d-block mb-3"></i>
+                        Select a module from the left to view detailed data reports.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

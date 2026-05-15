@@ -1,0 +1,83 @@
+﻿@model List<EKartMVC.ViewModel.OrderListItemViewModel>
+
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<div class="container-fluid py-4">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-1">
+                <i class="bi bi-clock-history text-primary me-2"></i>Order History
+            </h2>
+            <p class="text-muted small mb-0">Review past transactions, fulfillment status, and delivery logistics.</p>
+        </div>
+        <a asp-action="Index" asp-controller="Shop" class="btn btn-outline-primary rounded-pill px-4 fw-semibold shadow-sm">
+            <i class="bi bi-cart-plus me-1"></i> New Purchase
+        </a>
+    </div>
+
+
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white py-3">
+            <h6 class="m-0 fw-bold"><i class="bi bi-journal-text me-2"></i>Transaction Ledger</h6>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light text-secondary small text-uppercase fw-bold">
+                        <tr>
+                            <th class="ps-4">Order ID</th>
+                            <th>Placement Date</th>
+                            <th>Shipping Destination</th>
+                            <th>Total Value</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center pe-4">Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 fw-bold text-dark">#@item.Order.OrderId</td>
+                                <td>
+                                    <div class="text-dark">@item.Order.OrderDate?.ToString("MMM dd, yyyy")</div>
+                                    <small class="text-muted x-small">Ref: @item.Order.CustomerId</small>
+                                </td>
+                                <td>
+                                    <span class="text-truncate d-inline-block small" style="max-width: 300px;" title="@item.Order.ShipAddress">
+                                        <i class="bi bi-geo-alt text-primary me-1"></i>
+                                        @($"{item.Order.ShipAddress}, {item.Order.ShipCity}, {item.Order.ShipCountry}")
+                                    </span>
+                                </td>
+                                <td class="fw-bold text-primary">@item.TotalPrice.ToString("C2")</td>
+                                <td class="text-center">
+                                    @if (item.Order.ShippedDate.HasValue)
+                                    {
+                                        <span class="badge bg-success-subtle text-success border border-success fw-bold">Shipped</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning-subtle text-warning border border-warning fw-bold">Pending</span>
+                                    }
+                                </td>
+                                <td class="text-center pe-4">
+                                    <a asp-action="Details" asp-route-id="@item.Order.OrderId"
+                                           class="btn btn-sm btn-outline-primary rounded-pill px-3 fw-bold shadow-sm">
+                                        <i class="bi bi-search me-1"></i> View Details
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer bg-white py-3 border-top-0">
+            <p class="text-muted small mb-0">
+                Showing <span class="fw-bold">@Model.Count</span> total transactions from your account history.
+            </p>
+        </div>
+    </div>
+</div>

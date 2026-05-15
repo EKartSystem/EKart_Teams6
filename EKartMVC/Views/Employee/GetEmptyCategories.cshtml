@@ -1,0 +1,30 @@
+﻿@model IEnumerable<E_Kart_Application.DTOs.CategoryDto.ResponseCategoryDto>
+
+<h1>Empty Categories</h1>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+
+            <div class="card shadow m-2">
+
+                <div class="card-body">
+
+                    <h4>
+                        @item.CategoryName
+                    </h4>
+
+                    <p>
+                        @item.Description
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>

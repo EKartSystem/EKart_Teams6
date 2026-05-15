@@ -1,0 +1,112 @@
+﻿@model E_Kart_Application.DTOs.EmployeeDto.ResponseEmployeeDto
+
+@{
+    ViewData["Title"] = "Add New Employee";
+}
+
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+
+            <div class="mb-4 text-center">
+                <h2 class="fw-bold text-dark">
+                    <i class="bi bi-person-plus text-primary me-2"></i>Staff Registration
+                </h2>
+                <p class="text-muted small">Enter the professional and contact details to onboard a new employee to the EKart system.</p>
+            </div>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h6 class="m-0 fw-bold"><i class="bi bi-card-list me-2"></i>Employee Profile Details</h6>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <form asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 small shadow-sm mb-4"></div>
+
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+                                <label asp-for="FirstName" class="form-label fw-semibold text-secondary small text-uppercase">First Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-person text-muted"></i></span>
+                                    <input asp-for="FirstName" class="form-control border-start-0 ps-0" placeholder="e.g. John" />
+                                </div>
+                                <span asp-validation-for="FirstName" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="LastName" class="form-label fw-semibold text-secondary small text-uppercase">Last Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-person-check text-muted"></i></span>
+                                    <input asp-for="LastName" class="form-control border-start-0 ps-0" placeholder="e.g. Doe" />
+                                </div>
+                                <span asp-validation-for="LastName" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Title" class="form-label fw-semibold text-secondary small text-uppercase">Job Title</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-briefcase text-muted"></i></span>
+                                    <input asp-for="Title" class="form-control border-start-0 ps-0" placeholder="e.g. Sales Manager" />
+                                </div>
+                                <span asp-validation-for="Title" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="ReportsTo" class="form-label fw-semibold text-secondary small text-uppercase">Reports To (Manager ID)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-diagram-3 text-muted"></i></span>
+                                    <input asp-for="ReportsTo" class="form-control border-start-0 ps-0" placeholder="Enter Manager ID" />
+                                </div>
+                                <span asp-validation-for="ReportsTo" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label asp-for="City" class="form-label fw-semibold text-secondary small text-uppercase">City</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-building text-muted"></i></span>
+                                    <input asp-for="City" class="form-control border-start-0 ps-0" />
+                                </div>
+                                <span asp-validation-for="City" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label asp-for="Country" class="form-label fw-semibold text-secondary small text-uppercase">Country</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-globe text-muted"></i></span>
+                                    <input asp-for="Country" class="form-control border-start-0 ps-0" />
+                                </div>
+                                <span asp-validation-for="Country" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label asp-for="HomePhone" class="form-label fw-semibold text-secondary small text-uppercase">Contact Phone</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-telephone text-muted"></i></span>
+                                    <input asp-for="HomePhone" class="form-control border-start-0 ps-0" placeholder="(555) 000-0000" />
+                                </div>
+                                <span asp-validation-for="HomePhone" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center border-top mt-5 pt-4">
+                            <a asp-action="GetEmployeeall" class="btn btn-outline-secondary rounded-pill px-4">
+                                <i class="bi bi-arrow-left me-1"></i> Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm">
+                                <i class="bi bi-check-circle me-1"></i> Register Employee
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

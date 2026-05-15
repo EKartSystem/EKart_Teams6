@@ -1,0 +1,43 @@
+﻿@model E_Kart_Application.DTOs.LocationDTO.TerritoryDto
+
+@{
+    ViewData["Title"] = "Edit Territory";
+}
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-sm rounded-4 mx-auto" style="max-width: 600px;">
+        <div class="card-header bg-dark text-white p-4 rounded-top-4">
+            <h4 class="mb-0 fw-bold"><i class="bi bi-pencil-square"></i> Edit Territory</h4>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit" method="post">
+                <div class="row g-3">
+                    <input type="hidden" asp-for="TerritoryId" />
+
+                    <div class="col-12">
+                        <label class="form-label small fw-bold">Territory ID (Read-only)</label>
+                        <input class="form-control bg-light" value="@Model.TerritoryId" disabled />
+                    </div>
+
+                    <div class="col-12">
+                        <label asp-for="TerritoryDescription" class="form-label small fw-bold">Description</label>
+                        <input asp-for="TerritoryDescription" class="form-control border-primary-subtle" required />
+                    </div>
+
+                    <div class="col-12">
+                        <label asp-for="RegionId" class="form-label small fw-bold">Region</label>
+                        <select asp-for="RegionId" class="form-select"
+                                asp-items="@(new SelectList(ViewBag.Regions, "RegionId", "RegionDescription"))">
+                            <option value="">-- Change Region --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 mt-4 d-flex justify-content-between align-items-center">
+                        <a asp-action="Index" class="btn btn-link text-muted px-0">Back to List</a>
+                        <button type="submit" class="btn btn-dark px-5 rounded-pill shadow-sm">Update Changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

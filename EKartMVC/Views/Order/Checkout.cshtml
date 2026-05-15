@@ -1,0 +1,119 @@
+@model E_Kart_Application.DTOs.Orders.CreateOrderDto
+
+@{
+    ViewData["Title"] = "Finalize Order";
+    var cartItems = ViewBag.CartItems as List<EKartMVC.Models.CartItem> ?? new List<EKartMVC.Models.CartItem>();
+    var totalQty = cartItems.Sum(c => (int)c.Quantity);
+    var totalPrice = cartItems.Sum(c => c.GetTotal());
+}
+
+<div class="container py-5">
+    
+    <div class="mb-5">
+        <h2 class="fw-bold text-dark mb-1">
+            <i class="bi bi-shield-check text-primary me-2"></i>Secure Checkout
+        </h2>
+        <p class="text-muted small mb-0">Review your shipping logistics and order summary before final placement.</p>
+    </div>
+
+    <div class="row g-4">
+        
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-primary text-white py-3">
+                    <h6 class="m-0 fw-bold"><i class="bi bi-truck me-2"></i>Shipping Information</h6>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <form asp-action="Checkout" method="post">
+                        @Html.AntiForgeryToken()
+                        
+                        
+                        <input asp-for="CustomerId" type="hidden" />
+                        <input asp-for="ShipName" type="hidden" />
+                        <input asp-for="ShipAddress" type="hidden" />
+                        <input asp-for="ShipCity" type="hidden" />
+                        <input asp-for="ShipRegion" type="hidden" />
+                        <input asp-for="ShipCountry" type="hidden" />
+
+                        @for (int i = 0; i < Model.Products.Count; i++)
+                        {
+                            <input type="hidden" asp-for="Products[i].ProductId" />
+                            <input type="hidden" asp-for="Products[i].Quantity" />
+                        }
+
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label class="form-label fw-semibold text-secondary small text-uppercase">Recipient Name</label>
+                                <div class="p-3 bg-light rounded-3 border fw-bold text-dark">
+                                    <i class="bi bi-person me-2 text-primary"></i>@Model.ShipName
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold text-secondary small text-uppercase">Required Date</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0"><i class="bi bi-calendar-event text-muted"></i></span>
+                                    <input asp-for="RequiredDate" type="date" class="form-control border-start-0 ps-0" />
+                                </div>
+                                <span asp-validation-for="RequiredDate" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="form-label fw-semibold text-secondary small text-uppercase">Delivery Destination</label>
+                            <div class="p-3 bg-light rounded-3 border text-dark">
+                                <i class="bi bi-geo-alt me-2 text-primary"></i>
+                                @(string.Join(", ", new[] { Model.ShipAddress, Model.ShipCity, Model.ShipRegion, Model.ShipCountry }.Where(s => !string.IsNullOrWhiteSpace(s))))
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between align-items-center border-top pt-4">
+                            <a asp-action="Index" asp-controller="Cart" class="btn btn-outline-secondary rounded-pill px-4 fw-semibold">
+                                <i class="bi bi-arrow-left me-1"></i> Back to Cart
+                            </a>
+                            <button type="submit" class="btn btn-success rounded-pill px-5 fw-bold shadow-sm">
+                                <i class="bi bi-check-circle me-1"></i> Place Order
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 sticky-top" style="top: 2rem;">
+                <div class="card-header bg-dark text-white py-3">
+                    <h6 class="m-0 fw-bold"><i class="bi bi-receipt me-2"></i>Order Summary</h6>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="list-group list-group-flush small">
+                        @foreach (var item in cartItems)
+                        {
+                            <li class="list-group-item py-3 px-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="me-auto">
+                                        <div class="fw-bold text-dark">@item.ProductName</div>
+                                        <div class="text-muted">Quantity: @item.Quantity</div>
+                                    </div>
+                                    <span class="fw-semibold">@item.GetTotal().ToString("C")</span>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="card-footer bg-light p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="text-secondary small text-uppercase fw-bold">Total Items</span>
+                        <span class="fw-bold">@totalQty</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-top mt-2 pt-2">
+                        <span class="h6 mb-0 fw-bold text-dark">Total Amount</span>
+                        <span class="h5 mb-0 fw-bold text-primary">@totalPrice.ToString("C")</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

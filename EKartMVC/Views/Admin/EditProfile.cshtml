@@ -1,0 +1,83 @@
+﻿@using E_Kart_Application.DTOs.Customersdto
+@model UpdateCustomerDto
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-7">
+
+            <h1 class="fw-bold">Edit Profile</h1>
+            <p class="text-muted">
+                Update your profile information in the EKart system.
+            </p>
+
+            <div class="card shadow-sm border-0 mt-4">
+                <div class="card-header bg-primary text-white py-3">
+                    <h5 class="mb-0 fw-bold">Profile Details</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                    <form asp-controller="Admin" asp-action="EditProfile" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-4">
+                            <label asp-for="ContactName" class="form-label text-uppercase text-muted">
+                                Contact Name
+                            </label>
+                            <input asp-for="ContactName" class="form-control form-control-lg" />
+                            <span asp-validation-for="ContactName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Phone" class="form-label text-uppercase text-muted">
+                                Phone Number
+                            </label>
+                            <input asp-for="Phone" class="form-control form-control-lg" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Address" class="form-label text-uppercase text-muted">
+                                Shipping Address
+                            </label>
+                            <textarea asp-for="Address" class="form-control form-control-lg" rows="4"></textarea>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+
+                        <hr />
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a asp-controller="Admin"
+                               asp-action="Profile"
+                               class="btn btn-outline-secondary btn-lg px-4">
+                                Back to Profile
+                            </a>
+
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                Save Changes
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

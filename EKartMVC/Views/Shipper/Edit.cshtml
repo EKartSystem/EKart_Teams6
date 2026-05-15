@@ -1,0 +1,44 @@
+@model EKartMVC.Models.ShipperViewModel
+@{
+    ViewData["Title"] = "Edit Shipper";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0">✏️ Edit Shipper — <span class="fw-normal">@Model.CompanyName</span></h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" asp-route-id="@Model.ShipperId" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <input type="hidden" asp-for="ShipperId" />
+
+                        <div class="mb-3">
+                            <label asp-for="CompanyName" class="form-label fw-semibold"></label>
+                            <input asp-for="CompanyName" class="form-control" />
+                            <span asp-validation-for="CompanyName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="form-label fw-semibold"></label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-warning">Save Changes</button>
+                            <a asp-action="Details" asp-route-id="@Model.ShipperId"
+                               class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

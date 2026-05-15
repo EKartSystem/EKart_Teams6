@@ -1,0 +1,114 @@
+@model List<EKartMVC.Models.ShipperViewModel>
+@{
+    ViewData["Title"] = "Shippers";
+}
+
+<div class="container-fluid py-4">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-1">
+                <i class="bi bi-truck text-primary me-2"></i>Shippers
+            </h2>
+            <p class="text-muted small mb-0">Manage third-party shipping agencies and their contact records.</p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">
+            <i class="bi bi-plus-lg me-1"></i> Add Shipper
+        </a>
+    </div>
+
+
+    <div class="row mb-4">
+        <div class="col-12 col-md-6 col-lg-4">
+            <form asp-action="Search" method="get" class="input-group shadow-sm">
+                <input type="text" name="name" class="form-control border-0" placeholder="Search by company name..."
+                       value="@ViewBag.SearchTerm" />
+                <button class="btn btn-primary px-4" type="submit">
+                    <i class="bi bi-search"></i>Search
+                </button>
+                @if (ViewBag.SearchTerm != null)
+                {
+                    <a asp-action="Index" class="btn btn-outline-danger border-0">
+                        <i class="bi bi-x-lg"></i>
+                    </a>
+                }
+            </form>
+        </div>
+    </div>
+
+    @if (ViewBag.SearchTerm != null)
+    {
+        <div class="alert alert-primary-subtle border-0 small py-2 mb-4 shadow-sm" role="alert">
+            <i class="bi bi-info-circle me-2"></i> Filtering by criteria: <strong>@ViewBag.SearchTerm</strong>
+        </div>
+    }
+
+
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white py-3">
+            <h6 class="m-0 fw-bold"><i class="bi bi-list-stars me-2"></i>Shipper Registry</h6>
+        </div>
+        <div class="card-body p-0">
+            @if (!Model.Any())
+            {
+                <div class="text-center py-5">
+                    <i class="bi bi-exclamation-triangle display-4 text-warning mb-3"></i>
+                    <p class="text-muted fw-semibold">No registered shippers match your query.</p>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light text-secondary small text-uppercase fw-bold">
+                            <tr>
+                                <th class="ps-4">Entity ID</th>
+                                <th>Company Name</th>
+                                <th>Contact Phone</th>
+                                <th class="text-center pe-4">Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var shipper in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-bold text-dark">#@shipper.ShipperId</td>
+                                    <td>
+                                        <div class="fw-bold text-dark">@shipper.CompanyName</div>
+                                    </td>
+                                    <td>
+                                        <div class="small">
+                                            <i class="bi bi-telephone text-primary me-2"></i>
+                                            @(shipper.Phone ?? "—")
+                                        </div>
+                                    </td>
+                                    <td class="text-center pe-4">
+                                        <div class="btn-group shadow-sm">
+                                            <a asp-action="Details" asp-route-id="@shipper.ShipperId"
+                                                   class="btn btn-sm btn-outline-info fw-bold" title="Details">
+                                                <i class="bi bi-eye me-1"></i> Details
+                                            </a>
+                                            <a asp-action="Edit" asp-route-id="@shipper.ShipperId"
+                                                   class="btn btn-sm btn-outline-warning fw-bold" title="Edit">
+                                                <i class="bi bi-pencil me-1"></i> Edit
+                                            </a>
+                                            <a asp-action="Orders" asp-route-id="@shipper.ShipperId"
+                                                   class="btn btn-sm btn-outline-secondary fw-bold" title="Order Links">
+                                                <i class="bi bi-journal-text me-1"></i> View Orders
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+        <div class="card-footer bg-white py-3 border-top-0">
+            <p class="text-muted small mb-0">
+                <i class="bi bi-shield-check me-1"></i> Authorized logistics entities for the <strong>E_Kart_Application</strong>.
+            </p>
+        </div>
+    </div>
+</div>

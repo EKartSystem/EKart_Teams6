@@ -1,3 +1,4 @@
+using EKartMVC.Services;
 namespace EKartMVC
 {
     public class Program
@@ -6,16 +7,31 @@ namespace EKartMVC
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            var apiBaseUrl = "https://localhost:7000/";
+
+            builder.Services.AddHttpClient<ProductApiService>(c => c.BaseAddress = new Uri(apiBaseUrl));
+
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+            builder.Services.AddHttpClient<OrderApiService>(c =>c.BaseAddress = new Uri(apiBaseUrl));
+            builder.Services.AddHttpClient<LocationApiService>(c => c.BaseAddress = new Uri(apiBaseUrl));
+            builder.Services.AddHttpClient<AdminServices>(c => c.BaseAddress = new Uri(apiBaseUrl));
+            builder.Services.AddHttpClient<CartService>(c => c.BaseAddress = new Uri(apiBaseUrl));
 
-            // Configure the HTTP request pipeline.
+            builder.Services.AddHttpClient<CustomerApiService>(x => x.BaseAddress = new Uri(apiBaseUrl));
+            builder.Services.AddHttpClient<ShipperApiService>(x => x.BaseAddress = new Uri(apiBaseUrl));
+            builder.Services.AddHttpClient<SupplierApiService>(x => x.BaseAddress = new Uri(apiBaseUrl));
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); 
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+            var app = builder.Build();
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -23,7 +39,8 @@ namespace EKartMVC
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
+            //app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

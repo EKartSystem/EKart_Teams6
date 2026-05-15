@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<E_Kart_Application.DTOs.ProductsDTO.ProductListingDto>
+
+<h1>Products By Category</h1>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+
+            <div class="card shadow m-2">
+
+                <div class="card-body">
+
+                    <h4>
+                        @item.ProductName
+                    </h4>
+
+                    <p>
+                        Category :
+                        @item.CategoryName
+                    </p>
+
+                    <p>
+                        Price :
+                        @item.UnitPrice
+                    </p>
+
+                    <p>
+                        Quantity :
+                        @item.QuantityPerUnit
+                    </p>
+
+                    <p>
+                        In Stock :
+                        @item.IsInStock
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>

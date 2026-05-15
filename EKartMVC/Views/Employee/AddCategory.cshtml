@@ -1,0 +1,69 @@
+﻿@model E_Kart_Application.DTOs.CategoryDto.ResponseCategoryDto
+
+@{
+    ViewData["Title"] = "Add New Category";
+}
+
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            
+            <div class="mb-4 text-center">
+                <h2 class="fw-bold text-dark">
+                    <i class="bi bi-tag-fill text-primary me-2"></i>Create Category
+                </h2>
+                <p class="text-muted small">Define a new product classification for the EKart inventory system.</p>
+            </div>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h6 class="m-0 fw-bold">Category Specifications</h6>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    <form asp-action="AddCategory" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-4">
+                            <label asp-for="CategoryName" class="form-label fw-semibold text-secondary small text-uppercase">Category Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="bi bi-pencil-square text-muted"></i>
+                                </span>
+                                <input asp-for="CategoryName" class="form-control border-start-0 ps-0" placeholder="e.g., Electronics" required />
+                            </div>
+                            <span asp-validation-for="CategoryName" class="text-danger small"></span>
+                        </div>
+
+
+                        <div class="mb-4">
+                            <label asp-for="Description" class="form-label fw-semibold text-secondary small text-uppercase">Description</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="bi bi-card-text text-muted"></i>
+                                </span>
+                                <textarea asp-for="Description" class="form-control border-start-0 ps-0" rows="3" placeholder="Briefly describe the category contents..."></textarea>
+                            </div>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center border-top pt-4">
+                            <a asp-action="GetCategories" asp-controller="Employee" class="btn btn-outline-secondary rounded-pill px-4">
+                                <i class="bi bi-arrow-left me-1"></i> Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm">
+                                <i class="bi bi-check-circle me-1"></i> Save Category
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <p class="text-muted x-small">
+                    <i class="bi bi-info-circle me-1"></i> New categories will be immediately available for product assignment in the Shop module.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>

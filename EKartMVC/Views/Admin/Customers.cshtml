@@ -1,0 +1,89 @@
+﻿@using E_Kart_Application.DTOs.Customersdto
+@model List<CustomerDto>
+
+@{
+    ViewData["Title"] = "Customer Management";
+}
+
+<div class="container-fluid py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark">Customer Management</h2>
+            <p class="text-muted small mb-0">View and manage all registered customers in the system.</p>
+        </div>
+        <div class="btn-group shadow-sm">
+            <a asp-action="TopCustomers" asp-controller="Admin" class="btn btn-outline-primary border-2 fw-semibold">
+                <i class="bi bi-star-fill me-1"></i> Top Customers
+            </a>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 col-lg-4">
+            <form asp-action="Search" asp-controller="Admin" method="get" class="input-group shadow-sm rounded-3 overflow-hidden">
+          
+                <input type="text"
+                       name="name"
+                       class="form-control border-0 px-3 shadow-none"
+                       placeholder="Search by name..."
+                       aria-label="Search">
+   
+                <button class="btn btn-primary fw-bold px-4" type="submit">
+                    <i class="bi bi-search me-1"></i> Search
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white py-3">
+            <h6 class="m-0 fw-bold"><i class="bi bi-people-fill me-2"></i>Customer Directory</h6>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light text-secondary small text-uppercase">
+                        <tr>
+                            <th class="ps-4">Name</th>
+                            <th>Contact Phone</th>
+                            <th>Full Address</th>
+                            <th class="text-center pe-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Model)
+                        {
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="fw-bold text-dark">@c.ContactName</div>
+                                    <div class="text-muted x-small">ID: @c.CustomerId</div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border px-2 py-2">
+                                        <i class="bi bi-telephone me-1 text-primary"></i> @(string.IsNullOrEmpty(c.Phone) ? "N/A" : c.Phone)
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-truncate d-inline-block" style="max-width: 300px;">
+                                        @c.Address
+                                    </span>
+                                </td>
+                                <td class="text-center pe-4">
+                                    <a class="btn btn-sm btn-outline-warning rounded-pill px-3 fw-semibold"
+                                           asp-action="Edit"
+                                           asp-controller="Admin"
+                                           asp-route-id="@c.CustomerId">
+                                        <i class="bi bi-pencil-square me-1"></i> Edit
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer bg-white py-3">
+            <p class="text-muted small mb-0">Showing @Model.Count records from the database.</p>
+        </div>
+    </div>
+</div>

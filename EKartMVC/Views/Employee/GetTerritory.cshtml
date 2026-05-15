@@ -1,0 +1,88 @@
+﻿@model IEnumerable<E_Kart_Application.DTOs.LocationDTO.TerritoryDto>
+
+@{
+    ViewData["Title"] = "Territories";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            
+            <div class="mb-4 d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="fw-bold text-dark m-0">
+                        <i class="bi bi-map me-2"></i>Territories
+                    </h2>
+                    <p class="text-muted m-0 mt-1">Manage sales territories and regions</p>
+                </div>
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-1"></i>Create New Territory
+                </a>
+            </div>
+
+
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h5 class="m-0 fw-bold">
+                        <i class="bi bi-list-check me-2"></i>Territory List
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    @if (Model.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="fw-bold text-primary">
+                                            <i class="bi bi-hash me-1"></i>Territory ID
+                                        </th>
+                                        <th class="fw-bold text-primary">
+                                            <i class="bi bi-book me-1"></i>Description
+                                        </th>
+                                        <th class="fw-bold text-primary">
+                                            <i class="bi bi-geo me-1"></i>Region ID
+                                        </th>
+                                        <th class="fw-bold text-primary text-center">
+                                            <i class="bi bi-gear me-1"></i>Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <span class="badge bg-info">@Html.DisplayFor(modelItem => item.TerritoryId)</span>
+                                            </td>
+                                            <td class="text-dark">@Html.DisplayFor(modelItem => item.TerritoryDescription)</td>
+                                            <td>
+                                                <span class="badge bg-secondary">@Html.DisplayFor(modelItem => item.RegionId)</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <a asp-controller="Location" asp-action="Edit" asp-route-id="@item.TerritoryId" class="btn btn-outline-primary btn-sm">Edit</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="bi bi-inbox display-1 text-muted d-block mb-3"></i>
+                            <p class="text-muted">No territories found. <a asp-action="Create">Create one now</a></p>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a asp-action="GetEmployeeall" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left me-1"></i>Back to Employees
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
